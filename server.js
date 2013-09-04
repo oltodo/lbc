@@ -1,9 +1,15 @@
 var express = require('express'),
     http = require('http'),
     path = require('path'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    Ad = require('./lib/models/ad');
 
 var app = express();
+
+
+// Connect to the mongo database
+mongoose.connect('mongodb://localhost/lbc');
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -20,11 +26,22 @@ if ('development' == app.get('env')) {
 }
 
 
+
+
+
+var db = mongoose.connection;
+
+
+
+
+
 app.get('/ws/ads', function(req, res) {
-    res.json([{
-        id: 1,
-        title: 'Test',
-    }]);
+
+    return Ad.find({})
+        .sort('-publishedAt')
+        .exec(function(err, ads) {
+            return res.send(ads);
+        });
 })
 
 

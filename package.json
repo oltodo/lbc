@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "dependencies": {
     "mongoose": "~3.6.18",
-    "express": "~3.3.8"
+    "express": "~3.3.8",
+    "crawler": "~0.2.5",
+    "trim": "0.0.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

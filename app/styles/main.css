@@ -9,4 +9,8 @@ body {
 
 
 
+.ad { position: relative; margin-bottom: 20px; }
+.ad .ad-title { line-height: 1.5em; height: 3em; overflow: hidden; }
+.ad .ad-picture { width: 100%; height: 0; padding-bottom: 70%; background-size: contain; background-repeat: no-repeat; background-position: 50% 50% }
 .ad .ad-actions { padding: 6px 0 2px; margin-top: 5px; border-top: solid 1px #EEE; }
+.ad .ad-nbPictures { position: absolute; top: 10px; right: 10px; font-size: 1.1em }

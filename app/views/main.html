@@ -1,18 +1,29 @@
-<ul class="thumbnails">
-    <li class="ad span3" ng-repeat="i in [1,2,3,4,5,6]">
-        <div class="thumbnail">
-            <img src="http://193.164.197.50/images/453/453328030433711.jpg" alt="">
-            <h5><a href="#/ad/1">Rare 17 km Lyon maison 68 m2 dans cadre de verdure</a></h5>
+<div class="row">
+    <div class="col-sm-6 col-md-3" ng-repeat="ad in ads">
+        <div class="thumbnail ad">
+            <div class="text-muted">{{ ad.publishedAt }}</div>
+            
+            <div class="ad-nbPictures label label-info">
+                <i class="icon-camera"></i>
+                <span>{{ ad.nbPictures }}</span>
+            </div>
+
+            <img class="ad-picture" style="background-image:url({{ ad.picture }})" alt="">
+            
+            <h5 class="ad-title">
+                <span class="label label-danger" ng-show="ad.pro">PRO</span>
+                <a href="#/ad/1">{{ ad.title }}</a>
+            </h5>
             
             <div class="clearfix">
-                <p class="pull-left">Lyon 69007</p>
-                <p class="pull-right"><b>210 000 €</b></p>
+                <p class="pull-left">{{ ad.city }}</p>
+                <p class="pull-right"><b>{{ ad.price | price }}</b></p>
             </div>
 
             <div class="ad-actions clearfix">
                 <div class="btn-group pull-left">
                     <button class="btn">
-                        <i class="icon-star-empty text-warning"></i>
+                        <i class="icon-star-empty"></i>
                     </button>
                     <button class="btn dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
@@ -22,11 +33,11 @@
                     </ul>
                 </div>
                 <div class="btn-group pull-right">
-                    <button class="btn btn-danger">
+                    <button class="btn">
                         <i class="icon-remove-sign"></i>
                     </button>
                 </div>
             </div>
         </div>
-    </li>
-</ul>
+    </div>
+</div>

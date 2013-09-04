@@ -14,4 +14,9 @@ angular.module('lbcApp', [])
         .otherwise({
             redirectTo: '/'
         });
+    })
+    .filter('price', function() {
+        return function(price) {
+            return numeral(price).format('0,0[.]00 $');
+        }
     });
