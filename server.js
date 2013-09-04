@@ -1,6 +1,7 @@
-var express = require('express')
-  , http = require('http')
-  , path = require('path');
+var express = require('express'),
+    http = require('http'),
+    path = require('path'),
+    mongoose = require('mongoose');
 
 var app = express();
 
@@ -15,9 +16,19 @@ app.use(express.static(path.join(__dirname, 'app')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+    app.use(express.errorHandler());
 }
 
+
+app.get('/ws/ads', function(req, res) {
+    res.json([{
+        id: 1,
+        title: 'Test',
+    }]);
+})
+
+
+
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+    console.log('Express server listening on port ' + app.get('port'));
 });

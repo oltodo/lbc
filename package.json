@@ -1,7 +1,10 @@
 {
   "name": "lbc",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "mongoose": "~3.6.18",
+    "express": "~3.3.8"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
@@ -38,8 +41,7 @@
     "karma-coffee-preprocessor": "~0.1.0",
     "karma-phantomjs-launcher": "~0.1.0",
     "karma": "~0.10.2",
-    "karma-ng-html2js-preprocessor": "~0.1.0",
-    "express": "~3.3.8"
+    "karma-ng-html2js-preprocessor": "~0.1.0"
   },
   "engines": {
     "node": ">=0.8.0"
