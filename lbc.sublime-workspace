@@ -1,0 +1,1988 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mon",
+				"months"
+			],
+			[
+				"bac",
+				"background-position"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"nb",
+				"nbPictures"
+			],
+			[
+				"par",
+				"parseInt"
+			],
+			[
+				"padding",
+				"padding-bottom"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"set",
+				"setCookie"
+			],
+			[
+				"_",
+				"$_	GET['…']"
+			],
+			[
+				"pars",
+				"parse_url"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"border-co",
+				"border-color"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"hero",
+				"hero-base"
+			],
+			[
+				"sty",
+				"styles"
+			],
+			[
+				"bor",
+				"border-right"
+			],
+			[
+				"bord",
+				"border-left"
+			],
+			[
+				"rg",
+				"rgba()"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"border-left-",
+				"border-left-width"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"d",
+				"display"
+			],
+			[
+				"uin",
+				"usine_user"
+			],
+			[
+				"Fa",
+				"Fake-News"
+			],
+			[
+				"exe",
+				"execute"
+			],
+			[
+				"co",
+				"columns"
+			],
+			[
+				"jeux",
+				"jeuxvideopc"
+			],
+			[
+				"get_in",
+				"get_included_files"
+			],
+			[
+				"rep",
+				"replaceSpecialChar"
+			],
+			[
+				"array_k",
+				"array_key_exists"
+			],
+			[
+				"dom",
+				"domain"
+			],
+			[
+				"sub",
+				"subDomain"
+			],
+			[
+				"url",
+				"urldecode"
+			],
+			[
+				"base",
+				"base64_decode"
+			],
+			[
+				"tpl_v",
+				"_tpl_vars"
+			],
+			[
+				"func",
+				"function_exists"
+			],
+			[
+				"margi",
+				"margin-bottom"
+			],
+			[
+				"res",
+				"resolve"
+			],
+			[
+				"border-r",
+				"border-right"
+			],
+			[
+				"lo",
+				"loaded"
+			],
+			[
+				"Pr",
+				"PremiumCtrl"
+			],
+			[
+				"load",
+				"loaded"
+			],
+			[
+				"Pre",
+				"PremiumCtrl"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"del",
+				"deleteForm"
+			],
+			[
+				"array_mer",
+				"array_merge_recursive"
+			],
+			[
+				"pub",
+				"publishedAt"
+			],
+			[
+				"man",
+				"manager_cp"
+			],
+			[
+				"getA",
+				"getArticleRepository"
+			],
+			[
+				"compe",
+				"components_dir"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"dis",
+				"disable"
+			],
+			[
+				"end",
+				"endedAt"
+			],
+			[
+				"pro",
+				"properties"
+			],
+			[
+				"wi",
+				"widget"
+			],
+			[
+				"sele",
+				"selection"
+			],
+			[
+				"ma",
+				"manager2"
+			],
+			[
+				"select",
+				"selections"
+			],
+			[
+				"fie",
+				"field_title"
+			],
+			[
+				"Home",
+				"HomepageSelectionSoftwareType"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"ex",
+				"exclude"
+			],
+			[
+				"choic",
+				"choice_list"
+			],
+			[
+				"fil",
+				"fill"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"em",
+				"emLogitheque"
+			],
+			[
+				"resu",
+				"result"
+			],
+			[
+				"getS",
+				"getSoftwareSelectionRepository"
+			],
+			[
+				"lady",
+				"ladybug_dump"
+			],
+			[
+				"publi",
+				"publisherField"
+			],
+			[
+				"Pu",
+				"PublisherField"
+			],
+			[
+				"ge",
+				"generator"
+			],
+			[
+				"sour",
+				"sourcePath"
+			],
+			[
+				"define",
+				"defined"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"mat",
+				"matches2"
+			],
+			[
+				"margin-",
+				"margin-top"
+			],
+			[
+				"call_u",
+				"call_user_func_array"
+			],
+			[
+				"strip",
+				"stripslashes"
+			],
+			[
+				"paren",
+				"parentNode"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"A",
+				"ASSOCIATED"
+			],
+			[
+				"auh",
+				"authors"
+			],
+			[
+				"Mi",
+				"Migration_Status"
+			],
+			[
+				"W",
+				"WAITING"
+			],
+			[
+				"sta",
+				"status"
+			],
+			[
+				"Mig",
+				"Migration_Status"
+			],
+			[
+				"utf_",
+				"utf8_encode"
+			],
+			[
+				"Tur",
+				"Turbo_Slideshow"
+			],
+			[
+				"M",
+				"MENU_ACTUS"
+			],
+			[
+				"Con",
+				"Connexes"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"GC_To",
+				"GC_Tools_Word"
+			],
+			[
+				"GC",
+				"GC_Tools_Sentence"
+			],
+			[
+				"MO",
+				"MODE_UPPERCASE"
+			],
+			[
+				"GE",
+				"GENDER_FEMININE"
+			],
+			[
+				"con",
+				"connexes"
+			],
+			[
+				"chil",
+				"childNodes"
+			],
+			[
+				"resolve",
+				"resolveArticle"
+			],
+			[
+				"render",
+				"renderString"
+			],
+			[
+				"reso",
+				"resolveWithSite"
+			],
+			[
+				"toggle",
+				"toggle-publish"
+			],
+			[
+				"Core",
+				"Core_Config"
+			],
+			[
+				"abs",
+				"abstract"
+			],
+			[
+				"Core_",
+				"Core_Site"
+			],
+			[
+				"Turbo",
+				"Turbo_Article"
+			],
+			[
+				"preg_match",
+				"preg_match_all"
+			],
+			[
+				"str_re",
+				"str_repeat"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"Migrat",
+				"Migration_Exception"
+			],
+			[
+				"Migra",
+				"Migration_Exception"
+			],
+			[
+				"au",
+				"authors"
+			],
+			[
+				"preg_rep",
+				"preg_replace"
+			],
+			[
+				"str_rep",
+				"str_replace"
+			],
+			[
+				"addDom",
+				"addDOMElement"
+			],
+			[
+				"Ellop_Ar",
+				"Ellop_ArticlePage"
+			],
+			[
+				"addEl",
+				"addElementNode"
+			],
+			[
+				"insta",
+				"instanceof"
+			],
+			[
+				"childNo",
+				"childNodes"
+			],
+			[
+				"D",
+				"DOMElement"
+			],
+			[
+				"append",
+				"appendChild"
+			],
+			[
+				"appe",
+				"appendChild"
+			],
+			[
+				"func_ge",
+				"func_get_args"
+			],
+			[
+				"break",
+				"break_"
+			],
+			[
+				"brea",
+				"break_"
+			],
+			[
+				"html",
+				"htmlentities"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "crawler.js",
+			"settings":
+			{
+				"buffer_size": 4407,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "server.js",
+			"settings":
+			{
+				"buffer_size": 1189,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/models/ad.js",
+			"settings":
+			{
+				"buffer_size": 353,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/main.html",
+			"settings":
+			{
+				"buffer_size": 1549,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/main.js",
+			"settings":
+			{
+				"buffer_size": 200,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/styles/main.css",
+			"settings":
+			{
+				"buffer_size": 592,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/index.html",
+			"settings":
+			{
+				"buffer_size": 3415,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Gruntfile.js",
+			"settings":
+			{
+				"buffer_size": 10668,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dist/styles/fde81e50.main.css",
+			"settings":
+			{
+				"buffer_size": 118718,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/JSLint/JSLint.sublime-build",
+	"command_palette":
+	{
+		"height": 75.0,
+		"selected_items":
+		[
+			[
+				"upd",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"up",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"prety",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"prev",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"previ",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"wrap",
+				"Word Wrap: Toggle"
+			],
+			[
+				"word",
+				"Word Wrap: Toggle"
+			],
+			[
+				"pret",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"prett",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"mark",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"markdo",
+				"Set Syntax: MultiMarkdown"
+			],
+			[
+				"upda",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"add re",
+				"Package Control: Add Repository"
+			],
+			[
+				"instl",
+				"Package Control: Install Package"
+			],
+			[
+				"remo	",
+				"Package Control: Remove Package"
+			],
+			[
+				"rev",
+				"Side Bar: Reveal File"
+			],
+			[
+				"re",
+				"Side Bar: Reveal File"
+			],
+			[
+				"side bar",
+				"Side Bar: Enable Syncing"
+			],
+			[
+				"reve",
+				"Side Bar: Reveal File"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"plu",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"mar",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"WOR",
+				"Word Wrap: Toggle"
+			],
+			[
+				"save",
+				"Project: Save As"
+			],
+			[
+				"pak",
+				"Package Control: Disable Package"
+			],
+			[
+				"disabe",
+				"Package Control: Disable Package"
+			],
+			[
+				"disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"setting",
+				"Preferences: Settings - Default"
+			],
+			[
+				"markdon",
+				"Markdown Preview: current file in browser"
+			],
+			[
+				"Markd",
+				"Markdown Preview: current file in Sublime Text"
+			],
+			[
+				"pack",
+				"Package Control: Disable Package"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"Package Control:",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 151.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/nicolas/Web/lbc/dist/bower_components/font-awesome/css/font-awesome.css",
+		"/home/nicolas/Web/lbc/app/bower_components/font-awesome/css/font-awesome.min.css",
+		"/home/nicolas/Web/lbc/app/bower_components/font-awesome/css/font-awesome.css",
+		"/home/nicolas/Web/lbc/dist/fonts/FontAwesome.otf",
+		"/home/nicolas/Web/lbc/app/index.html",
+		"/home/nicolas/Web/lbc/app/scripts/app.js",
+		"/home/nicolas/Web/lbc/.editorconfig",
+		"/home/nicolas/Web/lbc/.jshintrc",
+		"/home/nicolas/Web/lbc/Gruntfile.js",
+		"/home/nicolas/Web/lbc/.bowerrc",
+		"/home/nicolas/Web/lbc/models/ad.js",
+		"/home/nicolas/Web/lbc/lib/models/ad.js",
+		"/home/nicolas/Web/lbc/lib/pages/page1.html",
+		"/home/nicolas/Web/lbc/app/bower_components/numeral/min/languages/fr.min.js",
+		"/home/nicolas/Web/lbc/app/bower_components/numeral/min/numeral.min.js",
+		"/home/nicolas/Web/lbc/app/bower_components/numeral/numeral.js",
+		"/home/nicolas/Web/lbc/lib/models/page1.html",
+		"/home/nicolas/Web/lbc/bower.json",
+		"/home/nicolas/Web/lbc/lib/schemas/ad.js",
+		"/home/nicolas/Web/lbcalerting-crawler/crawler.js",
+		"/home/nicolas/Web/lbc/app/bower_components/bootstrap/dist/css/bootstrap-theme.min.css",
+		"/home/nicolas/Web/lbc/app/bower_components/bootstrap/dist/css/bootstrap.min.css",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/AdminDownloadBundle/Resources/views/Software/index.html.twig",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/tmp/nicolas/migration-php54/configs/turbo.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/tmp/nicolas/migration-php54/run.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/clubic/include/config/links.conf.xml",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/AdminRedisBundle/Resources/views/Default/search.html.twig",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/AdminRedisBundle/Resources/views/Default/index.html.twig",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/AdminRedisBundle/Controller/DefaultController.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/UniverseBundle/Application/Application.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/AdminBundle/Entity/Universe.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/UniverseBundle/Resources/views/Admin/edit.html.twig",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/jvfr/jvpc/migration/members.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/UniverseBundle/Form/UniverseType.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/AdminDownloadBundle/Resources/views/Software/edit.html.twig",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/web/.htaccess",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/UniverseBundle/Resources/config/services.yml",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/UserBundle/Entity/User.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/site-jvpc/src/M6/Bundle/JvpcBundle/Resources/public/css/style.css",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/site-jvpc/src/M6/Bundle/JvpcBundle/Resources/views/header.html.twig",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/download/api.gestion_photo.v3.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/ajax.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/app/Resources/less/base.less",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/bower.json",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/app/config/config.yml",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/AdminBundle/Resources/public/components/select2/select2.css",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/service-clubic/app/config/routing.yml",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/service-clubic/app/config/routing_api.yml",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/service-clubic/src/M6/Bundle/ClubicEditoWSBundle/Tests/Controller/ArticleControllerTest.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/service-clubic/src/M6/Bundle/ClubicEditoWSBundle/Controller/SlideshowController.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/site-jvpc/src/M6/Bundle/JvpcBundle/Resources/views/Default/index.html.twig",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/ws_clubic/src/M6/Bundle/ClubicEditoWSBundle/Tests/Controller/ArticleControllerTest.php",
+		"/home/nicolas/.config/chromium/Default/Extensions/mmapmkalidadbdlciojomkedmgcafgef/0.8.1_0/background.js",
+		"/home/nicolas/Web/foo/index.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/site-jvpc/src/M6/Bundle/JvpcBundle/Resources/views/Menu/main.html.twig",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/header.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/turbo/header.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/turbo/index.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/jvfr/include/config/links.conf.xml",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/deco_v2/include/links.xml",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/turbo/include/links.xml",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/deco_v2/include/header.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/api/forum/fonctions-login.h.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/api/membre/facebook.connect.js",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/clubic_sf/src/M6/Bundle/ClubicProBundle/Resources/views/header.html.twig",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/site-jvpc/app/Resources/views/base.html.twig",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/api/class.pau_m6.php",
+		"/home/nicolas/Web/index.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/api/membre/ajax.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/jvfr_v2/mobile/connection.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/v2/menu.def",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/home_clubic.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/api/forum/init.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/api/forum/fonctions.h.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/api/forum/connexion.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/api/recherche.php",
+		"/home/nicolas/.config/sublime-text-2/Projects/m6web.sublime-project",
+		"/home/nicolas/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/nicolas/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/clubic_sf/web/hero/hero2.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/hero/video.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/jvfr_v2/template/include/block/video/fichePlayer.tpl",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/clubic_sf/web/hero/class/Styles.class.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/hero/Styles.class.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/hero/download-img.sh",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/hero/index.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/jvfr_v2/video/player.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/hero/LoremIpsum.class.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/jvfr_v2/include/block/video/fichePlayer.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/jvfr_v2/template/video/player.tpl",
+		"/home/nicolas/.dotfiles/local/shell/sf.sh",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/hero/bower_components/picturefill/picturefill.js",
+		"/home/nicolas/Web/sppoker/static/voter.html",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/jvfr_v2/vhosts/prod/v2.jeuxvideo.fr.conf",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/jvfr_v2/vhosts/preprod/preprod.jeuxvideopc.com.conf",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/clubic_sf/vendor/m6/clubicproappointment-bundle/src/M6/Bundle/ClubicProAppointmentBundle/DataFixtures/ORM/LoadAppointments.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/hero/bower_components/bootstrap/docs/assets/js/bootstrap.js",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/hero/bower_components/bootstrap/docs/assets/css/bootstrap.css",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/hero/index.html",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/editorial/publierV3/includes/models/list.models.php",
+		"/home/nicolas/Web/daux/docs/index.md",
+		"/home/nicolas/Web/daux/docs/config.json",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/editorial/publierV3/includes/ajax/fake-it.ajax.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/include/class/Publier.class.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/editorial/publierV3/includes/lines/public.line.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/editorial/publierV3/includes/models/edit.models.php",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/editorial/publierV3/list.php",
+		"/home/nicolas/Web/spoker/voter.html",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/usine/include/class/Helpers/PhotosFormHelper.class.php",
+		"/home/nicolas/Web/spoker/components/jquery/jquery.min.js",
+		"/home/nicolas/Web/spoker/components/font-awesome/css/font-awesome.min.css",
+		"/mnt/sshfs/n_bazille@app52.dev.m6web.fr/dotfiles",
+		"/mnt/sshfs/n_bazille@dev.m6web.fr/n_bazille.sublime-project",
+		"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/api/js/faceboxV2/facebox.js",
+		"/mnt/sshfs/n_bazille@dev.m6web.fr/usine/header.php",
+		"/mnt/sshfs/n_bazille@dev.m6web.fr/usine/editorial/publierV3/includes/models/list.models.php",
+		"/mnt/sshfs/n_bazille@dev.m6web.fr/usine/editorial/publierV3/edit.php",
+		"/mnt/sshfs/n_bazille@dev.m6web.fr/usine/editorial/publierV3/ajax.php",
+		"/mnt/sshfs/n_bazille@dev.m6web.fr/usine/editorial/publierV3/includes/models/edit.models.php",
+		"/mnt/sshfs/n_bazille@dev.m6web.fr/usine/editorial/publierV3/includes/ajax/fake-it.ajax.php",
+		"/mnt/sshfs/n_bazille@dev.m6web.fr/usine/editorial/publierV3/includes/functions.php",
+		"/mnt/sshfs/n_bazille@dev.m6web.fr/usine/editorial/publierV3/list.php",
+		"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/galaxy/Configs/mysql.php",
+		"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/bo/vendor/m6/clubicpremiummodel-bundle/src/M6/Bundle/ClubicPremiumModelBundle/Manager/TuleManager.php",
+		"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/bo/src/M6/Bundle/AdminClubicProBundle/Resources/views/Premium/tule.html.twig",
+		"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/bo/vendor/m6/clubicproappointment-bundle/src/M6/Bundle/ClubicProAppointmentBundle/Entity/Lead.php",
+		"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/clubic_v2/mobile/home/articles.php",
+		"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/jpcache/jpcache-main.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/AdminRedisBundle",
+			"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/AdminBundle",
+			"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/UserBundle",
+			"/mnt/sshfs/n_bazille@app54.dev.m6web.fr/clubic_sf/app/Resources",
+			"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/clubic_v2/vhosts",
+			"/home/nicolas/Web/jvpc/jeuxvideopc/trunk",
+			"/home/nicolas/Web/jvpc/jeuxvideopc/trunk/www/include",
+			"/home/nicolas/Web/jvpc/jeuxvideopc/trunk/www/forums",
+			"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/clubic_sf/src/M6/Bundle/DownloadBundle",
+			"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/clubic_sf/src/M6/Bundle",
+			"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/clubic_sf/src/M6/Bundle/DownloadBundle",
+			"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/clubic_sf/vendor/m6/distribution-bundle",
+			"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/bo/src/M6/Bundle",
+			"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/clubic_sf/app/config",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/ws_clubic/src/M6/Bundle/ClubicVideoWSBundle",
+			"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/deco_v2/vendor/composer",
+			"/mnt/sshfs/n_bazille@app54-test.dev.m6web.fr/clubic_sf/src/M6/Bundle",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/turbo/include/block",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/clubic_sf/src/M6/Bundle/ClubicProBundle/Controller",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/clubic_sf/src/M6/Bundle/IntegrationBundle/Resources/public/less",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/bo/vendor/twig/extensions/lib/Twig/Extensions",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/bo/src/M6/Bundle/AdminClubicProBundle/Form",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/clubic_sf/src/M6/Bundle/IntegrationBundle/Resources/public/less",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/clubic_v2/export/keljob",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/clubic_v2/vhosts",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/clubic_sf/vhosts",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/clubic_sf/src/M6/Bundle/ClubicProBundle/Resources/views/Widget",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/clubic_sf/src/M6/Bundle/ClubicProBundle/Resources/views/Home",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/bo/vendor/symfony/assetic-bundle/Symfony/Bundle/AsseticBundle",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/bo/src/M6/Bundle/AdminDownloadBundle",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/bo/vendor/genemu/form-bundle/Genemu/Bundle/FormBundle/Resources/views/Form",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/bo/vendor/knplabs/knp-menu",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/bo/vendor/knplabs/knp-menu-bundle/Knp/Bundle/MenuBundle",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/usine/monitoring/sprite",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/usine",
+			"/mnt/sshfs/n_bazille@dev.m6web.fr/api/PhpQuickProfiler"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"font",
+			"fonts",
+			"famil",
+			"font",
+			"google",
+			"  ",
+			"class=\"image\"",
+			"$(this)",
+			"kjp",
+			"src=\"",
+			"servic",
+			"\"",
+			"hidden",
+			"<<<",
+			"tablet",
+			" hidden-tablet",
+			"\\t",
+			" +[0-9]+ \\+ [0-9]+",
+			"     0 + 0",
+			"file_pu",
+			"unlogged",
+			"DELETE",
+			"permis",
+			"permission",
+			"searchSlideshows",
+			"http",
+			"select2.png",
+			"jquery",
+			"type",
+			"mon-com",
+			"type",
+			"text",
+			"mon-com",
+			"email",
+			"total",
+			"targe",
+			"barre_membre",
+			"ajax.php",
+			"nfuser",
+			"glossaire",
+			"sendlog",
+			"sendlogin",
+			"sendLoginCookies",
+			"sendlogi",
+			"membre",
+			"barre_membre",
+			"js",
+			"hero-base",
+			"class=\"radio\"",
+			"h1",
+			"buttons",
+			"curl ",
+			" > ",
+			"450",
+			"800",
+			"abstract ",
+			"', '",
+			"item",
+			"><",
+			"player",
+			"fichepla",
+			"> a ",
+			"> a",
+			"getplain",
+			"gaussianSentence",
+			"gauss",
+			"rand",
+			"#hero",
+			"height",
+			"base.gif",
+			"background",
+			"lorempixel",
+			"margin",
+			"maring",
+			"div.entry1",
+			"\"entry1",
+			"seque",
+			"public",
+			"fake_it",
+			"die",
+			"display",
+			"fake_it",
+			"die",
+			"settit",
+			"set(",
+			"inser",
+			"set(",
+			"button",
+			"load",
+			"grid.wid",
+			"facebox",
+			"jquery",
+			"facebox",
+			"fake",
+			"ajax",
+			"facebox",
+			"contents/",
+			"https://gitlab.m6web.fr/docs/tree/master/",
+			"LeadAppointment",
+			"header",
+			"getconten",
+			"gethead",
+			"response",
+			"videos",
+			"gettitre",
+			"\\/",
+			"435682",
+			"getcd",
+			"videourl",
+			"ctrl+w",
+			"ws_clubic",
+			"client",
+			"create",
+			"createclu",
+			"composer",
+			"app.php",
+			"Jvfr",
+			"ws.clubic.fr",
+			"ws_clubic",
+			"ws.clubic.fr",
+			"ws_clubic",
+			"fire",
+			";",
+			"    ",
+			" résultats sur ",
+			"md_get_topic_content",
+			"function md_get_topic_content",
+			"messcase"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"array(\\n    \"pattern\" => \"$1\",\\n    \"rewrite\" => \"$2\",\\n),\\n",
+			"array(\\n\\t\"pattern\" => \"$1\",\\n\\t\"rewrite\" => \"$2\",\\n),\\n",
+			"    ",
+			"array(\\n\\t\"pattern\" => \"$1\",\\n\\t\"rewrite\" => \"$2\",\\n),\\n",
+			"\"pattern\" => \"$1\",\\n\"rewrite\" => \"$2\",\\n\\n",
+			"\"pattern\" => \"$1\",\\n\"rewrite\" => \"$2\",",
+			"Utils::valueof(\\$$1, $2)",
+			"overview",
+			"]]",
+			"[[",
+			"ClubicPremiumModelBundle",
+			"%bower_directory%",
+			"                - '$1'",
+			"@select2_",
+			"center",
+			"SelectionSoftwareOfTheWeek",
+			"$1    ",
+			"",
+			"  ",
+			"$1    ",
+			"M6Web",
+			"\".$this->site->table('$1').\"",
+			"'.$this->site->table('$1')",
+			"\".$this->site->table('$1').\"",
+			"\".$this->site->table($1).\"",
+			"Migré",
+			"Core_Tree",
+			" ",
+			"é",
+			"à",
+			"Core_site",
+			"Core_Bases",
+			"Core_Config",
+			"#chaines",
+			"?php echo $1; ?",
+			"",
+			"`"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "crawler.js",
+					"settings":
+					{
+						"buffer_size": 4407,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								834,
+								834
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 447.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "server.js",
+					"settings":
+					{
+						"buffer_size": 1189,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								675,
+								675
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "lib/models/ad.js",
+					"settings":
+					{
+						"buffer_size": 353,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								36,
+								36
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/main.html",
+					"settings":
+					{
+						"buffer_size": 1549,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								664,
+								664
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/scripts/controllers/main.js",
+					"settings":
+					{
+						"buffer_size": 200,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								191,
+								191
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/styles/main.css",
+					"settings":
+					{
+						"buffer_size": 592,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								145,
+								145
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/index.html",
+					"settings":
+					{
+						"buffer_size": 3415,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								615,
+								615
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Gruntfile.js",
+					"settings":
+					{
+						"buffer_size": 10668,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5887,
+								5887
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5802.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "dist/styles/fde81e50.main.css",
+					"settings":
+					{
+						"buffer_size": 118718,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								32253,
+								32253
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 288180.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 124.0
+	},
+	"output.sftp":
+	{
+		"height": 90.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"src/m6/bundle/admindownloadbundle/resources/views/software/edit.html.twig",
+				"n_bazille@app54.dev.m6web.fr/bo/src/M6/Bundle/AdminDownloadBundle/Resources/views/Software/edit.html.twig"
+			],
+			[
+				"src/m6/bundle/clubiceditowsbundle/tests/controller/articlecontrollertest.php",
+				"n_bazille@app54.dev.m6web.fr/ws_clubic/src/M6/Bundle/ClubicEditoWSBundle/Tests/Controller/ArticleControllerTest.php"
+			],
+			[
+				"usineajax.php",
+				"n_bazille@app52.dev.m6web.fr/usine/ajax.php"
+			],
+			[
+				"download/api.gestion_photo.v3.php",
+				"n_bazille@app52.dev.m6web.fr/usine/download/api.gestion_photo.v3.php"
+			],
+			[
+				"migration/member",
+				"n_bazille@app52.dev.m6web.fr/usine/jvfr/jvpc/migration/members.php"
+			],
+			[
+				"header",
+				"n_bazille@app52.dev.m6web.fr/usine/header.php"
+			],
+			[
+				"menu.def",
+				"n_bazille@app52.dev.m6web.fr/usine/v2/menu.def"
+			],
+			[
+				"membreajax.php",
+				"n_bazille@app52.dev.m6web.fr/api/membre/ajax.php"
+			],
+			[
+				"recherche.php",
+				"n_bazille@app52.dev.m6web.fr/api/recherche.php"
+			],
+			[
+				"fonctions-login.h.php",
+				"n_bazille@app52.dev.m6web.fr/api/forum/fonctions-login.h.php"
+			],
+			[
+				"api/forum/connexion.php",
+				"n_bazille@app52.dev.m6web.fr/api/forum/connexion.php"
+			],
+			[
+				"api/forum/fonctions.h.php",
+				"n_bazille@app52.dev.m6web.fr/api/forum/fonctions.h.php"
+			],
+			[
+				"api/forum/init.php",
+				"n_bazille@app52.dev.m6web.fr/api/forum/init.php"
+			],
+			[
+				"api/class.pau_m6.php",
+				"n_bazille@app52.dev.m6web.fr/api/class.pau_m6.php"
+			],
+			[
+				"voter.",
+				"spoker/voter.html"
+			],
+			[
+				"publier.class",
+				"n_bazille@app52.dev.m6web.fr/usine/include/class/Publier.class.php"
+			],
+			[
+				"photosformhelper",
+				"n_bazille@app52.dev.m6web.fr/usine/include/class/Helpers/PhotosFormHelper.class.php"
+			],
+			[
+				"usineheader",
+				"n_bazille@app52.dev.m6web.fr/usine/header.php"
+			],
+			[
+				"faceboxv2",
+				"n_bazille@app54-test.dev.m6web.fr/api/js/faceboxV2/facebox.js"
+			],
+			[
+				"guzzleresponse",
+				"n_bazille@app54-test.dev.m6web.fr/bo/vendor/guzzle/guzzle/src/Guzzle/Http/Message/Response.php"
+			],
+			[
+				"guzzlerequest",
+				"n_bazille@app54-test.dev.m6web.fr/bo/vendor/guzzle/guzzle/src/Guzzle/Http/Message/Request.php"
+			],
+			[
+				"guzzlehttpclient",
+				"n_bazille@app54-test.dev.m6web.fr/bo/vendor/guzzle/guzzle/src/Guzzle/Http/Client.php"
+			],
+			[
+				"varnishpur",
+				"n_bazille@app54-test.dev.m6web.fr/bo/vendor/m6/distribution-bundle/src/M6/Bundle/DistributionBundle/Cache/VarnishPurger.php"
+			],
+			[
+				"httpfoundresponse",
+				"n_bazille@app54-test.dev.m6web.fr/bo/vendor/symfony/symfony/src/Symfony/Component/HttpFoundation/Response.php"
+			],
+			[
+				"httpfounrespon",
+				"n_bazille@app54-test.dev.m6web.fr/clubic_v2/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php"
+			],
+			[
+				"videobonus",
+				"n_bazille@app54-test.dev.m6web.fr/api/include/classes/VideoBonus.class.php"
+			],
+			[
+				"mediathequevideo",
+				"n_bazille@app54-test.dev.m6web.fr/galaxy/Models/Mediatheque/Video.php"
+			],
+			[
+				"clubic_v2/videos/wsurl.php",
+				"n_bazille@app54-test.dev.m6web.fr/clubic_v2/vendor/doctrine/annotations/tests/Doctrine/Tests/Common/Annotations/Fixtures/NamespaceWithClosureDeclaration.php"
+			],
+			[
+				"symfonyrespons",
+				"n_bazille@app54-test.dev.m6web.fr/clubic_v2/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php"
+			],
+			[
+				"symfonyframeworkclient.php",
+				"n_bazille@app54-test.dev.m6web.fr/clubic_v2/vendor/symfony/framework-bundle/Symfony/Bundle/FrameworkBundle/Client.php"
+			],
+			[
+				"basecontrollertest",
+				"n_bazille@app54-test.dev.m6web.fr/clubic_sf/vendor/m6/distribution-bundle/src/M6/Bundle/DistributionBundle/Tests/Controller/BaseControllerTest.php"
+			],
+			[
+				"resource",
+				"n_bazille@app54-test.dev.m6web.fr/galaxy/Core/Db/Resource.php"
+			],
+			[
+				"db.php",
+				"n_bazille@app54-test.dev.m6web.fr/galaxy/Core/Db/Db.php"
+			],
+			[
+				"mysql.php",
+				"n_bazille@app54-test.dev.m6web.fr/galaxy/Configs/mysql.php"
+			],
+			[
+				"galaxyresou",
+				"n_bazille@app54-test.dev.m6web.fr/galaxy/Core/Db/Resource.php"
+			],
+			[
+				"galaxydb.php",
+				"n_bazille@app54-test.dev.m6web.fr/galaxy/Core/Db/Db.php"
+			],
+			[
+				"",
+				"n_bazille@dev.m6web.fr/usine/jvfr/jvpc/migration/config.php"
+			],
+			[
+				"class.my",
+				"n_bazille@app54-test.dev.m6web.fr/api/class.mysql.h.php"
+			],
+			[
+				"utils.js",
+				"n_bazille@app54-test.dev.m6web.fr/api/js/Utils.js"
+			],
+			[
+				"ws_clubicapp/config/config.yml",
+				"n_bazille@dev.m6web.fr/ws_clubic/app/config/config.yml"
+			],
+			[
+				"exportpartnerbundle/tests/units/routing/extraloader.php",
+				"n_bazille@app54-test.dev.m6web.fr/clubic_sf/src/M6/Bundle/ExportPartnerBundle/Tests/Units/Routing/ExtraLoader.php"
+			],
+			[
+				"/exportpartnerbundle/routing/extraloader.ph",
+				"n_bazille@app54-test.dev.m6web.fr/clubic_sf/src/M6/Bundle/ExportPartnerBundle/Routing/ExtraLoader.php"
+			],
+			[
+				"exportpartnerbundle/controller/exportcontroller.php",
+				"n_bazille@app54-test.dev.m6web.fr/clubic_sf/src/M6/Bundle/ExportPartnerBundle/Controller/ExportController.php"
+			],
+			[
+				"extraload",
+				"n_bazille@app54-test.dev.m6web.fr/clubic_sf/src/M6/Bundle/ExportPartnerBundle/Routing/ExtraLoader.php"
+			],
+			[
+				"cpustatsdprofiling",
+				"n_bazille@app54-test.dev.m6web.fr/api/xhprof/cpuStatsdProfiling.class.php"
+			],
+			[
+				"api/xhprof/cpustatsdprofiling.class.php",
+				"n_bazille@app54-test.dev.m6web.fr/api/xhprof/cpuStatsdProfiling.class.php"
+			],
+			[
+				"monitoringspriteconfig.php",
+				"n_bazille@dev.m6web.fr/usine/monitoring/sprite/include/config.php"
+			],
+			[
+				"monitoringsprite.c",
+				"n_bazille@dev.m6web.fr/usine/monitoring/sprite/include/class/Sprite.class.php"
+			],
+			[
+				"generatesp",
+				"n_bazille@dev.m6web.fr/usine/monitoring/sprite/ajax/generateSprite.php"
+			],
+			[
+				"turbo/include/sousheader.php",
+				"turbo/include/sousheader.php"
+			],
+			[
+				"turbo/homeajax.php",
+				"turbo/homeajax.php"
+			],
+			[
+				"apiurl",
+				"api/include/classes/ApiUrl.class.php"
+			],
+			[
+				"utils",
+				"api/include/classes/Utils.class.php"
+			],
+			[
+				"turbo/include/liste-vehicules-plus-vu.php",
+				"turbo/include/liste-vehicules-plus-vu.php"
+			],
+			[
+				"turbo/photo-index.php",
+				"turbo/photo-index.php"
+			],
+			[
+				"turbo/fil_infos.php",
+				"turbo/fil_infos.php"
+			],
+			[
+				"turbo/include/class/turboarticle.class.php",
+				"turbo/include/class/TurboArticle.class.php"
+			],
+			[
+				"api/class.eurotax_cote.php",
+				"api/class.eurotax_cote.php"
+			],
+			[
+				"turbo/include/fonctions-include.h.php",
+				"turbo/include/fonctions-include.h.php"
+			],
+			[
+				"turbo/template/block/videos/list.tpl",
+				"turbo/template/block/videos/list.tpl"
+			],
+			[
+				"api/include/fonctions-include-str.h.php",
+				"api/include/fonctions-include-str.h.php"
+			],
+			[
+				"turbo/emissions/index.php",
+				"turbo/emissions/index.php"
+			],
+			[
+				"api/recherche.php",
+				"api/recherche.php"
+			],
+			[
+				"usine/shopperv4/classes/recherche.class.php",
+				"usine/shopperv4/classes/recherche.class.php"
+			],
+			[
+				"turbo/template/slideshow/edito.tpl",
+				"turbo/template/slideshow/edito.tpl"
+			],
+			[
+				"api/slideshow/edito.php",
+				"api/slideshow/edito.php"
+			],
+			[
+				"turbo/fiche/fiche_shopper_neuf_detail.php",
+				"turbo/fiche/fiche_shopper_neuf_detail.php"
+			],
+			[
+				"forum/block/profil.tpl",
+				"api/galaxy/apps/Forum/Block/profil.tpl"
+			],
+			[
+				"turbo/template/forum/block/header.tpl",
+				"turbo/template/Forum/Block/header.tpl"
+			],
+			[
+				"api/include/fonctions-include-log.h.php",
+				"api/include/fonctions-include-log.h.php"
+			],
+			[
+				"turbo/videos/video.php",
+				"turbo/videos/video.php"
+			],
+			[
+				"turbo/cote_auto/index.php",
+				"turbo/cote_auto/index.php"
+			],
+			[
+				"turbo/include/class/coteauto.class.php",
+				"turbo/include/class/coteAuto.class.php"
+			],
+			[
+				"turbo/template/include/bottom.h.tpl",
+				"turbo/template/include/bottom.h.tpl"
+			],
+			[
+				"turbo/divers/trafic.php",
+				"turbo/divers/trafic.php"
+			],
+			[
+				"turbo/template/photo/lastactu.tpl",
+				"turbo/template/photo/lastActu.tpl"
+			],
+			[
+				"turbo/fiche/slideshow.php",
+				"turbo/fiche/slideshow.php"
+			],
+			[
+				"turbo/template/emissions/emission.tpl",
+				"turbo/template/emissions/emission.tpl"
+			],
+			[
+				"turbo/fiche/fiche.php",
+				"turbo/fiche/fiche.php"
+			],
+			[
+				"turbo/homes/tuning.php",
+				"turbo/homes/tuning.php"
+			],
+			[
+				"turbo/fiche/marque.php",
+				"turbo/fiche/marque.php"
+			],
+			[
+				"turbo/template/fiche/marque.tpl",
+				"turbo/template/Fiche/marque.tpl"
+			],
+			[
+				"turbo/fiche/fiche_actu.php",
+				"turbo/fiche/fiche_actu.php"
+			],
+			[
+				"turbo/template/emissions/index.tpl",
+				"turbo/template/emissions/index.tpl"
+			],
+			[
+				"turbo/template/cote_auto/param.tpl",
+				"turbo/template/cote_auto/param.tpl"
+			],
+			[
+				"galaxy/models/mediatheque/video.php",
+				"galaxy/Models/Mediatheque/Video.php"
+			],
+			[
+				"turbo/include/top.h.php",
+				"turbo/include/top.h.php"
+			],
+			[
+				"turbo/fiche/fiche_photo.php",
+				"turbo/fiche/fiche_photo.php"
+			],
+			[
+				"turbo/template/block/homes/lastvideo.tpl",
+				"turbo/template/block/homes/lastVideo.tpl"
+			],
+			[
+				"turbo/homes/femme.php",
+				"turbo/homes/femme.php"
+			],
+			[
+				"galaxy/models/editorial/auteur.php",
+				"galaxy/Models/Editorial/Auteur.php"
+			],
+			[
+				"turbo/include/class/forum/controller/sujet.php",
+				"turbo/include/class/Forum/Controller/Sujet.php"
+			],
+			[
+				"turbo/homes/prestige.php",
+				"turbo/homes/prestige.php"
+			],
+			[
+				"turbo/fiche/liste_essai.php",
+				"turbo/fiche/liste_essai.php"
+			],
+			[
+				"galaxy/ini",
+				"galaxy/init.php"
+			],
+			[
+				"turbo/template/block/videos/filters.tpl",
+				"turbo/template/block/videos/filters.tpl"
+			],
+			[
+				"turbo/template/block/partneremission.tpl",
+				"turbo/template/block/partnerEmission.tpl"
+			],
+			[
+				"turbo/template/widgets/les_derniers_essais.tpl",
+				"turbo/template/widgets/les_derniers_essais.tpl"
+			],
+			[
+				"turbo/emissions/emission.php",
+				"turbo/emissions/emission.php"
+			],
+			[
+				"turbo/recherche/recherche.php",
+				"turbo/recherche/recherche.php"
+			],
+			[
+				"turbo/fiche/fiche_essai.php",
+				"turbo/fiche/fiche_essai.php"
+			],
+			[
+				"turbo/fiche/fiche_video.php",
+				"turbo/fiche/fiche_video.php"
+			],
+			[
+				"turbo/videos/index.php",
+				"turbo/videos/index.php"
+			],
+			[
+				"turbo/template/videos/video.tpl",
+				"turbo/template/videos/video.tpl"
+			],
+			[
+				"turbo/template/block/videos/menu.tpl",
+				"turbo/template/block/videos/menu.tpl"
+			],
+			[
+				"utils.c",
+				"api/include/classes/Utils.class.php"
+			],
+			[
+				"api/xhprof/xhprof_runs.php",
+				"api/xhprof/xhprof_runs.php"
+			],
+			[
+				"alaxy/models/seo/maillageinterne.php",
+				"galaxy/Models/Seo/MaillageInterne.php"
+			],
+			[
+				"turbo/template/cote_auto/index.tpl",
+				"turbo/template/cote_auto/index.tpl"
+			],
+			[
+				"list.more.tpl",
+				"api/include/templates/slideshow/list.more.tpl"
+			],
+			[
+				"list.conseil.tpl",
+				"api/include/templates/slideshow/list.conseil.tpl"
+			],
+			[
+				"list.focus.tpl",
+				"api/include/templates/slideshow/list.focus.tpl"
+			],
+			[
+				"api/slideshow/list.php",
+				"api/slideshow/list.php"
+			],
+			[
+				"galaxy/models/diaporama/turbo.php",
+				"galaxy/Models/Diaporama/Turbo.php"
+			],
+			[
+				"turbo/fiche/actu.php",
+				"turbo/fiche/actu.php"
+			],
+			[
+				"api/site_factory/modules/news/blog_level1.tpl",
+				"api/site_factory/modules/news/blog_level1.tpl"
+			],
+			[
+				"api/site_factory/modules/news/news.php",
+				"api/site_factory/modules/news/news.php"
+			],
+			[
+				"turbo/template/videos/index.tpl",
+				"turbo/template/videos/index.tpl"
+			],
+			[
+				"ellopmigration",
+				"usine/turbo/ellop/migration/class/Migration.php"
+			],
+			[
+				"turbo/template/fiche/liste_essai.tpl",
+				"turbo/template/Fiche/liste_essai.tpl"
+			],
+			[
+				"turbo/template/navigation/essais.tpl",
+				"turbo/template/Navigation/essais.tpl"
+			],
+			[
+				"include/fonctions-include-str.h.php",
+				"api/include/fonctions-include-str.h.php"
+			],
+			[
+				"api/site_factory/modules/news/liste_split350.tplperso",
+				"api/site_factory/modules/news/liste_split350.tplperso"
+			],
+			[
+				"api/site_factory/controllerv2.php",
+				"api/site_factory/controllerv2.php"
+			],
+			[
+				"api/include/bdc/noeud.class.php",
+				"api/include/bdc/noeud.class.php"
+			],
+			[
+				"api/site_factory/conf/config.php",
+				"api/site_factory/conf/config.php"
+			],
+			[
+				"turbo/widgets/forum_ellop.php",
+				"turbo/widgets/forum_ellop.php"
+			],
+			[
+				"turbo/homes/buzz.php",
+				"turbo/homes/buzz.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/home/nicolas/.config/sublime-text-2/Projects/m6web.sublime-project"
+			],
+			[
+				"usin",
+				"/home/nicolas/.config/sublime-text-2/Packages/Default/m6-usine.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 317.0,
+	"status_bar_visible": true
+}

@@ -1,3 +1,5 @@
+/*global numeral:false */
+
 'use strict';
 
 angular.module('lbcApp', [])
@@ -18,5 +20,5 @@ angular.module('lbcApp', [])
     .filter('price', function() {
         return function(price) {
             return numeral(price).format('0,0[.]00 $');
-        }
+        };
     });

@@ -18,7 +18,14 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'app')));
+
+app.configure('dev', function() {
+    app.use(express.static(path.join(__dirname, 'app')));
+});
+
+app.configure('prod', function() {
+    app.use(express.static(path.join(__dirname, 'dist')));
+});
 
 // development only
 if ('development' == app.get('env')) {
@@ -49,3 +56,7 @@ app.get('/ws/ads', function(req, res) {
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
 });
+
+
+var kue = require('kue');
+kue.app.listen(3001);
