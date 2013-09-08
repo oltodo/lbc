@@ -43,7 +43,15 @@
         </div>
     </div>
 
-    <div id="container" class="container" ng-view=""></div>
+    <div id="container" class="container">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">Home</a>
+            </li>
+        </ol>
+
+        <div ng-view=""></div>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -73,6 +81,7 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->

@@ -2,7 +2,7 @@
 
 'use strict';
 
-angular.module('lbcApp', [])
+angular.module('lbcApp', ['infinite-scroll'])
     .config(function ($routeProvider) {
         $routeProvider
         .when('/', {

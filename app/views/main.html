@@ -1,24 +1,50 @@
-<div class="row">
-    <div class="col-sm-6 col-md-3" ng-repeat="ad in ads">
-        <div class="thumbnail ad">
-            <div class="ad-nbPictures label label-info">
-                <i class="icon-camera"></i>
-                <span>{{ ad.nbPictures }}</span>
+<div class="pull-right">
+    <div class="btn-groups">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Villes <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Lyon</a></li>
+            <li><a href="#">Mornant</a></li>
+            <li><a href="#">Oullins</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="page-header">
+    <h3>Toutes les recherches</h3>
+</div>
+
+<div class="row" infinite-scroll="myPagingFunction()" infinite-scroll-distance="1">
+    <div class="col-sm-6 col-md-4 col-lg-3" ng-repeat="ad in ads">
+        <div class="panel panel-default ad">
+            <div class="panel-heading">
+                {{ ad.city }}
+
+                <div class="pull-right">
+                    <i class="icon-camera"></i>
+                    <span>{{ ad.nbPictures }}</span>
+                </div>
             </div>
 
-            <img class="ad-picture" style="background-image:url({{ ad.picture }})" alt="">
-            
-            <h5 class="ad-title">
-                <span class="label label-danger" ng-show="ad.pro">PRO</span>
-                <a href="#/ad/1">{{ ad.title }}</a>
-            </h5>
-            
-            <div class="clearfix">
-                <p class="pull-left">{{ ad.city }}</p>
-                <p class="pull-right"><b>{{ ad.price | price }}</b></p>
+            <div class="ad-picture">
+                <img style="background-image:url({{ ad.picture }})" alt="" />
+            </div>
+                            
+            <div class="panel-body">
+                <div class="ad-title">
+                    <a href="{{ ad.url }}">{{ ad.title }}</a>
+                </div>
+                
+                <div class="clearfix">
+                    <div class="pull-left" ng-show="ad.pro">
+                        <span class="label label-danger">PRO</span>
+                    </div>
+                    <div class="pull-right"><b>{{ ad.price | price }}</b></div>
+                </div>
             </div>
 
-            <div class="ad-actions clearfix">
+            <!-- <div class="ad-actions clearfix">
                 <div class="btn-group pull-left">
                     <button class="btn">
                         <i class="icon-star-empty"></i>
@@ -35,7 +61,7 @@
                         <i class="icon-remove-sign"></i>
                     </button>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

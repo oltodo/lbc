@@ -10,6 +10,7 @@
     "angular-resource": "~1.0.7",
     "angular-cookies": "~1.0.7",
     "angular-sanitize": "~1.0.7",
+    "angular-ngInfiniteScroll": "https://github.com/BinaryMuse/ngInfiniteScroll.git",
     "font-awesome": "~3.2.1",
     "numeral": "~1.5.0"
   },

@@ -19,11 +19,11 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
 
-app.configure('dev', function() {
+app.configure('development', function() {
     app.use(express.static(path.join(__dirname, 'app')));
 });
 
-app.configure('prod', function() {
+app.configure('production', function() {
     app.use(express.static(path.join(__dirname, 'dist')));
 });
 
@@ -45,7 +45,8 @@ var db = mongoose.connection;
 app.get('/ws/ads', function(req, res) {
 
     return Ad.find({})
-        .sort('-publishedAt')
+        .sort('-updatedAt')
+        .limit(12)
         .exec(function(err, ads) {
             return res.send(ads);
         });
@@ -58,5 +59,5 @@ http.createServer(app).listen(app.get('port'), function(){
 });
 
 
-var kue = require('kue');
-kue.app.listen(3001);
+// var kue = require('kue');
+// kue.app.listen(3001);
