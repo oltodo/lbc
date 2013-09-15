@@ -42,18 +42,6 @@ if ('development' == app.get('env')) {
 var db = mongoose.connection;
 
 
-
-// Search.findById('5228f3c51bb0bc2b7aea9549', function(err, search) {
-    
-//     City.findById('5231fce3a594324b602782ec', function(err, city) {
-//         search.cities.push(city);
-//         search.save();        
-//     })
-// });
-
-
-
-
 // Get ads
 app.get('/ws/ads', function(req, res) {
 

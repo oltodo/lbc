@@ -4,5 +4,6 @@ dist
 .sass-cache
 app/bower_components
 logs/*
+dump
 *.sublime-workspace
 *.sublime-project
