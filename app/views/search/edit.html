@@ -1,0 +1,90 @@
+
+<div class="page-header">
+    <h3>{{ search.title || 'Aucun titre' }}</h3>
+</div>
+
+<form class="form-horizontal row" role="form" ng-submit="submit()">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <big>Informations</big>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Titre :</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control input-lg" ng-model="search.title">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label">URL :</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" ng-model="search.url">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-2">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="search.photoOnly">
+                            Uniquement avec photo
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <button type="submit" class="btn btn-primary">Enregister</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <big>Villes</big>
+        </div>
+        <div class="panel-body">
+            <input id="cities-search" type="text" class="form-control" lbc-typeahead="typeahead" />
+        </div>
+
+        <ul class="list-group">
+            <li class="list-group-item text-center" ng-hide="search.cities.length">
+                <big class="text-muted">Toutes les villes</big>
+            </li>
+
+            <li class="list-group-item col-sm-6 col-md-4 col-lg-3" ng-repeat="city in search.cities">
+                {{ city.realName }} <small class="text-muted">{{ city.postcode }}</small>
+
+                <span class="pull-right">
+                    <a href="javascript:;" title="Retirer cette ville" ng-click="removeCity(city)">
+                        <small class="glyphicon glyphicon-trash text-danger"></small>
+                    </a>
+                </span>
+            </li>
+        </ul>
+
+        <div class="clearfix"></div>
+        
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <button type="submit" class="btn btn-primary">Enregister</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+// $('#cities-search').typeahead({
+//     name: 'cities',
+//     valueKey: 'realName',
+//     limit: 10,
+//     remote: '/ws/cities?q=%QUERY',
+// }).on('typeahead:selected', function(a,b,c) {
+//     console.log(a,b,c);
+// })
+</script>

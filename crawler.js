@@ -4,7 +4,10 @@ var
     trim        = require('trim'),
     Q           = require('q'),
     $           = require('jquery'),
-    clc         = require('cli-color');
+    winston     = require('winston'),
+    format      = require('date-format'),
+    readline    = require('readline'),
+    program     = require('commander');
 
 // Models
 var
@@ -14,23 +17,112 @@ var
 
 
 
-console.log('Connexion to database');
 
-// Connect to the mongo database
-mongoose.connect('mongodb://localhost/lbc');
+// Configure logger
+var logger = new (winston.Logger)({
+    transports: [
+        new (winston.transports.Console)({
+            colorize: true
+        }),
+        new (winston.transports.File)({
+            filename: './logs/crawler.log',
+            json: false
+        })
+    ],
+    levels: {
+        detail: 0,
+        trace: 1,
+        debug: 2,
+        enter: 3,
+        info: 4,
+        success: 5,
+        warn: 6,
+        error: 7
+    },
+    colors: {
+        detail: 'grey',
+        trace: 'white',
+        debug: 'white',
+        enter: 'inverse',
+        info: 'blue',
+        success: 'green',
+        warn: 'yellow',
+        error: 'red'
+    },
+});
 
-var db = mongoose.connection;
+//logger.cli();
 
-db.on('error', console.error.bind(console, 'connection error:'));
 
-db.once('open', function () {
-    console.log('Connected to database');
 
-    getSearches()
-        .then(browseSearches);
+// process.on('uncaughtException', function(err) {
+//     logger.error(err.toString());
+// });
+
+
+// Program command
+program
+    .version('0.0.1')
+    .option('-i, --interactive', 'Prompt before to do somethings')
+    .parse(process.argv)
+;
+
+if(typeof program.interactive == 'undefined') {
+    program.interactive = false;
+}
+
+
+var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
 });
 
 
+rl.continue = function() {
+    var deferred = Q.defer;
+
+    if(!program.interactive) {
+        deferred.resolve();
+        return;
+    }
+
+    rl.question("Continue ? [Y/n] ", function(answer) {
+        rl.close();
+
+        if(answer == '' || /y/i.test(answer)) {
+            console.log('continue');
+        } else if(/n/i.test(answer)) {
+            console.log('stop');
+        } else {
+            console.log('Bad answer');
+        }
+
+        deferred.resolve();
+    });
+
+    return deferred.promise;
+};
+
+
+
+
+// Connect to the mongo database
+logger.info('Connexion to database... ');
+
+mongoose.connect('mongodb://localhost/lbc', function (err) {
+    if(err) throw err;
+
+    logger.success('Connexion ok.');
+    start();
+});
+
+
+
+
+
+
+var delayBetweenUpdateSearch = 60; // minutes
+var delayBetweenEachPage = [20, 40]; // seconds
 
 var months = {
     'janvier'   : 1,
@@ -47,17 +139,40 @@ var months = {
     'décembre'  : 12,
 };
 
+var rand = function(min, max) {
+    var argc = arguments.length;
+    
+    if (argc === 0) {
+        min = 0;
+        max = 2147483647;
+    } else if (argc === 1) {
+        throw new Error('Warning: rand() expects exactly 2 parameters, 1 given');
+    }
+
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var start = function () {
+    logger.info('Crawling start');
+
+    Q.fcall(getSearches)
+        .then(browseSearches)
+        .catch(function (err) {
+            throw err;
+        });
+};
+
 /**
  * Get searches
- * @return {Q.defer} Return a promise
+ * @return {Q.defer.promise} Return a promise
  */
 var getSearches = function () {
-    console.log('Get searches');
+    logger.info('Loading searches... ');
 
     var deferred = Q.defer();
 
     Search.find(function(err, searches) {
-        console.log(searches.length+' search(es) found');
+        logger.info(searches.length+' searches found');
 
         deferred.resolve(searches);
     });
@@ -78,14 +193,10 @@ var browseSearches = (function (index) {
                 index = 0;
             }
 
-            console.log();
-
             setTimeout(function() {
                 browseSearches(searches);
             }, 2000);
         }
-
-        console.log('Checking if search #'+index+' need to be updated');
 
         var search = searches[index];
 
@@ -94,16 +205,31 @@ var browseSearches = (function (index) {
             search.save();
         }
 
+        logger.info('Checking if search #'+index+' need to be updated... ', {
+            updateAt: format.asString('dd/MM/yyyy hh:mm', search.updatedAt)
+        });
+
         var diff = new Date()-search.updatedAt; // milliseconds
         diff = diff/1000/60; // minutes
+        var remain = delayBetweenUpdateSearch-diff;
 
-        if(diff > 30) {
-            console.log('Search #'+index+' need to be updated');
+        if(remain <= 0) {
+            logger.info('Yes, need to be updated');
 
             executeSearch(search)
                 .then(next);
         } else {
-            console.log('Search #'+index+' don\'t need to be updated'); 
+            var msg = 'Not yet'+' (';
+
+            if(remain > 1) {
+                msg += Math.ceil(remain)+' min.';
+            } else {
+                msg += Math.ceil(60*remain)+' s.';
+            }
+
+            msg += ' remains)';
+
+            logger.info(msg);
             next();
         }
     }; 
@@ -113,12 +239,21 @@ var executeSearch = function (search) {
     var deferred = Q.defer();
 
     Q.fcall(executeUrl, search.url, [], search)
+        //.then(rl.continue)
         .then(persistAds)
         .then(function (ads) {
-            deferred.resolve();
+            logger.info('Updating date search... ')
+
+            search.updatedAt = new Date();
+            search.save(function (err) {
+                if(err) logger.error(err);
+                else logger.info('Update successful');
+
+                deferred.resolve();
+            });
         })
         .catch(function (err) {
-            console.error(err);
+            throw err;
         });
 
     return deferred.promise;
@@ -129,107 +264,50 @@ var executeUrl = (function () {
     
     return function (url, adsToBeSaved, search) {
 
-        console.log('Load '+clc.magenta(url));
+        logger.info('Load', url);
 
         Q.fcall(loadContent, url)
             .then(extractDatasFromContent)
             .then(function (datas) {
+                logger.info(datas.ads.length+' ads found');
 
-                console.log(datas.ads.length+' ads found');
-
+                // Reduce by comparing updated dates
                 for(var i in datas.ads) {
                     var ad = datas.ads[i];
 
+                    if(datas.nbPictures == 0 && search.photoOnly) {
+                        continue;
+                    }
+
                     if(ad.updatedAt <= search.updatedAt) {
                         deferred.resolve(adsToBeSaved);
+                        return;
                     }
 
                     adsToBeSaved.push(ad);
                 }
 
-
+                // Go to next if necessary
                 if(datas.nextPage) {
-                    executeUrl(datas.nextPage, adsToBeSaved, search);
+                    var delay = rand(delayBetweenEachPage[0], delayBetweenEachPage[1]);
+
+                    logger.info('Go to next page');
+                    logger.info('Waiting '+delay+' seconds...');
+
+                    setTimeout(function() {
+                        executeUrl(datas.nextPage, adsToBeSaved, search);
+                    }, delay*1000);
                 } else {
                     deferred.resolve(adsToBeSaved);
                 }
             })
             .catch(function (err) {
-                console.error(err);
+                throw err;
             });
         
         return deferred.promise;
-    };
-    
+    };    
 })();
-
-var persistAds = function (ads) {
-    var deferred = Q.defer();
-
-    console.log(ads.length+' ads to be saved');
-
-    var chain = Q.fcall(function () {});
-
-    ads.forEach(function (ad) {
-        chain = chain.then(function () {
-            return persistAd(ad);
-        });
-    });
-
-    chain.then(deferred.resolve);
-
-    return deferred.promise;
-};
-
-var persistAd = function (datas) {
-    var deferred = Q.defer();
-
-    console.log('Trying to persist #'+datas.uid);
-
-    getAd(datas.uid)
-
-        // Ad exists : update
-        .then(function (ad) {
-            for(var i in datas) {
-                ad[i] = datas[i];
-            }
-
-            ad.save(function (err, ad) {
-                console.log('#'+ad.uid+' has been updated');
-            });
-
-            deferred.resolve();
-        })
-
-        // Ad not exists : creation
-        .fail(function () {
-            new Ad(datas).save(function (err, ad) {
-                console.log('#'+ad.uid+' has been created');
-            });
-
-            deferred.resolve();
-        });
-
-    return deferred.promise;
-};
-
-var getAd = function (uid) {
-    var deferred = Q.defer();
-
-    Ad.findOne({ uid: uid }, function (err, ad) {
-
-        if(err) {
-            console.log('#'+uid+' not found in database');
-            deferred.reject(err);
-            return;
-        }
-
-        console.log('#'+uid+' already exists in database');
-        deferred.resolve(ad);
-    });
-
-    return deferred.promise;
-}
 
 var loadContent = function (url) {
     var deferred = Q.defer();
@@ -240,10 +318,10 @@ var loadContent = function (url) {
         jquery          : false,
         callback        : function (err, result) {
             if(err) {
-                console.log('Loaded with fail');
+                logger.error(err);
                 deferred.reject(err);
             } else {
-                console.log('Loaded with success');
+                logger.success('Success to load');
                 deferred.resolve(result.body);
             }
         }
@@ -252,12 +330,9 @@ var loadContent = function (url) {
     return deferred.promise;
 };
 
-/**
- * Extract ads from a content
- * @param  {String} content LBC list page content
- * @return {Q.promise}
- */
 var extractDatasFromContent = function (content) {
+    logger.info('Extracting datas... ');
+
     var deferred = Q.defer();
     var $content = $(content);
     var ads = [];
@@ -287,7 +362,8 @@ var extractDatasFromContent = function (content) {
         placement = placement.split('/');
 
         var city = trim(placement[0]);
-        var department = trim(placement[1]);
+        var department = trim(placement[1] || '');
+
 
         // Find picture
         var $img = $this.find('.image img:first');
@@ -303,6 +379,7 @@ var extractDatasFromContent = function (content) {
         // Find uid
         var matches = url.match(/([0-9]+)\.htm/);
 
+
         if(!matches) {
             return;
         }
@@ -313,6 +390,11 @@ var extractDatasFromContent = function (content) {
         var nbPictures = $this.find('.nb .value').text();
         nbPictures = trim(nbPictures);
         nbPictures = parseInt(nbPictures);
+
+        if(isNaN(nbPictures)) {
+            nbPictures = 0;
+        }
+
 
         // Find if is pro
         var category = $this.find('.category').text();
@@ -372,4 +454,93 @@ var extractDatasFromContent = function (content) {
     });
 
     return deferred.promise; 
+};
+
+var persistAds = function (ads) {
+    var deferred = Q.defer();
+
+    if(ads.length == 0) {
+        logger.info('Nothing to persist');
+        deferred.resolve();
+    } else {
+        logger.info('Persisting '+ads.length+' ads');
+
+        var chain = Q.fcall(function () {});
+
+        ads.forEach(function (ad) {
+            chain = chain.then(function () {
+                return persistAd(ad);
+            });
+        });
+
+        chain.then(deferred.resolve);        
+    }
+
+    return deferred.promise;
+};
+
+var persistAd = function (datas) {
+    var deferred = Q.defer();
+
+    logger.info('Trying to persist ad', {
+        id: datas.uid,
+        title: datas.title
+    });
+
+    getAd(datas.uid)
+
+        // Ad exists : update
+        .then(function (ad) {
+            logger.info('Ad already exists');
+
+            for(var i in datas) {
+                ad[i] = datas[i];
+            }
+
+            ad.save(function (err, ad) {
+                if(err) {
+                    logger.error(err);
+                } else {
+                    logger.success('Update successful !');
+                }
+
+                deferred.resolve();
+            });
+        })
+
+        // Ad not exists : creation
+        .fail(function () {
+            logger.info('Ad not exists');
+
+            new Ad(datas).save(function (err, ad) {
+                if(err) {
+                    logger.error(err);
+                } else {
+                    logger.info('Creation successful !');
+                }
+
+                deferred.resolve();
+            });
+        })
+        .catch(function (err) {
+            throw err;
+        });
+
+    return deferred.promise;
+};
+
+var getAd = function (uid) {
+    var deferred = Q.defer();
+
+    Ad.findOne({ uid: uid }, function (err, ad) {
+
+        if(err) {
+            deferred.reject(err);
+            return;
+        }
+
+        deferred.resolve(ad);
+    });
+
+    return deferred.promise;
 };

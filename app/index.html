@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title ng-bind="$root.title+' - LBC Alerting'">LBC Alerting</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -70,23 +70,26 @@
     <!-- build:js scripts/plugins.js -->
     <script src="bower_components/numeral/numeral.js"></script>
     <script src="bower_components/numeral/min/languages/fr.min.js"></script>
+    <script src="bower_components/momentjs/min/moment+langs.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/typeahead.js/dist/typeahead.min.js"></script>
     <!-- endbuild -->
 
     <script>
     numeral.language('fr');
+    moment.lang('fr');
     </script>
 
     <!-- build:js scripts/modules.js -->
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/search/edit.js"></script>
     <!-- endbuild -->
 </body>
 </html>

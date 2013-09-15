@@ -4,11 +4,16 @@ body {
     color: #333;
 }
 
+/* Fix Typeahead */
+.twitter-typeahead { display: block !important; }
+.twitter-typeahead .tt-hint { padding: 5px 11px; }
+
 #container {  padding-top: 80px; }
 
 
 .breadcrumb { background: none; padding: 0; }
 
+#cities .city { white-space: nowrap; padding: 5px 40px 5px 10px; }
 
 .ad { margin-bottom: 20px; }
 .ad .ad-title { line-height: 1.5em; height: 3em; overflow: hidden; margin-bottom: 10px; }

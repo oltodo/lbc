@@ -1,18 +1,14 @@
-<div class="pull-right">
-    <div class="btn-groups">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            Villes <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Lyon</a></li>
-            <li><a href="#">Mornant</a></li>
-            <li><a href="#">Oullins</a></li>
-        </ul>
-    </div>
-</div>
+<div id="title" class="page-header">
 
-<div class="page-header">
-    <h3>Toutes les recherches</h3>
+    <h3>
+        <small class="pull-right text-muted">{{ ads.length }} annonces</small>
+        
+        Toutes les recherches
+
+        <a href="#/search/{{ search._id }}/edit" class="btn" ng-show="search" title="Editer la recherche">
+            <i class="glyphicon glyphicon-cog"></i>
+        </a>
+    </h3>
 </div>
 
 <div class="row" infinite-scroll="myPagingFunction()" infinite-scroll-distance="1">
@@ -37,10 +33,13 @@
                 </div>
                 
                 <div class="clearfix">
-                    <div class="pull-left" ng-show="ad.pro">
-                        <span class="label label-danger">PRO</span>
+                    <div class="pull-left">
+                        <small class="text-muted">{{ ad.updatedAt | prettyDate }}</small>&nbsp;&nbsp;
+                        <span class="label label-danger" ng-show="ad.pro">PRO</span>
                     </div>
-                    <div class="pull-right"><b>{{ ad.price | price }}</b></div>
+                    <div class="pull-right">
+                        <b>{{ ad.price | price }}</b>
+                    </div>
                 </div>
             </div>
 
