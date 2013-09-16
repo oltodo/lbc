@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title ng-bind="$root.title+' - LBC Alerting'">LBC Alerting</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css styles/main.css -->
@@ -42,13 +42,8 @@
         </div>
     </div>
 
-    <div id="container" class="container">
-        <ol class="breadcrumb">
-            <li>
-                <a href="#">Home</a>
-            </li>
-        </ol>
-
+    <div id="container" class="container">        
+        <div ng-include="'views/breadcrumbs.html'"></div>
         <div ng-view=""></div>
     </div>
 
@@ -88,6 +83,7 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/breadcrumbs.js"></script>
     <script src="scripts/controllers/search/edit.js"></script>
     <!-- endbuild -->
 </body>

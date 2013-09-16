@@ -1,12 +1,21 @@
 'use strict';
 
 angular.module('lbcApp')
-    .controller('SearchIndexCtrl', function ($scope, $routeParams, $http, $rootScope) {
-        // $window.document.title = 'Coucou';
-        $rootScope.title = "Coucou";
+    .controller('SearchEditCtrl', function ($scope, $routeParams, $http, breadcrumbs) {
+        breadcrumbs.clean();
 
         $http.get('/ws/search/'+$routeParams.id).success(function(search) {
             $scope.search = search;
+
+            breadcrumbs.add({
+                name: search.title,
+                path: '/'
+            });
+
+            breadcrumbs.add({
+                name: 'Edition',
+                path: '/search/'+search._id
+            });
         });
 
         $scope.addCity = function(city) {

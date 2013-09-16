@@ -2,24 +2,28 @@
 
 'use strict';
 
-angular.module('lbcApp', [])
+angular.module('lbcApp', ['services.breadcrumbs'])
     .config(function ($routeProvider) {
         $routeProvider
-        .when('/', {
-            templateUrl: 'views/main.html',
-            controller: 'MainCtrl'
-        })
-        .when('/ad/:id', {
-            templateUrl: 'views/ad.html',
-            controller: 'AdCtrl'
-        })
-        .when('/search/:id/edit', {
-            templateUrl: 'views/search/edit.html',
-            controller: 'SearchIndexCtrl'
-        })
-        .otherwise({
-            redirectTo: '/'
-        });
+            .when('/', {
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl'
+            })
+            .when('/ad/:id', {
+                templateUrl: 'views/ad.html',
+                controller: 'AdCtrl'
+            })
+            .when('/search/:id', {
+                templateUrl: 'views/search/index.html',
+                controller: 'SearchIndexCtrl'
+            })
+            .when('/search/:id/edit', {
+                templateUrl: 'views/search/edit.html',
+                controller: 'SearchEditCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
     })
     .config(["$httpProvider", function ($httpProvider) {
          $httpProvider.defaults.transformResponse.push(function(responseData){
@@ -76,4 +80,29 @@ angular.module('lbcApp', [])
     });
 
 
+
 angular.module('services.breadcrumbs', []);
+angular.module('services.breadcrumbs').factory('breadcrumbs', ['$rootScope', '$location', function($rootScope, $location) {
+    var breadcrumbs = [];
+    var breadcrumbsService = {};
+
+    breadcrumbsService.add = function(datas) {
+        breadcrumbs.push(datas);
+        return this;
+    };
+
+    breadcrumbsService.clean = function() {
+        breadcrumbs = [];
+        return this;
+    };
+
+    breadcrumbsService.getAll = function() {
+        return breadcrumbs;
+    };
+
+    breadcrumbsService.getFirst = function() {
+        return breadcrumbs[0] || {};
+    };
+
+    return breadcrumbsService;
+}]);

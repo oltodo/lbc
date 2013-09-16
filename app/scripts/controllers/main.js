@@ -1,8 +1,13 @@
 'use strict';
 
 angular.module('lbcApp')
-    .controller('MainCtrl', function ($scope, $http) {
+    .controller('MainCtrl', function ($scope, $http, breadcrumbs) {
         $scope.search = null;
+        
+        breadcrumbs.clean().add({
+            name: 'Toutes les recherches',
+            path: '/'
+        })
 
         $http.get('/ws/ads').success(function(data) {
             $scope.ads = data;
