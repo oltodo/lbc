@@ -1,10 +1,5 @@
-<div id="title" class="page-header">
-
-    <h3>
-        <small class="how-much text-muted">
-            {{ ads.length }} annonces
-        </small>
-
+<div id="title" class="page-header row">
+    <h3 class="col-md-9">
         {{ search.title }}
 
         <span class="buttons">
@@ -16,11 +11,17 @@
             </a>
         </span>
     </h3>
+    <div class="col-md-3">
+        <div class="text-muted text-right" style="margin-top:1em">
+            {{ ads.length }} annonces
+            <br /><small>Dernière mise-à-jour: {{ search.updatedAt | prettyDate }}</small>
+        </div>
+    </div>
 </div>
 
 <div class="row">
     <div class="col-sm-6 col-md-4 col-lg-3" ng-repeat="ad in ads">
-        <div class="panel panel-default ad">
+        <div class="ad panel {{ad.updatedAt > ad.createdAt && 'panel-success' || 'panel-info'}}">
             <div class="panel-heading">
                 {{ ad.city }}
 

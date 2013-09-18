@@ -22,8 +22,6 @@ a [class^="icon-"], a [class*=" icon-"] { text-decoration: none; }
 .breadcrumb > li+li:before { padding: 0 2px 0 8px; }
 
 
-#search-index h3 { position: relative; }
-#search-index h3 .how-much { position: absolute; top: 50%; right: 0; margin-top: -0.5em; }
 #search-index h3 .buttons { font-size: 0.8em; }
 #search-index h3 .buttons a { margin-left: 10px; text-decoration: none; display: inline-block }
 
@@ -33,8 +31,6 @@ a [class^="icon-"], a [class*=" icon-"] { text-decoration: none; }
 #search-index .ad .ad-picture img { width: 100%; height: 0; padding-bottom: 70%; background-size: contain; background-repeat: no-repeat; background-position: 50% 50% }
 #search-index .ad .ad-actions { padding: 5px; margin-top: 5px; border-top: solid 1px #EEE; }
 
-#search-edit h3 { position: relative; }
-#search-edit h3 .when { position: absolute; top: 50%; right: 0; margin-top: -0.5em; font-size: 0.5em }
 #search-edit h3 .buttons { font-size: 0.8em; }
 #search-edit h3 .buttons a { margin-left: 10px; text-decoration: none; display: inline-block }
 

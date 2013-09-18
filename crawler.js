@@ -55,9 +55,9 @@ var logger = new (winston.Logger)({
 
 
 
-// process.on('uncaughtException', function(err) {
-//     logger.error(err.toString());
-// });
+process.on('uncaughtException', function(err) {
+    logger.error(err.toString());
+});
 
 
 // Program command
@@ -78,39 +78,12 @@ var rl = readline.createInterface({
 });
 
 
-rl.continue = function() {
-    var deferred = Q.defer;
-
-    if(!program.interactive) {
-        deferred.resolve();
-        return;
-    }
-
-    rl.question("Continue ? [Y/n] ", function(answer) {
-        rl.close();
-
-        if(answer == '' || /y/i.test(answer)) {
-            console.log('continue');
-        } else if(/n/i.test(answer)) {
-            console.log('stop');
-        } else {
-            console.log('Bad answer');
-        }
-
-        deferred.resolve();
-    });
-
-    return deferred.promise;
-};
-
-
-
 
 // Connect to the mongo database
 logger.info('Connexion to database... ');
 
 mongoose.connect('mongodb://localhost/lbc', function (err) {
-    if(err) throw err;
+    if(err) throw new Error(err);
 
     logger.success('Connexion ok.');
     start();
@@ -122,7 +95,7 @@ mongoose.connect('mongodb://localhost/lbc', function (err) {
 
 
 var delayBetweenUpdateSearch = 60; // minutes
-var delayBetweenEachPage = [20, 40]; // seconds
+var delayBetweenEachPage = [20,40]; // seconds
 
 var months = {
     'janvier'   : 1,
@@ -158,7 +131,8 @@ var start = function () {
     Q.fcall(getSearches)
         .then(browseSearches)
         .catch(function (err) {
-            throw err;
+            logger.error(err);
+            throw new Error(err);
         });
 };
 
@@ -239,7 +213,6 @@ var executeSearch = function (search) {
     var deferred = Q.defer();
 
     Q.fcall(executeUrl, search.url, [], search)
-        //.then(rl.continue)
         .then(persistAds)
         .then(function (ads) {
             logger.info('Updating date search... ')
@@ -253,7 +226,8 @@ var executeSearch = function (search) {
             });
         })
         .catch(function (err) {
-            throw err;
+            logger.error(err);
+            throw new Error(err);
         });
 
     return deferred.promise;
@@ -302,7 +276,8 @@ var executeUrl = (function () {
                 }
             })
             .catch(function (err) {
-                throw err;
+                logger.error(err);
+                throw new Error(err);
             });
         
         return deferred.promise;
@@ -491,7 +466,7 @@ var persistAd = function (datas) {
 
         // Ad exists : update
         .then(function (ad) {
-            logger.info('Ad already exists');
+            logger.info('Ad already exists, updating...');
 
             for(var i in datas) {
                 ad[i] = datas[i];
@@ -506,24 +481,24 @@ var persistAd = function (datas) {
 
                 deferred.resolve();
             });
-        })
 
         // Ad not exists : creation
-        .fail(function () {
-            logger.info('Ad not exists');
+        }, function () {
+            logger.info('Ad not exists, creating...');
 
             new Ad(datas).save(function (err, ad) {
                 if(err) {
                     logger.error(err);
                 } else {
-                    logger.info('Creation successful !');
+                    logger.success('Creation successful !');
                 }
 
                 deferred.resolve();
             });
         })
         .catch(function (err) {
-            throw err;
+            logger.error(err);
+            throw new Error(err);
         });
 
     return deferred.promise;
@@ -534,8 +509,8 @@ var getAd = function (uid) {
 
     Ad.findOne({ uid: uid }, function (err, ad) {
 
-        if(err) {
-            deferred.reject(err);
+        if(err || ad === null) {
+            deferred.reject();
             return;
         }
 

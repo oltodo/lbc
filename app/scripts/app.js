@@ -86,7 +86,7 @@ app.filter('prettyDate', function() {
             text += m.format('D MMM')+' ';
         }
 
-        return text+m.format('HH:MM');
+        return text+m.format('HH:mm');
     };
 });
 

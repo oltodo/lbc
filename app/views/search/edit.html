@@ -1,9 +1,5 @@
-<div class="page-header">
-    <h3>
-        <small class="when text-muted">
-            Dernière mise-à-jour: {{ search.updatedAt | prettyDate }}
-        </small>
-
+<div class="page-header row">
+    <h3 class="col-md-9">
         {{ search.title || 'Aucun titre' }}
 
         <span class="buttons">
@@ -12,6 +8,11 @@
             </a>
         </span>
     </h3>
+    <div class="col-md-3">
+        <div class="text-muted text-right" style="margin-top:2em">
+            <small>Dernière mise-à-jour: {{ search.updatedAt | prettyDate }}</small>
+        </div>
+    </div>
 </div>
 
 <form class="form-horizontal" role="form" ng-submit="submit()">
