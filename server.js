@@ -94,7 +94,7 @@ app.get('/ws/cities', function(req, res) {
         });
 });
 
-
+// Get searches
 app.get('/ws/searches', function(req, res) {
     Search
         .find()
