@@ -2,7 +2,10 @@
 
 'use strict';
 
-angular.module('lbcApp', ['services.breadcrumbs'])
+angular.module('lbcApp', [
+        'resources.searches',
+        'services.breadcrumbs'
+    ])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
@@ -13,13 +16,17 @@ angular.module('lbcApp', ['services.breadcrumbs'])
                 templateUrl: 'views/ad.html',
                 controller: 'AdCtrl'
             })
-            .when('/search/:id', {
-                templateUrl: 'views/search/index.html',
-                controller: 'SearchIndexCtrl'
+            .when('/search/new', {
+                templateUrl: 'views/search/edit.html',
+                controller: 'SearchEditCtrl'
             })
             .when('/search/:id/edit', {
                 templateUrl: 'views/search/edit.html',
                 controller: 'SearchEditCtrl'
+            })
+            .when('/search/:id', {
+                templateUrl: 'views/search/index.html',
+                controller: 'SearchIndexCtrl'
             })
             .otherwise({
                 redirectTo: '/'
@@ -77,32 +84,50 @@ angular.module('lbcApp', ['services.breadcrumbs'])
 
             return text+m.format('HH:MM');
         };
+    })
+    .run(function($rootScope) {
+        $rootScope.$on('$routeChangeSuccess', function(ev, data) {   
+            if (data.$$route && data.$$route.controller) {
+                $rootScope.id = data.$$route.controller;
+                $rootScope.id = $rootScope.id.replace(/Ctrl$/, '');
+                $rootScope.id = $rootScope.id.replace(/(\w)([A-Z])/g, '$1-$2');
+                $rootScope.id = $rootScope.id.toLowerCase();
+            }
+        })
     });
 
+angular.module('services.breadcrumbs', [])
+    .factory('breadcrumbs', ['$rootScope', '$location', function($rootScope, $location) {
+        var breadcrumbs = [];
+        var breadcrumbsService = {};
+
+        breadcrumbsService.add = function(datas) {
+            breadcrumbs.push(datas);
+            return this;
+        };
+
+        breadcrumbsService.clean = function() {
+            breadcrumbs = [];
+            return this;
+        };
+
+        breadcrumbsService.getAll = function() {
+            return breadcrumbs;
+        };
+
+        breadcrumbsService.getFirst = function() {
+            return breadcrumbs[0] || {};
+        };
+
+        return breadcrumbsService;
+    }]);
 
 
-angular.module('services.breadcrumbs', []);
-angular.module('services.breadcrumbs').factory('breadcrumbs', ['$rootScope', '$location', function($rootScope, $location) {
-    var breadcrumbs = [];
-    var breadcrumbsService = {};
 
-    breadcrumbsService.add = function(datas) {
-        breadcrumbs.push(datas);
-        return this;
-    };
 
-    breadcrumbsService.clean = function() {
-        breadcrumbs = [];
-        return this;
-    };
-
-    breadcrumbsService.getAll = function() {
-        return breadcrumbs;
-    };
-
-    breadcrumbsService.getFirst = function() {
-        return breadcrumbs[0] || {};
-    };
-
-    return breadcrumbsService;
-}]);
+angular.module('resources.searches', ['ngResource'])
+    .factory('Search', function($resource) {
+        return $resource('/ws/searches/:id', {
+            id: '@_id'
+        });
+    });

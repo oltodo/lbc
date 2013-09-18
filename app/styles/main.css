@@ -4,19 +4,39 @@ body {
     color: #333;
 }
 
+/* Fix Bootstrap */
+.text-default { color: #333; }
+
 /* Fix Typeahead */
-.twitter-typeahead { display: block !important; }
 .twitter-typeahead .tt-hint { padding: 5px 11px; }
+
+/* Fix Font-awesome */
+a [class^="icon-"], a [class*=" icon-"] { text-decoration: none; }
+
+
 
 #container {  padding-top: 80px; }
 
-
+/* Breadcrumbs */
 .breadcrumb { background: none; padding: 0; }
+.breadcrumb > li+li:before { padding: 0 2px 0 8px; }
 
-#cities .city { white-space: nowrap; padding: 5px 40px 5px 10px; }
 
-.ad { margin-bottom: 20px; }
-.ad .ad-title { line-height: 1.5em; height: 3em; overflow: hidden; margin-bottom: 10px; }
-.ad .ad-picture { padding: 10px; background: #EEE }
-.ad .ad-picture img { width: 100%; height: 0; padding-bottom: 70%; background-size: contain; background-repeat: no-repeat; background-position: 50% 50% }
-.ad .ad-actions { padding: 5px; margin-top: 5px; border-top: solid 1px #EEE; }
+#search-index h3 { position: relative; }
+#search-index h3 .how-much { position: absolute; top: 50%; right: 0; margin-top: -0.5em; }
+#search-index h3 .buttons { font-size: 0.8em; }
+#search-index h3 .buttons a { margin-left: 10px; text-decoration: none; display: inline-block }
+
+#search-index .ad { margin-bottom: 20px; }
+#search-index .ad .ad-title { line-height: 1.5em; height: 3em; overflow: hidden; margin-bottom: 10px; }
+#search-index .ad .ad-picture { padding: 10px; background: #EEE }
+#search-index .ad .ad-picture img { width: 100%; height: 0; padding-bottom: 70%; background-size: contain; background-repeat: no-repeat; background-position: 50% 50% }
+#search-index .ad .ad-actions { padding: 5px; margin-top: 5px; border-top: solid 1px #EEE; }
+
+#search-edit h3 { position: relative; }
+#search-edit h3 .when { position: absolute; top: 50%; right: 0; margin-top: -0.5em; font-size: 0.5em }
+#search-edit h3 .buttons { font-size: 0.8em; }
+#search-edit h3 .buttons a { margin-left: 10px; text-decoration: none; display: inline-block }
+
+#search-edit .cities { margin-top: 10px; }
+#search-edit .cities .city { padding: 5px 0; border-bottom: 1px solid #DDD; }

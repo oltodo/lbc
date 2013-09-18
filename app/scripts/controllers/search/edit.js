@@ -1,22 +1,33 @@
 'use strict';
 
 angular.module('lbcApp')
-    .controller('SearchEditCtrl', function ($scope, $routeParams, $http, breadcrumbs) {
+    .controller('SearchEditCtrl', function ($scope, Search, $routeParams, $http, breadcrumbs) {
         breadcrumbs.clean();
 
-        $http.get('/ws/search/'+$routeParams.id).success(function(search) {
-            $scope.search = search;
+        if(!$routeParams.id) {
+            $scope.search = new Search();
+            $scope.search.cities = [];
 
             breadcrumbs.add({
-                name: search.title,
-                path: '/'
+                name: 'Nouvelle recherche',
+                path: '/search/new'
             });
+        } else {
 
-            breadcrumbs.add({
-                name: 'Edition',
-                path: '/search/'+search._id
+            Search.get({ id: $routeParams.id }, function(search) {
+                $scope.search = search;
+
+                breadcrumbs.add({
+                    name: search.title,
+                    path: '/search/'+search._id
+                });
+
+                breadcrumbs.add({
+                    name: 'Edition',
+                    path: '/search/'+search._id+'/edit'
+                });
             });
-        });
+        }
 
         $scope.addCity = function(city) {
             if(this.cityExists(city)) {
@@ -49,10 +60,10 @@ angular.module('lbcApp')
         }
 
         $scope.submit = function() {
-            var search = this.search;
-
-            $http.put('/ws/search/'+search._id, {
-                search: search
+            this.search.$save(function(a,b) {
+                console.log('ok');   
+            }, function(a,b) {
+                console.log(a);
             });
         }
     })

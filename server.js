@@ -39,8 +39,6 @@ if ('development' == app.get('env')) {
 
 
 
-var db = mongoose.connection;
-
 
 // Get ads
 app.get('/ws/ads', function(req, res) {
@@ -61,9 +59,15 @@ app.get('/ws/ads', function(req, res) {
         })
         .sort('-updatedAt')
         .exec(function(err, ads) {
+            if(err) {
+                return res.status(404).send(err);
+            }
+
             return res.send(ads);
         });
 })
+
+
 
 // Get cities
 app.get('/ws/cities', function(req, res) {
@@ -82,41 +86,77 @@ app.get('/ws/cities', function(req, res) {
         .limit(limit)
         .sort('-population')
         .exec(function(err, cities) {
+            if(err) {
+                return res.status(404).send(err);
+            }
+
             return res.send(cities);
         });
 });
 
 
+app.get('/ws/searches', function(req, res) {
+    Search
+        .find()
+        .populate('cities', 'realName postcode')
+        .exec(function(err, searches) {
+            if(err) {
+                return res.status(404).send(err);
+            }
+
+            return res.send(searches);
+        });
+});
 
 // Get search
-app.get('/ws/search/:idSearch', function(req, res) {
+app.get('/ws/searches/:idSearch', function(req, res) {
 
     if(!req.params.idSearch) {
-        res.statusCode = 404;
-        return res.send('Error 404: No quote found');
+        return res.status(404).send('Search not found');
     }
 
     return Search
         .findById(req.params.idSearch)
         .populate('cities', 'realName postcode')
         .exec(function(err, search) {
+            if(err) {
+                return res.status(404).send(err);
+            }
+
             return res.send(search);
         });
 });
 
+// Create search
+app.post('/ws/searches', function(req, res) {
+
+    var search = new Search(req.body).save(function(err) {
+        if(err) {
+            return res.status(404).send(err);
+        }
+
+        return search
+            .populate('cities', 'realName postcode', function() {
+                return res.send(search);
+            });
+    });
+});
+
 // Update search
-app.put('/ws/search/:idSearch', function(req, res) {
+app.post('/ws/searches/:idSearch', function(req, res) {
 
     if(!req.params.idSearch) {
-        res.statusCode = 404;
-        return res.send('Error 404: No quote found');
+        return res.status(404).send('Search not found');
     }
 
-    var datas = req.body.search;
+    var datas = req.body;
 
     return Search
         .findById(req.params.idSearch)
         .exec(function(err, search) {
+            if(err) {
+                return res.status(404).send(err);
+            }
             
             search.title = datas.title;
             search.url = datas.url;
@@ -128,21 +168,24 @@ app.put('/ws/search/:idSearch', function(req, res) {
             }
 
             return search.save(function(err) {
-                return res.send(search);
+                if(err) {
+                    return res.status(404).send(err);
+                }
+
+                return search
+                    .populate('cities', 'realName postcode', function() {
+                        return res.send(search);
+                    });
             });
         });
-
-
-    console.log(req.body);
-})
+});
 
 
 
-app.get('/ws/search/:idSearch/ads', function(req, res) {
+app.get('/ws/searches/:idSearch/ads', function(req, res) {
 
     if(!req.params.idSearch) {
-        res.statusCode = 404;
-        return res.send('Error 404: No quote found');
+        return res.status(404).send('Search not found');
     }
 
     return Search
@@ -151,8 +194,7 @@ app.get('/ws/search/:idSearch/ads', function(req, res) {
         .exec(function(err, search) {
 
             if(err) {
-                res.statusCode = 404;
-                return res.send(err);
+                return res.status(404).send(err);
             }
 
             var cities = [];
@@ -166,19 +208,16 @@ app.get('/ws/search/:idSearch/ads', function(req, res) {
                 })
                 .sort('-updatedAt')
                 .exec(function(err, ads) {
+                    if(err) {
+                        return res.status(404).send(err);
+                    }
+
                     return res.send(ads);
                 });
         });
 });
 
 
-
-
-
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
 });
-
-
-// var kue = require('kue');
-// kue.app.listen(3001);

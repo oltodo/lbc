@@ -12,7 +12,9 @@
     "angular-sanitize": "~1.0.7",
     "numeral": "~1.5.0",
     "typeahead.js": "~0.9.3",
-    "momentjs": "~2.2.1"
+    "momentjs": "~2.2.1",
+    "font-awesome": "~3.2.1",
+    "typeahead.js-bootstrap.css": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",
