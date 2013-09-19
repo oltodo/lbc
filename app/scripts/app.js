@@ -4,7 +4,8 @@
 
 var app = angular.module('lbcApp', [
     'resources.searches',
-    'services.breadcrumbs'
+    'services.breadcrumbs',
+    'ngSanitize'
 ]);
 
 app.config(function ($routeProvider) {

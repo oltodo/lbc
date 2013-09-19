@@ -46,6 +46,7 @@
                         <span class="label label-danger" ng-show="ad.pro">PRO</span>
                     </div>
                     <div class="pull-right">
+                        <span ng-bind-html="growthIcon(ad)"></span>
                         <b>{{ ad.price | price }}</b>
                     </div>
                 </div>
