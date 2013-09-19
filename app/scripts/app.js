@@ -76,18 +76,18 @@ app.filter('price', function() {
 
 app.filter('prettyDate', function() {
     return function(date) {
-        var m = moment(date);
-        var diff = m.diff(new Date, 'days');
+        var date = moment(date);
+        var yesterday = moment().subtract('days', 1);
         var text = '';
 
-        if(diff == -1) {
+        if(date.format('YYYYMMDD') === yesterday.format('YYYYMMDD')) {
             text += 'Hier ';
 
-        } else if(diff < -1) {
-            text += m.format('D MMM')+' ';
+        } else if(date.format('YYYYMMDD') < yesterday.format('YYYYMMDD')) {
+            text += date.format('D MMM')+' ';
         }
 
-        return text+m.format('HH:mm');
+        return text+date.format('HH:mm');
     };
 });
 
