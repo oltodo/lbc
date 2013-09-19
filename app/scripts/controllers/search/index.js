@@ -11,15 +11,12 @@ angular.module('lbcApp')
                 name: search.title,
                 path: '/search/'+search._id
             });
+
+            $http.get('/ws/searches/'+search._id+'/ads').success(function(data) {
+                $scope.ads = data;
+            });
         });
 
-        $http.get('/ws/ads').success(function(data) {
-            $scope.ads = data;
-        });
-
-        $http.get('/ws/searches/'+$routeParams.id).success(function(data) {
-            $scope.search = data;
-        });
 
         $scope.growthIcon = function(ad) {
             if(ad.history.length <= 1) {

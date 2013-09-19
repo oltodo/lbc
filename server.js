@@ -44,20 +44,7 @@ if ('development' == app.get('env')) {
 // Get ads
 app.get('/ws/ads', function(req, res) {
 
-    return Ad.find({
-            city: {
-                $in: [
-                    'Brindas', 'Charly', 'Chassagny', 'Chaussan', 'Craponne',
-                    'Francheville', 'Grézieu-la-Varenne', 'Irigny', 'Millery',
-                    'Montagny', 'Mornant', 'Orliénas', 'Oullins', 'Pierre-Bénite',
-                    'Rontalon', 'Saint-André-la-Côte', 'Saint-Andéol-le-Château',
-                    'Saint-Genis-Laval', 'Saint-Laurent-d\'Agny', 'Saint-Sorlin',
-                    'Sainte-Foy-lès-Lyon', 'Soucieu-en-Jarrest', 'Taluyers',
-                    'Tassin-la-Demi-Lune', 'Thurins', 'Vaugneray', 'Vernaison',
-                    'Vourles'
-                ]
-            }
-        })
+    return Ad.find()
         .sort('-updatedAt')
         .exec(function(err, ads) {
             if(err) {
@@ -182,7 +169,7 @@ app.post('/ws/searches/:idSearch', function(req, res) {
 });
 
 
-
+// Get search ads
 app.get('/ws/searches/:idSearch/ads', function(req, res) {
 
     if(!req.params.idSearch) {
@@ -198,15 +185,22 @@ app.get('/ws/searches/:idSearch/ads', function(req, res) {
                 return res.status(404).send(err);
             }
 
-            var cities = [];
+            var filters = {}
 
-            for(var i in search.cities) {
-                cities.push(search.cities[i].realName);
+            // Filter by cities
+            if(search.cities.length > 0) {
+
+                var cities = [];
+
+                for(var i = 0; i < search.cities.length; i++) {
+                    cities.push(search.cities[i].realName);
+                }
+
+                filters.city = { $in: cities };
             }
 
-            return Ad.find({
-                    city: { $in: cities }
-                })
+
+            return Ad.find(filters)
                 .sort('-updatedAt')
                 .exec(function(err, ads) {
                     if(err) {
