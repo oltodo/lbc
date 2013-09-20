@@ -7,7 +7,9 @@ var
     winston     = require('winston'),
     format      = require('date-format'),
     readline    = require('readline'),
-    program     = require('commander');
+    program     = require('commander'),
+    express     = require('express'),
+    app         = express();
 
 // Models
 var
@@ -20,15 +22,6 @@ var
 
 // Configure logger
 var logger = new (winston.Logger)({
-    transports: [
-        new (winston.transports.Console)({
-            colorize: true
-        }),
-        new (winston.transports.File)({
-            filename: './logs/crawler.log',
-            json: false
-        })
-    ],
     levels: {
         detail: 0,
         trace: 1,
@@ -50,6 +43,19 @@ var logger = new (winston.Logger)({
         error: 'red'
     },
 });
+
+if(app.get('env') === 'development') {
+    logger.add(winston.transports.Console, {
+        colorize: true
+    });
+}
+
+if(app.get('env') === 'production') {
+    logger.add(winston.transports.File, {
+        filename: './logs/crawler.log',
+        json: false
+    });
+}
 
 //logger.cli();
 
@@ -160,9 +166,17 @@ var getSearches = function () {
  * @return {void}
  */
 var browseSearches = (function (index) {
+    var firstTime = true;
 
     return function (searches) {
+
+        if(firstTime) {
+            logger.info('Waiting for a new search update...');
+            firstTime = false;
+        }
+
         var next = function() {
+
             if(++index == searches.length) {
                 index = 0;
             }
@@ -179,31 +193,19 @@ var browseSearches = (function (index) {
             search.save();
         }
 
-        logger.info('Checking if search #'+index+' need to be updated... ', {
-            updateAt: format.asString('dd/MM/yyyy hh:mm', search.updatedAt)
-        });
-
         var diff = new Date()-search.updatedAt; // milliseconds
         diff = diff/1000/60; // minutes
         var remain = delayBetweenUpdateSearch-diff;
 
         if(remain <= 0) {
-            logger.info('Yes, need to be updated');
+            logger.info('Search "'+search.title+'" will be updated');
 
             executeSearch(search)
-                .then(next);
+                .then(function() {
+                    firstTime = true;
+                    next();
+                });
         } else {
-            var msg = 'Not yet'+' (';
-
-            if(remain > 1) {
-                msg += Math.ceil(remain)+' min.';
-            } else {
-                msg += Math.ceil(60*remain)+' s.';
-            }
-
-            msg += ' remains)';
-
-            logger.info(msg);
             next();
         }
     }; 
