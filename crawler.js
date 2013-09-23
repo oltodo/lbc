@@ -200,8 +200,9 @@ var browseSearches = (function (index) {
         if(remain <= 0) {
             logger.info('Search "'+search.title+'" will be updated');
 
-            executeSearch(search)
-                .then(function() {
+            executeSearch(searches)
+                .then(function(search) {
+                    searches[index] = search;
                     firstTime = true;
                     next();
                 });
@@ -224,7 +225,7 @@ var executeSearch = function (search) {
                 if(err) logger.error(err);
                 else logger.info('Update successful');
 
-                deferred.resolve();
+                deferred.resolve(search);
             });
         })
         .catch(function (err) {
@@ -507,6 +508,12 @@ var persistAd = function (datas) {
     return deferred.promise;
 };
 
+
+/**
+ * Get ad by his uid
+ * @param  {String} uid Uid's ad
+ * @return {Q.promise} Return a promise
+ */
 var getAd = function (uid) {
     var deferred = Q.defer();
 
