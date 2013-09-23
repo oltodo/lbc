@@ -1,22 +1,61 @@
 'use strict';
 
 angular.module('lbcApp')
-    .controller('SearchIndexCtrl', function ($scope, $routeParams, $http, Search, breadcrumbs, $filter) {
+    .controller('SearchIndexCtrl', function (
+        $scope, $routeParams, $http, $q, Search, breadcrumbs, $filter, SearchAds
+    ) {
         breadcrumbs.clean();
 
-        Search.get({ id: $routeParams.id }, function(search) {
-            $scope.search = search;
+        $scope.loading = false;
+        $scope.page = 1;
+        $scope.ads = [];
 
-            breadcrumbs.add({
-                name: search.title,
-                path: '/search/'+search._id
+        var getSearch = (function() {
+            var d = $q.defer();
+            var search = null;
+
+            return function() {
+                if(null !== search) {
+                    d.resolve(search);
+                } else {
+                    Search.get({ id: $routeParams.id }, function(s) {
+                        search = s;
+                        d.resolve(s);
+                    });  
+                }
+
+                return d.promise;
+            };
+        })();
+
+        getSearch()
+            .then(function(search) {
+                $scope.search = search;
+
+                breadcrumbs.add({
+                    name: search.title,
+                    path: '/search/'+search._id
+                });
             });
+ 
+        $scope.more = function() {
+            $scope.loading = true;
 
-            $http.get('/ws/searches/'+search._id+'/ads').success(function(data) {
-                $scope.ads = data;
-            });
-        });
+            getSearch()
+                .then(function(search) {
+                    SearchAds.query({
+                        idSearch: '5228f3c51bb0bc2b7aea9549',
+                        page: $scope.page
+                    }, function(ads) {
+                        for(var i in ads) {
+                            $scope.ads.push(ads[i]);
+                        }
 
+                        $scope.page++;
+                        $scope.loading = false;
+                    });
+                });
+        }
 
         $scope.growthIcon = function(ad) {
             if(ad.history.length <= 1) {

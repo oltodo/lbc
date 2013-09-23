@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" infinite-scroll="more()" infinite-scroll-disabled="loading" infinite-scroll-distance="1">
     <div class="col-sm-6 col-md-4 col-lg-3" ng-repeat="ad in ads">
         <div class="ad panel {{ad.updatedAt > ad.createdAt && 'panel-success' || 'panel-info'}}">
             <div class="panel-heading">

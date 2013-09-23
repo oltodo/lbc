@@ -461,7 +461,8 @@ var persistAd = function (datas) {
 
     logger.info('Trying to persist ad', {
         id: datas.uid,
-        title: datas.title
+        title: datas.title,
+        city: datas.city
     });
 
     getAd(datas.uid)

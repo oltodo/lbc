@@ -5,7 +5,8 @@
 var app = angular.module('lbcApp', [
     'resources.searches',
     'services.breadcrumbs',
-    'ngSanitize'
+    'ngSanitize',
+    'infinite-scroll'
 ]);
 
 app.config(function ($routeProvider) {
@@ -136,4 +137,7 @@ angular.module('resources.searches', ['ngResource'])
         return $resource('/ws/searches/:id', {
             id: '@_id'
         });
+    })
+    .factory('SearchAds', function($resource) {
+        return $resource('/ws/searches/:idSearch/ads')
     });

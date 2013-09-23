@@ -185,6 +185,9 @@ app.get('/ws/searches/:idSearch/ads', function(req, res) {
                 return res.status(404).send(err);
             }
 
+            var page = req.query.page || 1;
+            var limit = 30;
+
             var filters = {}
 
             // Filter by cities
@@ -199,9 +202,10 @@ app.get('/ws/searches/:idSearch/ads', function(req, res) {
                 filters.city = { $in: cities };
             }
 
-
             return Ad.find(filters)
                 .sort('-updatedAt')
+                .skip((page-1)*limit)
+                .limit(limit)
                 .exec(function(err, ads) {
                     if(err) {
                         return res.status(404).send(err);
