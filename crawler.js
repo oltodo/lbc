@@ -202,7 +202,7 @@ var browseSearches = (function (index) {
 
             executeSearch(searches)
                 .then(function(search) {
-                    searches[index] = search;
+                    //searches[index] = search;
                     firstTime = true;
                     next();
                 });
