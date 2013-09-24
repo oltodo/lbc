@@ -80,7 +80,7 @@
         <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 
         
-            <link href="/css/list_30152.css" rel="stylesheet" type="text/css">
+            <link href="/css/list_30304.css" rel="stylesheet" type="text/css">
             
         
 
@@ -92,15 +92,15 @@ Rhône
 - leboncoin.fr
 </title>
         
-            <script type="text/javascript" src="/templates/common/arrays.js?30152"></script>
+            <script type="text/javascript" src="/templates/common/arrays.js?30304"></script>
             
-            <script type="text/javascript" src="/js/list_30152.js"></script>
+            <script type="text/javascript" src="/js/list_30304.js"></script>
             
         
         
         
         <meta name="title" content="Annonces Ventes immobilières Rhône - leboncoin.fr">
-<meta name="description" content="Consultez 606 petites annonces Ventes immobilières Rhône">
+<meta name="description" content="Consultez 5501 petites annonces Ventes immobilières Rhône">
 
         
         
@@ -154,6 +154,7 @@ Rhône
 
 
 
+
     
     
         
@@ -165,8 +166,46 @@ Rhône
 
     
 
+
+<div id="weboScriptSync"></div>
 <script type="text/javascript">
 <!--
+/* First, we check if Weborama is enable
+ * Three conditions :
+ * - Bconf is enable for the project,
+ * - && User-agent is not disable for Weborama,
+ * - && the current page / template is enable !
+ */
+
+
+    var weboEnable = 1;
+
+    if(!areCookiesEnabled()){
+        var weboEnable = 0;
+    }
+
+
+/* Second, we check if the user_agent has a specific method,
+ * but wi init the var with the default method :-)
+ */
+
+    var weboMethod = 0;
+
+
+// Init Weborama vars !
+var weboUrl = "http://aimfar.solution.weborama.fr/fcgi-bin/dispatch.fcgi?d.A=prd&d.key=h4f6j7se3h0g&d.format=json";
+var weboUrlSync = "http://aimfar.solution.weborama.fr/fcgi-bin/dispatch.fcgi?d.A=prd&d.key=h4f6j7se3h0g&d.format=jsonp&d.callback=";
+var weboTimeout = 500;
+
+//Here we go !
+if(weboEnable && typeof weboramaForOas == 'function'){
+    var clustersFromWebo = weboramaForOas(weboUrl, weboMethod, weboTimeout);
+}else{
+    
+            
+    var clustersFromWebo = '';
+};
+
 var OAS_url = "http://deliv.leboncoin.fr/";
     
     var OAS_extra = '';
@@ -203,26 +242,15 @@ var OAS_url = "http://deliv.leboncoin.fr/";
 /* list_criteria : broe / criteria : broe / q :  / q_q :  */ /* list_criteria : bros / criteria : bros / q :  / q_q :  */ /* list_criteria : cce / criteria : cce / q :  / q_q :  */ /* list_criteria : ccs / criteria : ccs / q :  / q_q :  */ /* list_criteria : ce / criteria : ce / q :  / q_q :  */ /* list_criteria : clos / criteria : clos / q :  / q_q :  */ /* list_criteria : cs / criteria : cs / q :  / q_q :  */ /* list_criteria : ct / criteria : ct / q :  / q_q :  */ /* list_criteria : fu / criteria : fu / q :  / q_q :  */ /* list_criteria : gb / criteria : gb / q :  / q_q :  */ /* list_criteria : me / criteria : me / q :  / q_q :  */ /* list_criteria : mre / criteria : mre / q :  / q_q :  */ /* list_criteria : mrs / criteria : mrs / q :  / q_q :  */ /* list_criteria : ms / criteria : ms / q :  / q_q :  */ /* list_criteria : pe / criteria : pe / q :  / q_q :  */ searchbox_name = "pricelist";
 has_key = "1";
 if(searchbox_name != '') {if(has_key != '' && searchbox_settings != '') {
-value_criteria = "125000";
+value_criteria = "225000";
 } else {
 value_criteria = "";
 }
 } else {
-value_criteria = "5";
+value_criteria = "9";
 }
 OAS_query += ((OAS_query != '') ? '&' : '' ) + "prixmax=" + value_criteria + "";
-/* list_criteria : ps / criteria : ps / q :  / q_q :  */ /* list_criteria : q_raw / criteria : q_raw / q :  / q_q :  */ /* list_criteria : re / criteria : re / q :  / q_q :  */ /* list_criteria : roe / criteria : roe / q :  / q_q :  */ /* list_criteria : ros / criteria : ros / q :  / q_q :  */ searchbox_name = "";
-has_key = "";
-if(searchbox_name != '') {if(has_key != '' && searchbox_settings != '') {
-value_criteria = "";
-} else {
-value_criteria = "";
-}
-} else {
-value_criteria = "3";
-}
-OAS_query += ((OAS_query != '') ? '&' : '' ) + "piecesmin=" + value_criteria + "";
-/* list_criteria : rs / criteria : rs / q :  / q_q :  */ /* list_criteria : separator / criteria : separator / q :  / q_q :  */ /* list_criteria : shoet / criteria : shoet / q :  / q_q :  */ /* list_criteria : sqe / criteria : sqe / q :  / q_q :  */ /* list_criteria : sqs / criteria : sqs / q :  / q_q :  */ searchbox_name = "squarelist";
+/* list_criteria : ps / criteria : ps / q :  / q_q :  */ /* list_criteria : q_raw / criteria : q_raw / q :  / q_q :  */ /* list_criteria : re / criteria : re / q :  / q_q :  */ /* list_criteria : roe / criteria : roe / q :  / q_q :  */ /* list_criteria : ros / criteria : ros / q :  / q_q :  */ /* list_criteria : rs / criteria : rs / q :  / q_q :  */ /* list_criteria : separator / criteria : separator / q :  / q_q :  */ /* list_criteria : shoet / criteria : shoet / q :  / q_q :  */ /* list_criteria : sqe / criteria : sqe / q :  / q_q :  */ /* list_criteria : sqs / criteria : sqs / q :  / q_q :  */ searchbox_name = "squarelist";
 has_key = "1";
 if(searchbox_name != '') {if(has_key != '' && searchbox_settings != '') {
 value_criteria = "60";
@@ -278,7 +306,7 @@ OAS_query += ((OAS_query != '') ? '&' : '' ) + "surfacemin=" + value_criteria + 
     OAS_taxonomy='';
     OAS_rdl = '';
     OAS_CA = '';
-    OAS_query += '&XE' + '&' + OAS_taxonomy + OAS_rdl + "&if_nt_CookieAccept=" + OAS_CA + '&XE';
+    OAS_query += '&XE' + '&' + OAS_taxonomy + OAS_rdl + "&if_nt_CookieAccept=" + OAS_CA + '&' + clustersFromWebo + 'XE';
     OAS_target = '_top';
     
     OAS_version = 10;
@@ -726,7 +754,7 @@ offres
           
         <option value="4">100 000</option>
           
-        <option value="5"selected>125 000</option>
+        <option value="5">125 000</option>
           
         <option value="6">150 000</option>
           
@@ -734,7 +762,7 @@ offres
           
         <option value="8">200 000</option>
           
-        <option value="9">225 000</option>
+        <option value="9"selected>225 000</option>
           
         <option value="10">250 000</option>
           
@@ -1049,8 +1077,8 @@ offres
     
         Entre
     <select name="ros" id="rooms_ros" >
-        <option value="" >Pièces min</option>
-        <option value="1" >1</option><option value="2" >2</option><option value="3" selected="selected">3</option><option value="4" >4</option><option value="5" >5</option><option value="6" >6</option><option value="7" >7</option><option value="8" >8</option>
+        <option value=""  selected="selected">Pièces min</option>
+        <option value="1" >1</option><option value="2" >2</option><option value="3" >3</option><option value="4" >4</option><option value="5" >5</option><option value="6" >6</option><option value="7" >7</option><option value="8" >8</option>
         
     </select>
         
@@ -1100,7 +1128,7 @@ offres
         Entre
     <select name="cs" id="capacity_cs" disabled="disabled">
         <option value=""  selected="selected">Capacité min</option>
-        <option value="0" >0</option><option value="1" >1</option><option value="2" >2</option><option value="3" >3</option><option value="4" >4</option><option value="5" >5</option><option value="6" >6option><option value="7" >7</option><option value="8" >8</option><option value="9" >9</option><option value="10" >10</option><option value="11" >11</option><option value="12" >12</option>
+        <option value="0" >0</option><option value="1" >1</option><option value="2" >2</option><option value="3" >3</option><option value="4" >4</option><option value="5" >5</option><option value="6" >6</option><option value="7" >7</option><option value="8" >8</option><option value="9" >9</option><option value="10" >10</option><option value="11" >11</option><option value="12" >12</option>
         
     </select>
         
@@ -1796,21 +1824,21 @@ showClothingSize('clothing_typed','clothing_st');
                 <li class="selected">
                 
                     <span class="name">Toutes</span>
-                    <span class="value">36 - 70 de <b>606</b></span>
+                    <span class="value">36 - 70 de <b>5 501</b></span>
                 
                 </li>
                 
                 <li>
-                <a title="Afficher uniquement les annonces de Particuliers" href="http://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone/?pe=5&amp;sqs=7&amp;ros=3&amp;ret=1&amp;ret=2&amp;f=p">
+                <a title="Afficher uniquement les annonces de Particuliers" href="http://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone/?pe=9&amp;sqs=7&amp;ret=1&amp;ret=2&amp;f=p">
                         <span class="name">Particuliers</span>
-                        <span class="value">123 annonces</span>
+                        <span class="value">1 280 annonces</span>
                     </a>
                 
                 </li>
                 <li>
-                <a title="Afficher uniquement les annonces de Professionnels" href="http://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone/?pe=5&amp;sqs=7&amp;ros=3&amp;ret=1&amp;ret=2&amp;f=c">
+                <a title="Afficher uniquement les annonces de Professionnels" href="http://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone/?pe=9&amp;sqs=7&amp;ret=1&amp;ret=2&amp;f=c">
                         <span class="name">Professionnels</span>
-                        <span class="value">483 annonces</span>
+                        <span class="value">4 221 annonces</span>
                     </a>
                 
                 </li>
@@ -1822,14 +1850,14 @@ showClothingSize('clothing_typed','clothing_st');
                 <li>
                 
                     
-                    <a title="Trier les annonces par prix" href="http://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone/?pe=5&amp;sqs=7&amp;ros=3&amp;ret=1&amp;ret=2&amp;sp=1">Trier par prix</a>
+                    <a title="Trier les annonces par prix" href="http://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone/?pe=9&amp;sqs=7&amp;ret=1&amp;ret=2&amp;sp=1">Trier par prix</a>
                     
                 
                 </li>
                 <li class="border">
                 
                     
-                        <a title="Cacher les photos" href="http://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone/?pe=5&amp;sqs=7&amp;ros=3&amp;ret=1&amp;ret=2&amp;th=0">Cacher les photos</a>
+                        <a title="Cacher les photos" href="http://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone/?pe=9&amp;sqs=7&amp;ret=1&amp;ret=2&amp;th=0">Cacher les photos</a>
                     
                 
                 </li>
@@ -1841,17 +1869,17 @@ showClothingSize('clothing_typed','clothing_st');
             <div class="content-color">
 
                 <div class="list-lbc">
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/531119584.htm?ca=22_s" title="Maison 4 pi&egrave;ces 75 m&sup2;">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540575580.htm?ca=22_s" title="Appartement 3 pi&egrave;ces 74m2">
                         <div class="lbc">
                             <div class="date">
-                                <div>Hier</div>
-                                <div>16:39</div>
+                                <div>Aujourd'hui</div>
+                                <div>11:41</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
-                                    <img src="http://193.164.196.50/thumbs/558/558307087042370.jpg" alt="Maison 4 pi&egrave;ces 75 m&sup2;">
+                                    <img src="http://193.164.197.50/thumbs/734/734325089714029.jpg" alt="Appartement 3 pi&egrave;ces 74m2">
                                     
                                     
                                         
@@ -1866,7 +1894,7 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Maison 4 pi&egrave;ces 75 m&sup2;
+                                    Appartement 3 pi&egrave;ces 74m2
                                 </div>
                                 <div class="category">
                                     
@@ -1880,7 +1908,7 @@ showClothingSize('clothing_typed','clothing_st');
                                         
                                         
                                         
-                                            Saint-Igny-de-Vers
+                                            Saint-Priest
                                             
                                                 /
                                             
@@ -1892,7 +1920,7 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                90 000&nbsp;&euro;
+                                                215 000&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -1904,17 +1932,17 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/531151654.htm?ca=22_s" title="Maison 6 pi&egrave;ces 120 m&sup2;">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/527968452.htm?ca=22_s" title="T3 r&eacute;nov&eacute; gerland">
                         <div class="lbc">
                             <div class="date">
-                                <div>Hier</div>
-                                <div>15:30</div>
+                                <div>Aujourd'hui</div>
+                                <div>11:38</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
-                                    <img src="http://193.164.196.50/thumbs/559/559308086810146.jpg" alt="Maison 6 pi&egrave;ces 120 m&sup2;">
+                                    <img src="http://193.164.197.60/thumbs/498/498301080808375.jpg" alt="T3 r&eacute;nov&eacute; gerland">
                                     
                                     
                                         
@@ -1929,12 +1957,10 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Maison 6 pi&egrave;ces 120 m&sup2;
+                                    T3 r&eacute;nov&eacute; gerland
                                 </div>
                                 <div class="category">
                                     
-                                    
-                                        (pro)
                                     
                                 </div>
                                 <div class="placement">
@@ -1943,7 +1969,7 @@ showClothingSize('clothing_typed','clothing_st');
                                         
                                         
                                         
-                                            Grandris
+                                            Lyon
                                             
                                                 /
                                             
@@ -1955,7 +1981,7 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                120 000&nbsp;&euro;
+                                                200 000&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -1967,80 +1993,17 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/434459146.htm?ca=22_s" title="Maison en pierres &agrave; r&eacute;nover">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540575320.htm?ca=22_s" title="Appartement 3 pi&egrave;ces 67m2">
                         <div class="lbc">
                             <div class="date">
-                                <div>Hier</div>
-                                <div>15:12</div>
+                                <div>Aujourd'hui</div>
+                                <div>11:32</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
-                                    <img src="http://193.164.197.60/thumbs/332/332316039330607.jpg" alt="Maison en pierres &agrave; r&eacute;nover">
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison en pierres &agrave; r&eacute;nover
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Pontcharra-sur-Turdine
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                100 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/531119566.htm?ca=22_s" title="Maison 3 pi&egrave;ces 85 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>Hier</div>
-                                <div>14:31</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    <img src="http://193.164.197.50/thumbs/551/551307087333869.jpg" alt="Maison 3 pi&egrave;ces 85 m&sup2;">
+                                    <img src="http://193.164.196.30/thumbs/738/738325082274016.jpg" alt="Appartement 3 pi&egrave;ces 67m2">
                                     
                                     
                                         
@@ -2055,7 +2018,7 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Maison 3 pi&egrave;ces 85 m&sup2;
+                                    Appartement 3 pi&egrave;ces 67m2
                                 </div>
                                 <div class="category">
                                     
@@ -2069,7 +2032,7 @@ showClothingSize('clothing_typed','clothing_st');
                                         
                                         
                                         
-                                            Cours-la-Ville
+                                            Saint-Priest
                                             
                                                 /
                                             
@@ -2081,7 +2044,7 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                79 000&nbsp;&euro;
+                                                176 000&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -2093,17 +2056,17 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/531131860.htm?ca=22_s" title="Maison 3 pi&egrave;ces 75 m&sup2;">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540578297.htm?ca=22_s" title="Appartement T4 &#45; St Priest &#45;secteur colette">
                         <div class="lbc">
                             <div class="date">
-                                <div>Hier</div>
-                                <div>14:12</div>
+                                <div>Aujourd'hui</div>
+                                <div>11:31</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
-                                    <img src="http://193.164.196.40/thumbs/551/551307085964489.jpg" alt="Maison 3 pi&egrave;ces 75 m&sup2;">
+                                    <img src="http://193.164.196.50/thumbs/738/738325080743914.jpg" alt="Appartement T4 &#45; St Priest &#45;secteur colette">
                                     
                                     
                                         
@@ -2118,7 +2081,7 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Maison 3 pi&egrave;ces 75 m&sup2;
+                                    Appartement T4 &#45; St Priest &#45;secteur colette
                                 </div>
                                 <div class="category">
                                     
@@ -2132,7 +2095,7 @@ showClothingSize('clothing_typed','clothing_st');
                                         
                                         
                                         
-                                            Poule-les-Echarmeaux
+                                            Saint-Priest
                                             
                                                 /
                                             
@@ -2144,7 +2107,7 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                89 000&nbsp;&euro;
+                                                212 000&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -2156,17 +2119,69 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/531131895.htm?ca=22_s" title="Maison 3 pi&egrave;ces 72 m&sup2;">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540575290.htm?ca=22_s" title="Maison 4 pi&egrave;ces 99m2">
                         <div class="lbc">
                             <div class="date">
-                                <div>Hier</div>
-                                <div>14:07</div>
+                                <div>Aujourd'hui</div>
+                                <div>11:31</div>
+                            </div>
+                            
+                            <div class="image">
+                                &nbsp;
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Maison 4 pi&egrave;ces 99m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Saint-Fons
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                198 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540577070.htm?ca=22_s" title="Maison 84m2 &#45; Lac des sapins &#45; Terrain 896m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>11:28</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
-                                    <img src="http://193.164.196.60/thumbs/550/550307086515214.jpg" alt="Maison 3 pi&egrave;ces 72 m&sup2;">
+                                    <img src="http://193.164.196.60/thumbs/731/731325088355406.jpg" alt="Maison 84m2 &#45; Lac des sapins &#45; Terrain 896m2">
                                     
                                     
                                         
@@ -2181,7 +2196,7 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Maison 3 pi&egrave;ces 72 m&sup2;
+                                    Maison 84m2 &#45; Lac des sapins &#45; Terrain 896m2
                                 </div>
                                 <div class="category">
                                     
@@ -2195,7 +2210,7 @@ showClothingSize('clothing_typed','clothing_st');
                                         
                                         
                                         
-                                            Amplepuis
+                                            Meaux-la-Montagne
                                             
                                                 /
                                             
@@ -2207,7 +2222,7 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                106 000&nbsp;&euro;
+                                                128 000&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -2219,23 +2234,23 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/531132049.htm?ca=22_s" title="Maison 5 pi&egrave;ces 107 m&sup2;">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540576899.htm?ca=22_s" title="T3bis Moulin &agrave; Vent 61m&sup2; Urgent">
                         <div class="lbc">
                             <div class="date">
-                                <div>Hier</div>
-                                <div>13:09</div>
+                                <div>Aujourd'hui</div>
+                                <div>11:28</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
-                                    <img src="http://193.164.197.30/thumbs/554/554307081308627.jpg" alt="Maison 5 pi&egrave;ces 107 m&sup2;">
+                                    <img src="http://193.164.196.30/thumbs/724/724324086431864.jpg" alt="T3bis Moulin &agrave; Vent 61m&sup2; Urgent">
                                     
                                     
                                         
                                         <div class="nb">
                                             <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
+                                            <div class="value radius">2</div>
                                         </div>
                                     
                                     </div>
@@ -2244,142 +2259,10 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Maison 5 pi&egrave;ces 107 m&sup2;
+                                    T3bis Moulin &agrave; Vent 61m&sup2; Urgent
                                 </div>
                                 <div class="category">
                                     
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Amplepuis
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                99 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/531119505.htm?ca=22_s" title="Maison 6 pi&egrave;ces 140 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>Hier</div>
-                                <div>12:42</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.196.40/thumbs/552/552307088524721.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 6 pi&egrave;ces 140 m&sup2;">
-                                        <noscript><img src="http://193.164.196.40/thumbs/552/552307088524721.jpg" alt="Maison 6 pi&egrave;ces 140 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">4</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison 6 pi&egrave;ces 140 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Monsols
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                118 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/531151087.htm?ca=22_s" title="Appartement 3 pi&egrave;ces 67 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>Hier</div>
-                                <div>12:32</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.196.40/thumbs/550/550308088643393.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 3 pi&egrave;ces 67 m&sup2;">
-                                        <noscript><img src="http://193.164.196.40/thumbs/550/550308088643393.jpg" alt="Appartement 3 pi&egrave;ces 67 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Appartement 3 pi&egrave;ces 67 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
                                     
                                 </div>
                                 <div class="placement">
@@ -2400,7 +2283,7 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                120 000&nbsp;&euro;
+                                                129 000&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -2412,149 +2295,19 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530974056.htm?ca=22_s" title="Appartement 4 pi&egrave;ces 67 m&sup2;">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540576724.htm?ca=22_s" title="Beau t3 traversant">
                         <div class="lbc">
                             <div class="date">
-                                <div>Hier</div>
-                                <div>10:28</div>
+                                <div>Aujourd'hui</div>
+                                <div>11:28</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
                                     
-                                        <img class="lazy" data-original="http://193.164.197.60/thumbs/568/568308085065535.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 4 pi&egrave;ces 67 m&sup2;">
-                                        <noscript><img src="http://193.164.197.60/thumbs/568/568308085065535.jpg" alt="Appartement 4 pi&egrave;ces 67 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Appartement 4 pi&egrave;ces 67 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Bron
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                115 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/531119622.htm?ca=22_s" title="Maison 4 pi&egrave;ces 77 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>Hier</div>
-                                <div>09:35</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.196.60/thumbs/555/555307084615398.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 4 pi&egrave;ces 77 m&sup2;">
-                                        <noscript><img src="http://193.164.196.60/thumbs/555/555307084615398.jpg" alt="Maison 4 pi&egrave;ces 77 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">4</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison 4 pi&egrave;ces 77 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Aigueperse
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                48 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/505461538.htm?ca=22_s" title="Givors Spacieux T2">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>Hier</div>
-                                <div>09:32</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.197.60/thumbs/491/491301080817111.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Givors Spacieux T2">
-                                        <noscript><img src="http://193.164.197.60/thumbs/491/491301080817111.jpg" alt="Givors Spacieux T2"></noscript>
+                                        <img class="lazy" data-original="http://193.164.197.50/thumbs/731/731325088764749.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Beau t3 traversant">
+                                        <noscript><img src="http://193.164.197.50/thumbs/731/731325088764749.jpg" alt="Beau t3 traversant"></noscript>
                                     
                                     
                                         
@@ -2569,7 +2322,7 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Givors Spacieux T2
+                                    Beau t3 traversant
                                 </div>
                                 <div class="category">
                                     
@@ -2593,7 +2346,7 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                114 000&nbsp;&euro;
+                                                146 000&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -2605,25 +2358,25 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/531154635.htm?ca=22_s" title="Maison 3 pi&egrave;ces 63 m&sup2;">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540576255.htm?ca=22_s" title="Spacieux 3 pi&egrave;ces 80m2">
                         <div class="lbc">
                             <div class="date">
-                                <div>Hier</div>
-                                <div>08:34</div>
+                                <div>Aujourd'hui</div>
+                                <div>11:27</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
                                     
-                                        <img class="lazy" data-original="http://193.164.196.50/thumbs/565/565308084532770.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 3 pi&egrave;ces 63 m&sup2;">
-                                        <noscript><img src="http://193.164.196.50/thumbs/565/565308084532770.jpg" alt="Maison 3 pi&egrave;ces 63 m&sup2;"></noscript>
+                                        <img class="lazy" data-original="http://193.164.196.30/thumbs/732/732325089385536.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Spacieux 3 pi&egrave;ces 80m2">
+                                        <noscript><img src="http://193.164.196.30/thumbs/732/732325089385536.jpg" alt="Spacieux 3 pi&egrave;ces 80m2"></noscript>
                                     
                                     
                                         
                                         <div class="nb">
                                             <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
+                                            <div class="value radius">3</div>
                                         </div>
                                     
                                     </div>
@@ -2632,7 +2385,70 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Maison 3 pi&egrave;ces 63 m&sup2;
+                                    Spacieux 3 pi&egrave;ces 80m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Sainte-Foy-lès-Lyon
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                205 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540576071.htm?ca=22_s" title="Appartement T4 &#45; St Priest La fouillouse">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>11:26</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.197.50/thumbs/737/737325088922957.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement T4 &#45; St Priest La fouillouse">
+                                        <noscript><img src="http://193.164.197.50/thumbs/737/737325088922957.jpg" alt="Appartement T4 &#45; St Priest La fouillouse"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">4</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Appartement T4 &#45; St Priest La fouillouse
                                 </div>
                                 <div class="category">
                                     
@@ -2646,7 +2462,7 @@ showClothingSize('clothing_typed','clothing_st');
                                         
                                         
                                         
-                                            Givors
+                                            Saint-Priest
                                             
                                                 /
                                             
@@ -2658,7 +2474,7 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                124 000&nbsp;&euro;
+                                                196 000&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -2670,19 +2486,19 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530874046.htm?ca=22_s" title="Maison 3 pi&egrave;ces 93 m&sup2;">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/516650976.htm?ca=22_s" title="Appartement 3 pi&egrave;ces 60 m&sup2;">
                         <div class="lbc">
                             <div class="date">
-                                <div>Hier</div>
-                                <div>08:10</div>
+                                <div>Aujourd'hui</div>
+                                <div>11:24</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
                                     
-                                        <img class="lazy" data-original="http://193.164.196.60/thumbs/559/559308087306102.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 3 pi&egrave;ces 93 m&sup2;">
-                                        <noscript><img src="http://193.164.196.60/thumbs/559/559308087306102.jpg" alt="Maison 3 pi&egrave;ces 93 m&sup2;"></noscript>
+                                        <img class="lazy" data-original="http://193.164.197.50/thumbs/733/733325083557853.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 3 pi&egrave;ces 60 m&sup2;">
+                                        <noscript><img src="http://193.164.197.50/thumbs/733/733325083557853.jpg" alt="Appartement 3 pi&egrave;ces 60 m&sup2;"></noscript>
                                     
                                     
                                         
@@ -2697,7 +2513,72 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Maison 3 pi&egrave;ces 93 m&sup2;
+                                    Appartement 3 pi&egrave;ces 60 m&sup2;
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Craponne
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                168 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540584032.htm?ca=22_s" title="Maison 6 pi&egrave;ces 98m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>11:24</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.197.30/thumbs/736/736325080091283.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 6 pi&egrave;ces 98m2">
+                                        <noscript><img src="http://193.164.197.30/thumbs/736/736325080091283.jpg" alt="Maison 6 pi&egrave;ces 98m2"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">4</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Maison 6 pi&egrave;ces 98m2
                                 </div>
                                 <div class="category">
                                     
@@ -2723,7 +2604,7 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                105 000&nbsp;&euro;
+                                                160 000&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -2735,19 +2616,19 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/531154641.htm?ca=22_s" title="Appartement 4 pi&egrave;ces 80 m&sup2;">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540630323.htm?ca=22_s" title="Maison 4 pi&egrave;ces 100 m&sup2;">
                         <div class="lbc">
                             <div class="date">
-                                <div>Hier</div>
-                                <div>07:49</div>
+                                <div>Aujourd'hui</div>
+                                <div>11:23</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
                                     
-                                        <img class="lazy" data-original="http://193.164.196.30/thumbs/563/563308089870104.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 4 pi&egrave;ces 80 m&sup2;">
-                                        <noscript><img src="http://193.164.196.30/thumbs/563/563308089870104.jpg" alt="Appartement 4 pi&egrave;ces 80 m&sup2;"></noscript>
+                                        <img class="lazy" data-original="http://193.164.197.50/thumbs/738/738325084477285.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 4 pi&egrave;ces 100 m&sup2;">
+                                        <noscript><img src="http://193.164.197.50/thumbs/738/738325084477285.jpg" alt="Maison 4 pi&egrave;ces 100 m&sup2;"></noscript>
                                     
                                     
                                         
@@ -2762,980 +2643,7 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Appartement 4 pi&egrave;ces 80 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Grigny
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                121 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530632313.htm?ca=22_s" title="Maison 4 pi&egrave;ces 72 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>22:31</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.197.50/thumbs/554/554307084977389.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 4 pi&egrave;ces 72 m&sup2;">
-                                        <noscript><img src="http://193.164.197.50/thumbs/554/554307084977389.jpg" alt="Maison 4 pi&egrave;ces 72 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison 4 pi&egrave;ces 72 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Bourg-de-Thizy
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                105 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530632317.htm?ca=22_s" title="Maison 4 pi&egrave;ces 105 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>21:36</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.197.30/thumbs/559/559307084254051.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 4 pi&egrave;ces 105 m&sup2;">
-                                        <noscript><img src="http://193.164.197.30/thumbs/559/559307084254051.jpg" alt="Maison 4 pi&egrave;ces 105 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison 4 pi&egrave;ces 105 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Mardore
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                78 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530632526.htm?ca=22_s" title="Appartement 4 pi&egrave;ces 84 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>21:04</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.196.40/thumbs/552/552307081982161.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 4 pi&egrave;ces 84 m&sup2;">
-                                        <noscript><img src="http://193.164.196.40/thumbs/552/552307081982161.jpg" alt="Appartement 4 pi&egrave;ces 84 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Appartement 4 pi&egrave;ces 84 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Cours-la-Ville
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                40 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530650897.htm?ca=22_s" title="Appartement 4 pi&egrave;ces 79 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>20:53</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.197.60/thumbs/555/555308080883623.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 4 pi&egrave;ces 79 m&sup2;">
-                                        <noscript><img src="http://193.164.197.60/thumbs/555/555308080883623.jpg" alt="Appartement 4 pi&egrave;ces 79 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Appartement 4 pi&egrave;ces 79 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Givors
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                110 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530726399.htm?ca=22_s" title="Maison 3 pi&egrave;ces 75m2">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>20:42</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.197.30/thumbs/559/559307084555011.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 3 pi&egrave;ces 75m2">
-                                        <noscript><img src="http://193.164.197.30/thumbs/559/559307084555011.jpg" alt="Maison 3 pi&egrave;ces 75m2"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison 3 pi&egrave;ces 75m2
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Cogny
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                99 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530632085.htm?ca=22_s" title="Maison 4 pi&egrave;ces 92 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>20:07</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.197.60/thumbs/551/551307089852879.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 4 pi&egrave;ces 92 m&sup2;">
-                                        <noscript><img src="http://193.164.197.60/thumbs/551/551307089852879.jpg" alt="Maison 4 pi&egrave;ces 92 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison 4 pi&egrave;ces 92 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Cours-la-Ville
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                50 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530567444.htm?ca=22_s" title="Maison de ville">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>19:43</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.197.50/thumbs/548/548306083152557.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison de ville">
-                                        <noscript><img src="http://193.164.197.50/thumbs/548/548306083152557.jpg" alt="Maison de ville"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">3</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison de ville
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Craponne
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                95 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530632071.htm?ca=22_s" title="Maison 5 pi&egrave;ces 80 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>17:43</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.196.50/thumbs/559/559307087801138.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 5 pi&egrave;ces 80 m&sup2;">
-                                        <noscript><img src="http://193.164.196.50/thumbs/559/559307087801138.jpg" alt="Maison 5 pi&egrave;ces 80 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison 5 pi&egrave;ces 80 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Cours-la-Ville
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                115 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530631926.htm?ca=22_s" title="Maison 4 pi&egrave;ces 80 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>17:15</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.197.50/thumbs/554/554307080313589.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 4 pi&egrave;ces 80 m&sup2;">
-                                        <noscript><img src="http://193.164.197.50/thumbs/554/554307080313589.jpg" alt="Maison 4 pi&egrave;ces 80 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison 4 pi&egrave;ces 80 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Amplepuis
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                67 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530686762.htm?ca=22_s" title="Appartement 5 pi&egrave;ces 87m2">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>16:36</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.196.50/thumbs/558/558307087310474.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 5 pi&egrave;ces 87m2">
-                                        <noscript><img src="http://193.164.196.50/thumbs/558/558307087310474.jpg" alt="Appartement 5 pi&egrave;ces 87m2"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Appartement 5 pi&egrave;ces 87m2
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Villefranche-sur-Saône
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                75 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/509270790.htm?ca=22_s" title="Appartement centre ville">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>16:28</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.197.60/thumbs/088/088322021968391.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement centre ville">
-                                        <noscript><img src="http://193.164.197.60/thumbs/088/088322021968391.jpg" alt="Appartement centre ville"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Appartement centre ville
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Tarare
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                115 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530632509.htm?ca=22_s" title="Maison 6 pi&egrave;ces 116 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>16:19</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.196.40/thumbs/555/555307083274889.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 6 pi&egrave;ces 116 m&sup2;">
-                                        <noscript><img src="http://193.164.196.40/thumbs/555/555307083274889.jpg" alt="Maison 6 pi&egrave;ces 116 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison 6 pi&egrave;ces 116 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Amplepuis
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                118 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/516356855.htm?ca=22_s" title="Maison de village 89m2 &#45; 10 min l'arbresle &#45; Terra">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>16:16</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.197.60/thumbs/249/249307034433951.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison de village 89m2 &#45; 10 min l'arbresle &#45; Terra">
-                                        <noscript><img src="http://193.164.197.60/thumbs/249/249307034433951.jpg" alt="Maison de village 89m2 &#45; 10 min l'arbresle &#45; Terra"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison de village 89m2 &#45; 10 min l'arbresle &#45; Terra
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Courzieu
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                112 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530632637.htm?ca=22_s" title="Maison 5 pi&egrave;ces 112 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>16:02</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.196.60/thumbs/555/555307081903486.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 5 pi&egrave;ces 112 m&sup2;">
-                                        <noscript><img src="http://193.164.196.60/thumbs/555/555307081903486.jpg" alt="Maison 5 pi&egrave;ces 112 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison 5 pi&egrave;ces 112 m&sup2;
-                                </div>
-                                <div class="category">
-                                    
-                                    
-                                        (pro)
-                                    
-                                </div>
-                                <div class="placement">
-                                    
-                                            
-                                        
-                                        
-                                        
-                                            Amplepuis
-                                            
-                                                /
-                                            
-                                        
-                                        Rhône
-                                    
-                                </div>
-
-                                
-                                    
-                                            <div class="price">
-                                                125 000&nbsp;&euro;
-                                            </div>
-                                        
-                                    
-                                
-
-                                
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        </a>
-                        <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530632341.htm?ca=22_s" title="Maison 4 pi&egrave;ces 130 m&sup2;">
-                        <div class="lbc">
-                            <div class="date">
-                                <div>6 sept</div>
-                                <div>15:56</div>
-                            </div>
-                            
-                            <div class="image">
-                                
-                                    <div class="image-and-nb">
-                                    
-                                        <img class="lazy" data-original="http://193.164.197.50/thumbs/551/551307080374733.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 4 pi&egrave;ces 130 m&sup2;">
-                                        <noscript><img src="http://193.164.197.50/thumbs/551/551307080374733.jpg" alt="Maison 4 pi&egrave;ces 130 m&sup2;"></noscript>
-                                    
-                                    
-                                        
-                                        <div class="nb">
-                                            <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
-                                        </div>
-                                    
-                                    </div>
-                                
-                            </div>
-                            
-                            <div class="detail">
-                                <div class="title">
-                                    Maison 4 pi&egrave;ces 130 m&sup2;
+                                    Maison 4 pi&egrave;ces 100 m&sup2;
                                 </div>
                                 <div class="category">
                                     
@@ -3761,6 +2669,331 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
+                                                169 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540584364.htm?ca=22_s" title="Maison 8 pi&egrave;ces 210m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>11:21</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.196.60/thumbs/732/732325081571366.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 8 pi&egrave;ces 210m2">
+                                        <noscript><img src="http://193.164.196.60/thumbs/732/732325081571366.jpg" alt="Maison 8 pi&egrave;ces 210m2"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">3</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Maison 8 pi&egrave;ces 210m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Sainte-Catherine
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                115 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540572606.htm?ca=22_s" title="Exclusivit&eacute; &#45; Centre ville">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>11:21</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.196.30/thumbs/733/733325085535120.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Exclusivit&eacute; &#45; Centre ville">
+                                        <noscript><img src="http://193.164.196.30/thumbs/733/733325085535120.jpg" alt="Exclusivit&eacute; &#45; Centre ville"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">4</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Exclusivit&eacute; &#45; Centre ville
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Saint-Priest
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                105 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540583892.htm?ca=22_s" title="Appartement 3 pi&egrave;ces 67m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>11:15</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.197.30/thumbs/735/735325089674707.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 3 pi&egrave;ces 67m2">
+                                        <noscript><img src="http://193.164.197.30/thumbs/735/735325089674707.jpg" alt="Appartement 3 pi&egrave;ces 67m2"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">2</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Appartement 3 pi&egrave;ces 67m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Saint-Symphorien-sur-Coise
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                147 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/528294451.htm?ca=22_s" title="Grand T3 &#45; belle vue d&eacute;gag&eacute;e">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>11:14</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.197.30/thumbs/506/506302084996699.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Grand T3 &#45; belle vue d&eacute;gag&eacute;e">
+                                        <noscript><img src="http://193.164.197.30/thumbs/506/506302084996699.jpg" alt="Grand T3 &#45; belle vue d&eacute;gag&eacute;e"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">5</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Grand T3 &#45; belle vue d&eacute;gag&eacute;e
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Lyon
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                206 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540577652.htm?ca=22_s" title="Appartement 4 pi&egrave;ces 87m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>11:13</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.196.50/thumbs/731/731325080140290.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 4 pi&egrave;ces 87m2">
+                                        <noscript><img src="http://193.164.196.50/thumbs/731/731325080140290.jpg" alt="Appartement 4 pi&egrave;ces 87m2"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">3</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Appartement 4 pi&egrave;ces 87m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Jullié
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
                                                 80 000&nbsp;&euro;
                                             </div>
                                         
@@ -3773,25 +3006,25 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530533364.htm?ca=22_s" title="Maison 5 pi&egrave;ces 150m2">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540583849.htm?ca=22_s" title="Appartement 3 pi&egrave;ces 60m2">
                         <div class="lbc">
                             <div class="date">
-                                <div>6 sept</div>
-                                <div>14:46</div>
+                                <div>Aujourd'hui</div>
+                                <div>11:09</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
                                     
-                                        <img class="lazy" data-original="http://193.164.197.40/thumbs/546/546306088745684.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 5 pi&egrave;ces 150m2">
-                                        <noscript><img src="http://193.164.197.40/thumbs/546/546306088745684.jpg" alt="Maison 5 pi&egrave;ces 150m2"></noscript>
+                                        <img class="lazy" data-original="http://193.164.197.30/thumbs/734/734325085995739.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 3 pi&egrave;ces 60m2">
+                                        <noscript><img src="http://193.164.197.30/thumbs/734/734325085995739.jpg" alt="Appartement 3 pi&egrave;ces 60m2"></noscript>
                                     
                                     
                                         
                                         <div class="nb">
                                             <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
+                                            <div class="value radius">2</div>
                                         </div>
                                     
                                     </div>
@@ -3800,7 +3033,7 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Maison 5 pi&egrave;ces 150m2
+                                    Appartement 3 pi&egrave;ces 60m2
                                 </div>
                                 <div class="category">
                                     
@@ -3814,7 +3047,7 @@ showClothingSize('clothing_typed','clothing_st');
                                         
                                         
                                         
-                                            Montrottier
+                                            Saint-Martin-en-Haut
                                             
                                                 /
                                             
@@ -3826,7 +3059,7 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                65 400&nbsp;&euro;
+                                                145 000&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -3838,19 +3071,19 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530632022.htm?ca=22_s" title="Maison 7 pi&egrave;ces 120 m&sup2;">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/532697217.htm?ca=22_s" title="Appartement 2 Pi&egrave;ces 62m2 &#45; Lyon 5eme limite tassi">
                         <div class="lbc">
                             <div class="date">
-                                <div>6 sept</div>
-                                <div>14:35</div>
+                                <div>Aujourd'hui</div>
+                                <div>11:08</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
                                     
-                                        <img class="lazy" data-original="http://193.164.196.40/thumbs/557/557307080992793.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 7 pi&egrave;ces 120 m&sup2;">
-                                        <noscript><img src="http://193.164.196.40/thumbs/557/557307080992793.jpg" alt="Maison 7 pi&egrave;ces 120 m&sup2;"></noscript>
+                                        <img class="lazy" data-original="http://193.164.196.30/thumbs/587/587310080863000.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 2 Pi&egrave;ces 62m2 &#45; Lyon 5eme limite tassi">
+                                        <noscript><img src="http://193.164.196.30/thumbs/587/587310080863000.jpg" alt="Appartement 2 Pi&egrave;ces 62m2 &#45; Lyon 5eme limite tassi"></noscript>
                                     
                                     
                                         
@@ -3865,7 +3098,7 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Maison 7 pi&egrave;ces 120 m&sup2;
+                                    Appartement 2 Pi&egrave;ces 62m2 &#45; Lyon 5eme limite tassi
                                 </div>
                                 <div class="category">
                                     
@@ -3879,7 +3112,7 @@ showClothingSize('clothing_typed','clothing_st');
                                         
                                         
                                         
-                                            Pont-Trambouze
+                                            Lyon
                                             
                                                 /
                                             
@@ -3891,7 +3124,7 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                109 000&nbsp;&euro;
+                                                179 500&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -3903,25 +3136,25 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530648847.htm?ca=22_s" title="Appartement 4 pi&egrave;ces 65 m&sup2;">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540575515.htm?ca=22_s" title="Appartement 3 pi&egrave;ces 76m2">
                         <div class="lbc">
                             <div class="date">
-                                <div>6 sept</div>
-                                <div>14:26</div>
+                                <div>Aujourd'hui</div>
+                                <div>11:05</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
                                     
-                                        <img class="lazy" data-original="http://193.164.197.30/thumbs/553/553308086672595.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 4 pi&egrave;ces 65 m&sup2;">
-                                        <noscript><img src="http://193.164.197.30/thumbs/553/553308086672595.jpg" alt="Appartement 4 pi&egrave;ces 65 m&sup2;"></noscript>
+                                        <img class="lazy" data-original="http://193.164.197.60/thumbs/738/738325086966687.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 3 pi&egrave;ces 76m2">
+                                        <noscript><img src="http://193.164.197.60/thumbs/738/738325086966687.jpg" alt="Appartement 3 pi&egrave;ces 76m2"></noscript>
                                     
                                     
                                         
                                         <div class="nb">
                                             <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
+                                            <div class="value radius">2</div>
                                         </div>
                                     
                                     </div>
@@ -3930,7 +3163,7 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Appartement 4 pi&egrave;ces 65 m&sup2;
+                                    Appartement 3 pi&egrave;ces 76m2
                                 </div>
                                 <div class="category">
                                     
@@ -3944,7 +3177,7 @@ showClothingSize('clothing_typed','clothing_st');
                                         
                                         
                                         
-                                            Sainte-Colombe
+                                            Condrieu
                                             
                                                 /
                                             
@@ -3956,7 +3189,7 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                125 000&nbsp;&euro;
+                                                144 000&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -3968,25 +3201,25 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530608702.htm?ca=22_s" title="Maison 5 pi&egrave;ces 130m2">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540583935.htm?ca=22_s" title="Maison 5 pi&egrave;ces 121m2">
                         <div class="lbc">
                             <div class="date">
-                                <div>6 sept</div>
-                                <div>13:53</div>
+                                <div>Aujourd'hui</div>
+                                <div>10:56</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
                                     
-                                        <img class="lazy" data-original="http://193.164.197.30/thumbs/548/548306087061299.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 5 pi&egrave;ces 130m2">
-                                        <noscript><img src="http://193.164.197.30/thumbs/548/548306087061299.jpg" alt="Maison 5 pi&egrave;ces 130m2"></noscript>
+                                        <img class="lazy" data-original="http://193.164.197.30/thumbs/734/734325086099883.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 5 pi&egrave;ces 121m2">
+                                        <noscript><img src="http://193.164.197.30/thumbs/734/734325086099883.jpg" alt="Maison 5 pi&egrave;ces 121m2"></noscript>
                                     
                                     
                                         
                                         <div class="nb">
                                             <div class="top radius">&nbsp;</div>
-                                            <div class="value radius">5</div>
+                                            <div class="value radius">4</div>
                                         </div>
                                     
                                     </div>
@@ -3995,7 +3228,7 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Maison 5 pi&egrave;ces 130m2
+                                    Maison 5 pi&egrave;ces 121m2
                                 </div>
                                 <div class="category">
                                     
@@ -4009,7 +3242,7 @@ showClothingSize('clothing_typed','clothing_st');
                                         
                                         
                                         
-                                            Monsols
+                                            Sainte-Foy-l'Argentière
                                             
                                                 /
                                             
@@ -4021,7 +3254,7 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                80 000&nbsp;&euro;
+                                                169 600&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -4033,19 +3266,19 @@ showClothingSize('clothing_typed','clothing_st');
                         </div>
                         </a>
                         <div class="clear"></div>
-                    <a href="http://www.leboncoin.fr/ventes_immobilieres/530632076.htm?ca=22_s" title="Appartement 4 pi&egrave;ces 80 m&sup2;">
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540593474.htm?ca=22_s" title="Appartement 4 pi&egrave;ces 66m2">
                         <div class="lbc">
                             <div class="date">
-                                <div>6 sept</div>
-                                <div>12:51</div>
+                                <div>Aujourd'hui</div>
+                                <div>10:54</div>
                             </div>
                             
                             <div class="image">
                                 
                                     <div class="image-and-nb">
                                     
-                                        <img class="lazy" data-original="http://193.164.196.40/thumbs/552/552307085708665.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 4 pi&egrave;ces 80 m&sup2;">
-                                        <noscript><img src="http://193.164.196.40/thumbs/552/552307085708665.jpg" alt="Appartement 4 pi&egrave;ces 80 m&sup2;"></noscript>
+                                        <img class="lazy" data-original="http://193.164.197.50/thumbs/734/734325080436877.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 4 pi&egrave;ces 66m2">
+                                        <noscript><img src="http://193.164.197.50/thumbs/734/734325080436877.jpg" alt="Appartement 4 pi&egrave;ces 66m2"></noscript>
                                     
                                     
                                         
@@ -4060,7 +3293,7 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             <div class="detail">
                                 <div class="title">
-                                    Appartement 4 pi&egrave;ces 80 m&sup2;
+                                    Appartement 4 pi&egrave;ces 66m2
                                 </div>
                                 <div class="category">
                                     
@@ -4074,7 +3307,7 @@ showClothingSize('clothing_typed','clothing_st');
                                         
                                         
                                         
-                                            Cours-la-Ville
+                                            Meyzieu
                                             
                                                 /
                                             
@@ -4086,7 +3319,787 @@ showClothingSize('clothing_typed','clothing_st');
                                 
                                     
                                             <div class="price">
-                                                79 000&nbsp;&euro;
+                                                110 600&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540545821.htm?ca=22_s" title="Appartement 3 pi&egrave;ces 66m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>10:51</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.197.30/thumbs/739/739325087382251.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 3 pi&egrave;ces 66m2">
+                                        <noscript><img src="http://193.164.197.30/thumbs/739/739325087382251.jpg" alt="Appartement 3 pi&egrave;ces 66m2"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">5</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Appartement 3 pi&egrave;ces 66m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Corbas
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                153 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540556202.htm?ca=22_s" title="T3 &#45; R&eacute;sidence le clairon">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>10:51</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.197.40/thumbs/735/735325082327068.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="T3 &#45; R&eacute;sidence le clairon">
+                                        <noscript><img src="http://193.164.197.40/thumbs/735/735325082327068.jpg" alt="T3 &#45; R&eacute;sidence le clairon"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">4</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    T3 &#45; R&eacute;sidence le clairon
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Saint-Priest
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                180 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540630646.htm?ca=22_s" title="Maison 6 pi&egrave;ces 120 m&sup2;">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>10:50</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.197.50/thumbs/739/739325089822557.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 6 pi&egrave;ces 120 m&sup2;">
+                                        <noscript><img src="http://193.164.197.50/thumbs/739/739325089822557.jpg" alt="Maison 6 pi&egrave;ces 120 m&sup2;"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">5</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Maison 6 pi&egrave;ces 120 m&sup2;
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Amplepuis
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                185 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540643775.htm?ca=22_s" title="Appartement 3 pi&egrave;ces 68m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>10:48</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.197.50/thumbs/734/734325085528349.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 3 pi&egrave;ces 68m2">
+                                        <noscript><img src="http://193.164.197.50/thumbs/734/734325085528349.jpg" alt="Appartement 3 pi&egrave;ces 68m2"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">4</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Appartement 3 pi&egrave;ces 68m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Lyon
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                225 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540583937.htm?ca=22_s" title="Appartement 3 pi&egrave;ces 64m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>10:45</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.196.50/thumbs/738/738325086853226.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 3 pi&egrave;ces 64m2">
+                                        <noscript><img src="http://193.164.196.50/thumbs/738/738325086853226.jpg" alt="Appartement 3 pi&egrave;ces 64m2"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">2</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Appartement 3 pi&egrave;ces 64m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Saint-Martin-en-Haut
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                187 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540593600.htm?ca=22_s" title="Appartement 2 pi&egrave;ces 62m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>10:44</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.196.30/thumbs/739/739325087357304.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 2 pi&egrave;ces 62m2">
+                                        <noscript><img src="http://193.164.196.30/thumbs/739/739325087357304.jpg" alt="Appartement 2 pi&egrave;ces 62m2"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">4</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Appartement 2 pi&egrave;ces 62m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Villeurbanne
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                145 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540591558.htm?ca=22_s" title="Appartement 4 pi&egrave;ces 69m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>10:43</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.197.50/thumbs/734/734325081016381.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 4 pi&egrave;ces 69m2">
+                                        <noscript><img src="http://193.164.197.50/thumbs/734/734325081016381.jpg" alt="Appartement 4 pi&egrave;ces 69m2"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">3</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Appartement 4 pi&egrave;ces 69m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Sainte-Foy-lès-Lyon
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                169 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540583897.htm?ca=22_s" title="Maison 5 pi&egrave;ces 125m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>10:36</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.197.60/thumbs/735/735325081897927.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 5 pi&egrave;ces 125m2">
+                                        <noscript><img src="http://193.164.197.60/thumbs/735/735325081897927.jpg" alt="Maison 5 pi&egrave;ces 125m2"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">4</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Maison 5 pi&egrave;ces 125m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Sainte-Foy-l'Argentière
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                150 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/535659712.htm?ca=22_s" title="BEL APPARTEMENT T3 COSI 81 m&sup2;">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>10:33</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.196.60/thumbs/645/645316080113950.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="BEL APPARTEMENT T3 COSI 81 m&sup2;">
+                                        <noscript><img src="http://193.164.196.60/thumbs/645/645316080113950.jpg" alt="BEL APPARTEMENT T3 COSI 81 m&sup2;"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">5</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    BEL APPARTEMENT T3 COSI 81 m&sup2;
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Saint-Priest
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                174 500&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540583423.htm?ca=22_s" title="Maison 5 pi&egrave;ces 250m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>10:32</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.196.60/thumbs/736/736325084460182.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 5 pi&egrave;ces 250m2">
+                                        <noscript><img src="http://193.164.196.60/thumbs/736/736325084460182.jpg" alt="Maison 5 pi&egrave;ces 250m2"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">2</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Maison 5 pi&egrave;ces 250m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Saint-Symphorien-sur-Coise
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                210 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540583817.htm?ca=22_s" title="Maison 4 pi&egrave;ces 80m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>10:29</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.196.40/thumbs/739/739325084439249.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Maison 4 pi&egrave;ces 80m2">
+                                        <noscript><img src="http://193.164.196.40/thumbs/739/739325084439249.jpg" alt="Maison 4 pi&egrave;ces 80m2"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">3</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Maison 4 pi&egrave;ces 80m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Sainte-Foy-l'Argentière
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                87 000&nbsp;&euro;
+                                            </div>
+                                        
+                                    
+                                
+
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        </a>
+                        <div class="clear"></div>
+                    <a href="http://www.leboncoin.fr/ventes_immobilieres/540643865.htm?ca=22_s" title="Appartement 3 pi&egrave;ces 74m2">
+                        <div class="lbc">
+                            <div class="date">
+                                <div>Aujourd'hui</div>
+                                <div>10:29</div>
+                            </div>
+                            
+                            <div class="image">
+                                
+                                    <div class="image-and-nb">
+                                    
+                                        <img class="lazy" data-original="http://193.164.197.50/thumbs/735/735325080400437.jpg" src="http://static.leboncoin.fr/img/trans-1px.gif" alt="Appartement 3 pi&egrave;ces 74m2">
+                                        <noscript><img src="http://193.164.197.50/thumbs/735/735325080400437.jpg" alt="Appartement 3 pi&egrave;ces 74m2"></noscript>
+                                    
+                                    
+                                        
+                                        <div class="nb">
+                                            <div class="top radius">&nbsp;</div>
+                                            <div class="value radius">3</div>
+                                        </div>
+                                    
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="detail">
+                                <div class="title">
+                                    Appartement 3 pi&egrave;ces 74m2
+                                </div>
+                                <div class="category">
+                                    
+                                    
+                                        (pro)
+                                    
+                                </div>
+                                <div class="placement">
+                                    
+                                            
+                                        
+                                        
+                                        
+                                            Lyon
+                                            
+                                                /
+                                            
+                                        
+                                        Rhône
+                                    
+                                </div>
+
+                                
+                                    
+                                            <div class="price">
+                                                217 000&nbsp;&euro;
                                             </div>
                                         
                                     
@@ -4136,13 +4149,13 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             
                              
-    <a href="http://www.leboncoin.fr/rd?id=528944745&amp;event=gallery&amp;ca=22_s">
+    <a href="http://www.leboncoin.fr/rd?id=539721382&amp;event=gallery&amp;ca=22_s">
         <div class="gallery-block">
-            <div class="image"> <img src="http://193.164.196.40/thumbs/510/510303087866281.jpg" alt="Maison en pierre renovee" title="Maison en pierre renovee"> </div>
-            <div class="title"> Maison en pierre renovee </div>
+            <div class="image"> <img src="http://193.164.197.30/thumbs/715/715323084772747.jpg" alt="LYON 69005, rue de la FAVORITE, Type F5" title="LYON 69005, rue de la FAVORITE, Type F5"> </div>
+            <div class="title"> LYON 69005,<span class="gallery"> </span> rue de la FAVORITE,<span class="gallery"> </span> Type F5 </div>
             <div class="price-or-urgent">
                 
-                        <span class="price">119 000&nbsp;&euro;</span>
+                        <span class="price">210 000&nbsp;&euro;</span>
                     
                 
                 
@@ -4164,13 +4177,13 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             
                              
-    <a href="http://www.leboncoin.fr/rd?id=513745572&amp;event=gallery&amp;ca=22_s">
+    <a href="http://www.leboncoin.fr/rd?id=532766378&amp;event=gallery&amp;ca=22_s">
         <div class="gallery-block">
-            <div class="image"> <img src="http://193.164.197.60/thumbs/182/182301031265287.jpg" alt="Appartement T4" title="Appartement T4"> </div>
-            <div class="title"> Appartement T4 </div>
+            <div class="image"> <img src="http://193.164.197.30/thumbs/584/584310080327043.jpg" alt="Appartement ancien rénové-coup de coeur" title="Appartement ancien rénové-coup de coeur"> </div>
+            <div class="title"> Appartement ancien rénové-<span class="gallery"> </span>coup de coeur </div>
             <div class="price-or-urgent">
                 
-                        <span class="price">115 000&nbsp;&euro;</span>
+                        <span class="price">200 000&nbsp;&euro;</span>
                     
                 
                 
@@ -4192,13 +4205,13 @@ showClothingSize('clothing_typed','clothing_st');
                             
                             
                              
-    <a href="http://www.leboncoin.fr/rd?id=527291823&amp;event=gallery&amp;ca=22_s">
+    <a href="http://www.leboncoin.fr/rd?id=529739149&amp;event=gallery&amp;ca=22_s">
         <div class="gallery-block">
-            <div class="image"> <img src="http://193.164.197.40/thumbs/512/512303085952580.jpg" alt="Maison plain pied 120 M2" title="Maison plain pied 120 M2"> </div>
-            <div class="title"> Maison plain pied 120 M2 </div>
+            <div class="image"> <img src="http://193.164.197.40/thumbs/533/533305088076148.jpg" alt="Ancien: duplex 4 pièces cuisine faibles charges" title="Ancien: duplex 4 pièces cuisine faibles charges"> </div>
+            <div class="title"> Ancien:<span class="gallery"> </span> duplex 4 pièces cuisine faibles charges </div>
             <div class="price-or-urgent">
                 
-                        <span class="price">120 000&nbsp;&euro;</span>
+                        <span class="price">185 000&nbsp;&euro;</span>
                     
                 
                 
@@ -4416,7 +4429,7 @@ showClothingSize('clothing_typed','clothing_st');
 
 
     <nav>
-        <ul class="paging left-18" id="paging">
+        <ul class="paging left-20" id="paging">
             <li>
                 
                     
@@ -4520,6 +4533,16 @@ showClothingSize('clothing_typed','clothing_st');
                         <a href="http://localhost:3000/pages/page18.html">18</a>
                     
                 </li>
+            <li>
+                    
+                        <a href="http://localhost:3000/pages/page19.html">19</a>
+                    
+                </li>
+            <li>
+                    
+                        <a href="http://localhost:3000/pages/page20.html">20</a>
+                    
+                </li>
             
             <li class="page">
                 
@@ -4531,7 +4554,7 @@ showClothingSize('clothing_typed','clothing_st');
             <li>
                 
                     
-                        <a href="http://localhost:3000/pages/page18.html">&gt;&gt;</a>
+                        <a href="http://localhost:3000/pages/page158.html">&gt;&gt;</a>
                     
                 
             </li>

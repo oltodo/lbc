@@ -186,7 +186,7 @@ app.get('/ws/searches/:idSearch/ads', function(req, res) {
             }
 
             var page = req.query.page || 1;
-            var limit = 30;
+            var limit = req.query.limit || 30;
 
             var filters = {}
 

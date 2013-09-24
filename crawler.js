@@ -8,62 +8,46 @@ var
     format      = require('date-format'),
     readline    = require('readline'),
     program     = require('commander'),
+    MD5         = require('MD5'),
     express     = require('express'),
-    app         = express();
+    app         = express(),
 
-// Models
-var
+    // Models
     Ad          = require('./lib/models/ad'),
     Search      = require('./lib/models/search');
 
 
 
+// Configure Q promise
+Q.longStackSupport = true;
+
 
 
 // Configure logger
-var logger = new (winston.Logger)({
-    levels: {
-        detail: 0,
-        trace: 1,
-        debug: 2,
-        enter: 3,
-        info: 4,
-        success: 5,
-        warn: 6,
-        error: 7
-    },
-    colors: {
-        detail: 'grey',
-        trace: 'white',
-        debug: 'white',
-        enter: 'inverse',
-        info: 'blue',
-        success: 'green',
-        warn: 'yellow',
-        error: 'red'
-    },
-});
+var logger = new (winston.Logger)();
 
 if(app.get('env') === 'development') {
     logger.add(winston.transports.Console, {
         colorize: true
     });
-}
+
+    logger.cli();
+};
 
 if(app.get('env') === 'production') {
     logger.add(winston.transports.File, {
         filename: './logs/crawler.log',
         json: false
     });
-}
+};
 
-//logger.cli();
+logger.saveStackTrace = true;
 
 
 
-process.on('uncaughtException', function(err) {
-    logger.error(err.toString());
-});
+// process.on('uncaughtException', function (err) {
+//     logger.error(err.stack);
+// });
 
 
 // Program command
@@ -75,25 +59,14 @@ program
 
 if(typeof program.interactive == 'undefined') {
     program.interactive = false;
-}
+};
 
 
-var rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+// var rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
 
-
-
-// Connect to the mongo database
-logger.info('Connexion to database... ');
-
-mongoose.connect('mongodb://localhost/lbc', function (err) {
-    if(err) throw new Error(err);
-
-    logger.success('Connexion ok.');
-    start();
-});
 
 
 
@@ -118,7 +91,7 @@ var months = {
     'décembre'  : 12,
 };
 
-var rand = function(min, max) {
+var rand = function (min, max) {
     var argc = arguments.length;
     
     if (argc === 0) {
@@ -129,317 +102,333 @@ var rand = function(min, max) {
     }
 
     return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+};
 
-var start = function () {
-    logger.info('Crawling start');
+var fail = function (error) {
+    logger.error(error.stack);
+};
 
-    Q.fcall(getSearches)
-        .then(browseSearches)
-        .catch(function (err) {
-            logger.error(err);
-            throw new Error(err);
+
+
+logger.info('Crawler start');
+
+
+// Connect to the mongo database
+logger.info('Connexion to database');
+
+mongoose.connect('mongodb://localhost/lbc', function (err) {
+    if(err) throw new Error(err);
+
+    logger.info('Connexion successful');
+    lauch();
+});
+
+
+
+var lauch = function () {
+
+    getSearches()
+        .then(checkSearches)
+        .then(function () {
+            logger.info('End, relaunching in one minute');
+            setTimeout(lauch, 6000);
+        })
+        .fail(fail);
+
+};
+
+var checkSearches = function (searches) {
+    var defer = Q.defer();
+    var chain = Q.fcall(function () {});
+
+    logger.info('Browsing searches');
+
+    searches.forEach(function (search) {
+        chain = chain.then(function () {
+            return executeSearch(search);
         });
+    });
+
+    chain
+        .then(defer.resolve)
+        .fail(fail);
+
+    return defer.promise;    
 };
 
 /**
  * Get searches
  * @return {Q.defer.promise} Return a promise
  */
-var getSearches = function () {
-    logger.info('Loading searches... ');
+var getSearches = function () { 
+    var defer = Q.defer();
 
-    var deferred = Q.defer();
+    logger.info('Loading searches');
 
-    Search.find(function(err, searches) {
-        logger.info(searches.length+' searches found');
+    Search.find(function (err, searches) {
 
-        deferred.resolve(searches);
+        logger.info(searches.length+' search(es) found');
+
+        defer.resolve(searches);
     });
 
-    return deferred.promise; 
-}
-
-/**
- * Browse each search every thirty minutes
- * @param  {array} searches Searches list
- * @return {void}
- */
-var browseSearches = (function (index) {
-    var firstTime = true;
-
-    return function (searches) {
-
-        if(firstTime) {
-            logger.info('Waiting for a new search update...');
-            firstTime = false;
-        }
-
-        var next = function() {
-
-            if(++index == searches.length) {
-                index = 0;
-            }
-
-            setTimeout(function() {
-                browseSearches(searches);
-            }, 2000);
-        }
-
-        var search = searches[index];
-
-        if(search.updatedAt == undefined) {
-            search.updatedAt = new Date();
-            search.save();
-        }
-
-        var diff = new Date()-search.updatedAt; // milliseconds
-        diff = diff/1000/60; // minutes
-        var remain = delayBetweenUpdateSearch-diff;
-
-        if(remain <= 0) {
-            logger.info('Search "'+search.title+'" will be updated');
-
-            executeSearch(searches)
-                .then(function(search) {
-                    //searches[index] = search;
-                    firstTime = true;
-                    next();
-                });
-        } else {
-            next();
-        }
-    }; 
-})(0);
+    return defer.promise; 
+};
 
 var executeSearch = function (search) {
-    var deferred = Q.defer();
+    var defer = Q.defer();
 
-    Q.fcall(executeUrl, search.url, [], search)
-        .then(persistAds)
-        .then(function (ads) {
-            logger.info('Updating date search... ')
+    logger.info('Executing search `'+search.title+'`', {
+        id: search._id.toString()
+    })
 
-            search.updatedAt = new Date();
-            search.save(function (err) {
-                if(err) logger.error(err);
-                else logger.info('Update successful');
+    // Check if seach can be updated
+    var diff = new Date()-search.updatedAt; // milliseconds
+    diff = diff/1000/60; // minutes
+    var remain = delayBetweenUpdateSearch-diff;
 
-                deferred.resolve(search);
-            });
-        })
-        .catch(function (err) {
-            logger.error(err);
-            throw new Error(err);
-        });
+    if(remain <= 0) {
+        logger.info('Search is ready to be updated');
 
-    return deferred.promise;
-}
+        browsePages(search)
+            .then(persistAds)
+            .then(function() {
+                return updateSearch(search);
+            })
+            .then(defer.resolve)
+            .fail(fail);
+    } else {
+        logger.info('Search not ready to be updated');
+        defer.resolve();
+    }
 
-var executeUrl = (function () {
-    var deferred = Q.defer();
-    
-    return function (url, adsToBeSaved, search) {
+    return defer.promise;    
+};
 
-        logger.info('Load', url);
+var browsePages = function (search) { 
+    var defer = Q.defer();
+    var adsToBeSaved = [];
 
-        Q.fcall(loadContent, url)
-            .then(extractDatasFromContent)
-            .then(function (datas) {
-                logger.info(datas.ads.length+' ads found');
+    var loadPage = function(url) {
 
-                // Reduce by comparing updated dates
-                for(var i in datas.ads) {
-                    var ad = datas.ads[i];
+        getContent(url)
+            .then(extractDatas)
+            .spread(function (nextPage, ads) {
+                var cpt = 0;
 
-                    if(datas.nbPictures == 0 && search.photoOnly) {
+                for(var i in ads) {
+                    var ad = ads[i];
+
+                    if(ad.nbPictures == 0 && search.photoOnly) {
                         continue;
                     }
 
                     if(ad.updatedAt <= search.updatedAt) {
-                        deferred.resolve(adsToBeSaved);
-                        return;
+                        nextPage = null;
+                        break;
                     }
 
-                    adsToBeSaved.push(ad);
+                    adsToBeSaved.push(ads[i]);
+                    cpt++;
                 }
 
-                // Go to next if necessary
-                if(datas.nextPage) {
+                logger.info(cpt+' ad(s) found');
+
+                if(nextPage) {
                     var delay = rand(delayBetweenEachPage[0], delayBetweenEachPage[1]);
+                    
+                    logger.info('Go to next page in '+delay+' seconds');
 
-                    logger.info('Go to next page');
-                    logger.info('Waiting '+delay+' seconds...');
-
-                    setTimeout(function() {
-                        executeUrl(datas.nextPage, adsToBeSaved, search);
+                    return setTimeout(function() {
+                        loadPage(nextPage);
                     }, delay*1000);
-                } else {
-                    deferred.resolve(adsToBeSaved);
                 }
-            })
-            .catch(function (err) {
-                logger.error(err);
-                throw new Error(err);
-            });
-        
-        return deferred.promise;
-    };    
-})();
 
-var loadContent = function (url) {
-    var deferred = Q.defer();
+                defer.resolve(adsToBeSaved);
+            })
+            .fail(fail);
+    };
+
+    loadPage('http://localhost:3000/pages/page1.html'/*search.url*/);
+
+    return defer.promise;
+};
+
+/**
+ * Get content from URL
+ * @param  {String} url URL to load
+ * @return {Q.defer.promise} Return a promise
+ */
+var getContent = function (url) { 
+    var defer = Q.defer();
+
+    logger.info('Loading content from', url);
 
     var c = new Crawler({
         maxConnections  : 2,
         forceUTF8       : true,
         jquery          : false,
+        timeout         : 5000,
         callback        : function (err, result) {
-            if(err) {
-                logger.error(err);
-                deferred.reject(err);
-            } else {
-                logger.success('Success to load');
-                deferred.resolve(result.body);
-            }
+            if(err) logger.error(err);
+            else logger.info('Load successful', {
+                md5: MD5(result.body)
+            });
+
+            defer.resolve(result.body);
         }
     }).queue(url);
 
-    return deferred.promise;
+    return defer.promise;  
 };
 
-var extractDatasFromContent = function (content) {
-    logger.info('Extracting datas... ');
-
-    var deferred = Q.defer();
+var extractDatas = function (content) {
     var $content = $(content);
-    var ads = [];
 
-    // Get next page URL
-    var nextPage = null;
+    logger.info('Extracting datas');
+
+    return Q.all([
+        extractNextPage($content),
+        extractAds($content)
+    ]);
+};
+
+var extractNextPage = function ($content) {
+    var url = null;
 
     if(($paging = $content.find('#paging')).length) {
-        var nextPage = $paging.find('li.selected').next().find('a:first').attr('href');
+        var url = $paging.find('li.selected').next().find('a:first').attr('href');
     }
 
-    // Get ads
-    $content.find('.list-lbc a .lbc').each(function() {
+    return url;
+};
+
+var extractAds = function ($content) {
+    var defer = Q.defer();
+    var chain = [];
+
+    $content.find('.list-lbc a .lbc').each(function () {
         var $this = $(this);
 
-        // Find title
-        var title = $this.find('.title').text();
-        title = trim(title);
-
-        // Find price
-        var price = $this.find('.price').text();
-        price = price.replace(/[^0-9]/g, '');
-        price = parseInt(price);
-
-        // Find city and department
-        var placement = $this.find('.placement').text();
-        placement = placement.split('/');
-
-        var city = trim(placement[0]);
-        var department = trim(placement[1] || '');
-
-
-        // Find picture
-        var $img = $this.find('.image img:first');
-        var picture = $img.attr('data-original');
-
-        if(picture === undefined || picture === '') {
-            picture = $img.attr('src');
-        }
-
-        // Find url
-        var url = $this.parent().attr('href');
-
-        // Find uid
-        var matches = url.match(/([0-9]+)\.htm/);
-
-
-        if(!matches) {
-            return;
-        }
-
-        var uid = matches[1];
-
-        // Find nb of pictures
-        var nbPictures = $this.find('.nb .value').text();
-        nbPictures = trim(nbPictures);
-        nbPictures = parseInt(nbPictures);
-
-        if(isNaN(nbPictures)) {
-            nbPictures = 0;
-        }
-
-
-        // Find if is pro
-        var category = $this.find('.category').text();
-        var pro = /\(pro\)/.test(category);
-
-        // Find publish date
-        var day = trim($this.find('.date > div:first').text());
-        var time = trim($this.find('.date > div:last').text());
-        var updatedAt = new Date();
-
-        // Define the day
-        if(day == 'Aujourd\'hui') {
-            // nothing to do...
-
-        } else if(day == 'Hier') {
-            updatedAt.setDate(updatedAt.getDate()-1);
-
-        } else {
-            day = day.split(' ');
-
-            // Find the month number
-            for(var i in months) {
-                var re = new RegExp('^'+day[1]);
-
-                if(re.test(i)) {
-                    updatedAt.setMonth(months[i]-1);
-                    break;
-                }
-            }
-
-            updatedAt.setDate(day[0]);
-        }
-
-        // Define the time
-        var time = time.split(':');
-        updatedAt.setHours(time[0]);
-        updatedAt.setMinutes(time[1]);
-        updatedAt.setSeconds(0);
-
-        ads.push({
-            uid: uid,
-            title: title,
-            price: price,
-            city: city,
-            department: department,
-            url: url,
-            picture: picture,
-            nbPictures: nbPictures,
-            pro: pro,
-            updatedAt: updatedAt,
-        });
-    }).promise().then(function() {
-        deferred.resolve({
-            ads: ads,
-            nextPage: nextPage
-        });
+        chain.push(extractAd($this));
     });
 
-    return deferred.promise; 
+    Q.all(chain)
+        .then(function (ads) {
+            defer.resolve(ads);
+        })
+        .fail(fail);
+
+    return defer.promise;
+};
+
+var extractAd = function ($content) {
+
+    // Find title
+    var title = $content.find('.title').text();
+    title = trim(title);
+
+    // Find price
+    var price = $content.find('.price').text();
+    price = price.replace(/[^0-9]/g, '');
+    price = parseInt(price);
+
+    // Find city and department
+    var placement = $content.find('.placement').text();
+    placement = placement.split('/');
+
+    var city = trim(placement[0]);
+    var department = trim(placement[1] || '');
+
+
+    // Find picture
+    var $img = $content.find('.image img:first');
+    var picture = $img.attr('data-original');
+
+    if(picture === undefined || picture === '') {
+        picture = $img.attr('src');
+    }
+
+    // Find url
+    var url = $content.parent().attr('href');
+
+    // Find uid
+    var matches = url.match(/([0-9]+)\.htm/);
+
+    if(!matches) {
+        return false;
+    }
+
+    var uid = matches[1];
+
+    // Find nb of pictures
+    var nbPictures = $content.find('.nb .value').text();
+    nbPictures = trim(nbPictures);
+    nbPictures = parseInt(nbPictures);
+
+    if(isNaN(nbPictures)) {
+        nbPictures = 0;
+    }
+
+
+    // Find if is pro
+    var category = $content.find('.category').text();
+    var pro = /\(pro\)/.test(category);
+
+    // Find publish date
+    var day = trim($content.find('.date > div:first').text());
+    var time = trim($content.find('.date > div:last').text());
+    var updatedAt = new Date();
+
+    // Define the day
+    if(day == 'Aujourd\'hui') {
+        // nothing to do...
+
+    } else if(day == 'Hier') {
+        updatedAt.setDate(updatedAt.getDate()-1);
+
+    } else {
+        day = day.split(' ');
+
+        // Find the month number
+        for(var i in months) {
+            var re = new RegExp('^'+day[1]);
+
+            if(re.test(i)) {
+                updatedAt.setMonth(months[i]-1);
+                break;
+            }
+        }
+
+        updatedAt.setDate(day[0]);
+    }
+
+    // Define the time
+    var time = time.split(':');
+    updatedAt.setHours(time[0]);
+    updatedAt.setMinutes(time[1]);
+    updatedAt.setSeconds(0);
+
+    return {
+        uid: uid,
+        title: title,
+        price: price,
+        city: city,
+        department: department,
+        url: url,
+        picture: picture,
+        nbPictures: nbPictures,
+        pro: pro,
+        updatedAt: updatedAt,
+    };
 };
 
 var persistAds = function (ads) {
-    var deferred = Q.defer();
+    var defer = Q.defer();
 
     if(ads.length == 0) {
         logger.info('Nothing to persist');
-        deferred.resolve();
+        defer.resolve();
     } else {
         logger.info('Persisting '+ads.length+' ads');
 
@@ -451,14 +440,16 @@ var persistAds = function (ads) {
             });
         });
 
-        chain.then(deferred.resolve);        
+        chain
+            .then(defer.resolve)
+            .fail(fail);
     }
 
-    return deferred.promise;
+    return defer.promise;
 };
 
 var persistAd = function (datas) {
-    var deferred = Q.defer();
+    var defer = Q.defer();
 
     logger.info('Trying to persist ad', {
         id: datas.uid,
@@ -479,11 +470,12 @@ var persistAd = function (datas) {
             ad.save(function (err, ad) {
                 if(err) {
                     logger.error(err);
+                    defer.reject();
                 } else {
-                    logger.success('Update successful !');
+                    logger.info('Update successful !');
+                    defer.resolve();
                 }
 
-                deferred.resolve();
             });
 
         // Ad not exists : creation
@@ -493,39 +485,53 @@ var persistAd = function (datas) {
             new Ad(datas).save(function (err, ad) {
                 if(err) {
                     logger.error(err);
+                    defer.reject();
                 } else {
-                    logger.success('Creation successful !');
+                    logger.info('Creation successful !');
+                    defer.resolve();
                 }
-
-                deferred.resolve();
             });
         })
-        .catch(function (err) {
-            logger.error(err);
-            throw new Error(err);
-        });
+        .fail(fail);
 
-    return deferred.promise;
+    return defer.promise;
 };
 
+var updateSearch = function(search) {
+    var defer = Q.defer();
+
+    logger.info('Updating date search... ', {
+        id: search._id.toString()
+    })
+
+    search.updatedAt = new Date();
+    search.save(function (err) {
+        if(err) logger.error(err);
+        else logger.info('Update successful');
+
+        defer.resolve();
+    });
+
+    return defer.promise; 
+};
 
 /**
  * Get ad by his uid
  * @param  {String} uid Uid's ad
- * @return {Q.promise} Return a promise
+ * @return {Q.defer.promise} Return a promise
  */
 var getAd = function (uid) {
-    var deferred = Q.defer();
+    var defer = Q.defer();
 
     Ad.findOne({ uid: uid }, function (err, ad) {
 
         if(err || ad === null) {
-            deferred.reject();
+            defer.reject();
             return;
         }
 
-        deferred.resolve(ad);
+        defer.resolve(ad);
     });
 
-    return deferred.promise;
+    return defer.promise;
 };

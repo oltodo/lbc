@@ -8,6 +8,7 @@ angular.module('lbcApp')
 
         $scope.loading = false;
         $scope.page = 1;
+        $scope.limit = 10,
         $scope.ads = [];
 
         var getSearch = (function() {
@@ -45,14 +46,15 @@ angular.module('lbcApp')
                 .then(function(search) {
                     SearchAds.query({
                         idSearch: '5228f3c51bb0bc2b7aea9549',
-                        page: $scope.page
+                        page: $scope.page,
+                        limit: $scope.limit
                     }, function(ads) {
                         for(var i in ads) {
                             $scope.ads.push(ads[i]);
                         }
 
                         $scope.page++;
-                        $scope.loading = false;
+                        $scope.loading = ads.length < $scope.limit;
                     });
                 });
         }
