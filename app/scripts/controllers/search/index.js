@@ -68,7 +68,7 @@ angular.module('lbcApp')
             if(price1 < price2) {
                 var classs = 'icon-caret-down text-success';
             } else {
-                var classs = 'icon-caret-up text-error';
+                var classs = 'icon-caret-up text-danger';
             }
 
             var title = [];

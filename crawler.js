@@ -201,8 +201,7 @@ var browseSearches = (function (index) {
             logger.info('Search "'+search.title+'" will be updated');
 
             executeSearch(searches)
-                .then(function(search) {
-                    //searches[index] = search;
+                .then(function() {
                     firstTime = true;
                     next();
                 });
@@ -225,7 +224,7 @@ var executeSearch = function (search) {
                 if(err) logger.error(err);
                 else logger.info('Update successful');
 
-                deferred.resolve(search);
+                deferred.resolve();
             });
         })
         .catch(function (err) {
