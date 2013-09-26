@@ -249,7 +249,7 @@ var browsePages = function (search) {
             .fail(fail);
     };
 
-    loadPage('http://localhost:3000/pages/page1.html'/*search.url*/);
+    loadPage(search.url);
 
     return defer.promise;
 };

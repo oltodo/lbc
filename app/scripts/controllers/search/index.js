@@ -8,7 +8,7 @@ angular.module('lbcApp')
 
         $scope.loading = false;
         $scope.page = 1;
-        $scope.limit = 10,
+        $scope.limit = 30,
         $scope.ads = [];
 
         var getSearch = (function() {
@@ -70,7 +70,7 @@ angular.module('lbcApp')
             if(price1 < price2) {
                 var classs = 'icon-caret-down text-success';
             } else {
-                var classs = 'icon-caret-up text-error';
+                var classs = 'icon-caret-up text-danger';
             }
 
             var title = [];
