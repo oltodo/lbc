@@ -22,21 +22,38 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <label class="col-md-2 control-label">Titre :</label>
+                <label class="col-md-3 control-label">Titre :</label>
                 <div class="col-md-7">
                     <input type="text" class="form-control input-lg" ng-model="search.title" required="required">
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-md-2 control-label">URL :</label>
-                <div class="col-md-10">
+                <label class="col-md-3 control-label">URL :</label>
+                <div class="col-md-9">
                     <input type="text" class="form-control" ng-model="search.url" required="required">
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-md-10 col-md-offset-2">
+                <label class="col-md-3 control-label">Date de dernière mise à jour :</label>
+                <div class="col-md-9">
+                    <input type="datetime" class="form-control" ng-model="search.updatedAt" required="required">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Fréquence de mise à jour :</label>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control text-right" ng-model="search.updateFrequency" required="required" pattern="^[0-9]+$">
+                        <span class="input-group-addon">s</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-9 col-md-offset-3">
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" ng-model="search.photoOnly">
@@ -47,8 +64,8 @@
             </div>
 
             <div class="form-group">
-                <label class="col-md-2 control-label">Villes :</label>
-                <div class="col-md-10">
+                <label class="col-md-3 control-label">Villes :</label>
+                <div class="col-md-9">
                     <div class="well">
                         <span>Rechercher :</span>
                         <input id="cities-search" type="text" class="form-control" lbc-typeahead="typeahead" />
@@ -76,7 +93,7 @@
         </div>
         <div class="panel-footer">
             <div class="row">
-                <div class="col-lg-offset-2 col-lg-10">
+                <div class="col-lg-offset-3 col-lg-9">
                     <button type="submit" class="btn btn-primary">Enregister</button>
                 </div>
             </div>

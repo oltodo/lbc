@@ -123,15 +123,23 @@ mongoose.connect('mongodb://localhost/lbc', function (err) {
     lauch();
 });
 
-
+var updateRunning = true;
 
 var lauch = function () {
+
+    if(updateRunning) {
+        logger.info('Waiting for a new search update');
+        updateRunning = false;
+    }
 
     getSearches()
         .then(checkSearches)
         .then(function () {
-            logger.info('End, relaunching in one minute');
-            setTimeout(lauch, 60000);
+            if(updateRunning) {
+                logger.info('End, relaunching in one minute');
+            }
+
+            setTimeout(lauch, 1000);
         })
         .fail(fail);
 
@@ -140,8 +148,6 @@ var lauch = function () {
 var checkSearches = function (searches) {
     var defer = Q.defer();
     var chain = Q.fcall(function () {});
-
-    logger.info('Browsing searches');
 
     searches.forEach(function (search) {
         chain = chain.then(function () {
@@ -163,12 +169,7 @@ var checkSearches = function (searches) {
 var getSearches = function () { 
     var defer = Q.defer();
 
-    logger.info('Loading searches');
-
     Search.find(function (err, searches) {
-
-        logger.info(searches.length+' search(es) found');
-
         defer.resolve(searches);
     });
 
@@ -178,17 +179,16 @@ var getSearches = function () {
 var executeSearch = function (search) {
     var defer = Q.defer();
 
-    logger.info('Executing search `'+search.title+'`', {
-        id: search._id.toString()
-    })
-
     // Check if seach can be updated
     var diff = new Date()-search.updatedAt; // milliseconds
-    diff = diff/1000/60; // minutes
-    var remain = delayBetweenUpdateSearch-diff;
+    var remain = search.updateFrequency-diff/1000;
 
     if(remain <= 0) {
-        logger.info('Search is ready to be updated');
+        logger.info('Executing search `'+search.title+'`', {
+            id: search._id.toString()
+        });
+
+        updateRunning = true;
 
         browsePages(search)
             .then(persistAds)
@@ -198,7 +198,6 @@ var executeSearch = function (search) {
             .then(defer.resolve)
             .fail(fail);
     } else {
-        logger.info('Search not ready to be updated');
         defer.resolve();
     }
 

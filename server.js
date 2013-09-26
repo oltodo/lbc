@@ -149,6 +149,8 @@ app.post('/ws/searches/:idSearch', function(req, res) {
             search.title = datas.title;
             search.url = datas.url;
             search.photoOnly = datas.photoOnly;
+            search.updatedAt = datas.updatedAt;
+            search.updateFrequency = datas.updateFrequency;
             search.cities = [];
 
             for(var i in datas.cities) {
