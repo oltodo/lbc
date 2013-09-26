@@ -131,7 +131,7 @@ var lauch = function () {
         .then(checkSearches)
         .then(function () {
             logger.info('End, relaunching in one minute');
-            setTimeout(lauch, 6000);
+            setTimeout(lauch, 60000);
         })
         .fail(fail);
 
