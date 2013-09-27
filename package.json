@@ -15,7 +15,8 @@
     "date-format": "0.0.0",
     "commander": "~2.0.0",
     "class": "~0.1.4",
-    "MD5": "~1.1.0"
+    "MD5": "~1.1.0",
+    "simple-file-writer": "~1.0.5"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

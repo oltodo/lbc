@@ -9,13 +9,13 @@ var
     readline    = require('readline'),
     program     = require('commander'),
     MD5         = require('MD5'),
+    SimpleFileWriter = require('simple-file-writer'),
     express     = require('express'),
     app         = express(),
 
     // Models
     Ad          = require('./lib/models/ad'),
     Search      = require('./lib/models/search');
-
 
 
 // Configure Q promise
@@ -139,7 +139,7 @@ var lauch = function () {
                 logger.info('End, relaunching in one minute');
             }
 
-            setTimeout(lauch, 1000);
+            setTimeout(lauch, 60000);
         })
         .fail(fail);
 
@@ -181,9 +181,9 @@ var executeSearch = function (search) {
 
     // Check if seach can be updated
     var diff = new Date()-search.updatedAt; // milliseconds
-    var remain = search.updateFrequency-diff/1000;
+    var diff = Math.ceil(diff/1000);
 
-    if(remain <= 0) {
+    if(diff > search.updateFrequency) {
         logger.info('Executing search `'+search.title+'`', {
             id: search._id.toString()
         });
@@ -273,6 +273,11 @@ var getContent = function (url) {
             else logger.info('Load successful', {
                 md5: MD5(result.body)
             });
+
+            var date = new Date();
+            var filename = date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'-'+date.getHours()+'-'+date.getMinutes()+'-'+date.getSeconds();
+            var writer = new SimpleFileWriter('./dist/pages/'+filename+'.html');
+            writer.write(result.body);
 
             defer.resolve(result.body);
         }
