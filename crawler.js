@@ -353,6 +353,9 @@ var extractAd = function ($content) {
         picture = $img.attr('src');
     }
 
+    picture = picture || '';
+    picture = picture.replace('thumbs', 'images');
+
     // Find url
     var url = $content.parent().attr('href');
 
