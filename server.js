@@ -1,7 +1,10 @@
 var express     = require('express'),
     http        = require('http'),
     path        = require('path'),
-    mongoose    = require('mongoose');
+    mongoose    = require('mongoose'),
+    winston     = require('winston'),
+    Q           = require('q'),
+    crawler     = require('./lib/crawler');
 
 var Ad          = require('./lib/models/ad'),
     Search      = require('./lib/models/search'),
@@ -12,6 +15,20 @@ var app = express();
 
 // Connect to the mongo database
 mongoose.connect('mongodb://localhost/lbc');
+
+
+
+var logger = new (winston.Logger)();
+
+if(app.get('env') === 'development') {
+    logger.add(winston.transports.Console, {
+        colorize: true
+    });
+
+    logger.cli();
+
+    crawler.setLogger(logger);
+};
 
 
 
@@ -36,25 +53,123 @@ if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
 
+/**
+ * Return search by id
+ * @param  {String} id Search id
+ * @return {Q.promise}
+ */
+var getSearchById = function(id) {
+    var defer = Q.defer();
 
+    Search
+        .findById(id)
+        .populate('cities', 'realName postcode')
+        .exec(function(err, search) {
+            defer.resolve(search);
+        });
 
+    return defer.promise;
+}
 
+var getAds = function(page, limit, filters) {
+    var defer = Q.defer();
 
+    page = page || 1;
+    limit = limit || 30;
+    filters = filters || {};
+
+    return Ad.find(filters)
+        .sort('-updatedAt')
+        .skip((page-1)*limit)
+        .limit(limit)
+        .exec(function(err, ads) {
+            if(err) {
+                return defer.reject();
+            }
+
+            return defer.resolve(ads);
+        });
+
+    return defer.promise;
+};
+
+var getAdsBySearch = function(search, page, limit, filters) {
+
+    // Filter by cities
+    if(search.cities.length > 0) {
+
+        var cities = [];
+
+        for(var i = 0; i < search.cities.length; i++) {
+            cities.push(search.cities[i].realName);
+        }
+
+        filters.city = { $in: cities };
+    } 
+
+    return getAds(page, limit, filters)
+}
 
 // Get ads
 app.get('/ws/ads', function(req, res) {
 
-    return Ad.find()
-        .sort('-updatedAt')
-        .exec(function(err, ads) {
-            if(err) {
-                return res.status(404).send(err);
+    var page = req.query.page || 1;
+    var limit = req.query.limit || 30;
+
+    var filters = {
+        ignored: false
+    }
+
+    if(req.query.idSearch) {
+
+        getSearchById(req.query.idSearch)
+            .then(function(search) {
+                return getAdsBySearch(search, page, limit, filters)
+            })
+            .then(function(ads) {
+                res.send(ads)
+            });
+    }else {
+
+        getSearch(page, limit, filters)
+            .then(function(ads) {
+                res.send(ads)
+            });
+    }
+});
+
+// Get ad
+app.get('/ws/ads/:idAd', function(req, res) {
+
+    return Ad
+        .findById(req.params.idAd, function(err, ad) {
+
+            if(ad.partial == true) {
+                return crawler.updateAd(ad)
+                    .then(function(ad) {
+                        res.send(ad);
+                    });
             }
 
-            return res.send(ads);
+            res.send(ad);
         });
-})
+});
 
+// Put ad
+app.put('/ws/ads/:idAd', function(req, res) {
+
+    var $set = {
+        ignored: req.body.ignored,
+        partial: req.body.partial
+    };
+
+    return Ad
+        .findByIdAndUpdate(req.params.idAd, {
+            $set: $set
+        }, function(err, ad) {
+            res.send(ad);
+        });
+});
 
 
 // Get cities
@@ -219,6 +334,6 @@ app.get('/ws/searches/:idSearch/ads', function(req, res) {
 });
 
 
-http.createServer(app).listen(app.get('port'), function(){
+http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port') + ' in '+app.get('env')+' mode');
 });

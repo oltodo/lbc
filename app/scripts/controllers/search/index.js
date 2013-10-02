@@ -2,7 +2,8 @@
 
 angular.module('lbcApp')
     .controller('SearchIndexCtrl', function (
-        $scope, $routeParams, $http, $q, Search, breadcrumbs, $filter, SearchAds
+        $scope, $routeParams, $http, $q, breadcrumbs, $filter,
+        Search, Ad
     ) {
         breadcrumbs.clean();
 
@@ -44,8 +45,8 @@ angular.module('lbcApp')
 
             getSearch()
                 .then(function(search) {
-                    SearchAds.query({
-                        idSearch: '5228f3c51bb0bc2b7aea9549',
+                    Ad.query({
+                        idSearch: search._id,
                         page: $scope.page,
                         limit: $scope.limit
                     }, function(ads) {
@@ -57,7 +58,12 @@ angular.module('lbcApp')
                         $scope.loading = ads.length < $scope.limit;
                     });
                 });
-        }
+        };
+
+        $scope.toggleIgnore = function(ad) {
+            ad.ignored = !ad.ignored;
+            ad.$update();
+        };
 
         $scope.growthIcon = function(ad) {
             if(ad.history.length <= 1) {

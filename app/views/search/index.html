@@ -20,7 +20,7 @@
 
 <div class="row" infinite-scroll="more()" infinite-scroll-disabled="loading" infinite-scroll-distance="1">
     <div class="col-sm-6 col-md-4 col-lg-3" ng-repeat="ad in ads">
-        <div class="ad panel {{ad.updatedAt > ad.createdAt && 'panel-success' || 'panel-info'}}">
+        <div class="ad panel {{ad.updatedAt > ad.createdAt && 'panel-success' || 'panel-info'}}" ng-class="{ignored: ad.ignored}">
             <div class="panel-heading">
                 {{ ad.city }}
 
@@ -36,7 +36,7 @@
                             
             <div class="panel-body">
                 <div class="ad-title">
-                    <a href="{{ ad.url }}">{{ ad.title }}</a>
+                    <a href="#/search/{{ search._id }}/ad/{{ ad._id }}">{{ ad.title }}</a>
                 </div>
                 
                 <div class="clearfix">
@@ -51,24 +51,15 @@
                 </div>
             </div>
 
-            <!-- <div class="ad-actions clearfix">
+            <div class="panel-footer clearfix">
                 <div class="btn-group pull-left">
-                    <button class="btn">
-                        <i class="icon-star-empty"></i>
+                    <button class="btn" ng-click="toggleIgnore(ad)">
+                        <i class="" ng-class="{ 'icon-eye-open': ad.ignored, 'icon-eye-close': !ad.ignored }"></i>
                     </button>
-                    <button class="btn dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Test</a></li>
-                    </ul>
                 </div>
                 <div class="btn-group pull-right">
-                    <button class="btn">
-                        <i class="icon-remove-sign"></i>
-                    </button>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </div>

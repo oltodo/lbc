@@ -1,1 +1,81 @@
-salut
+<script src="bower_components/bxslider-4/jquery.bxslider.min.js"></script>
+<link href="bower_components/bxslider-4/jquery.bxslider.css" rel="stylesheet" />
+
+
+<div class="page-header">
+    <span class="pull-right">
+        <span class="label label-danger" ng-show="ad.pro">PRO</span>
+    </span>
+
+    <h3>
+        {{ ad.title }}
+
+        <span class="buttons">
+            <a href="{{ ad.url }}" target="_blank" title="Editer la recherche">
+                <small class="icon-external-link text-default"></small>
+            </a>
+
+            <a href="javascript:;" ng-click="reload()" title="Rafraichir">
+                <small class="icon-refresh text-default" ng-class="{ 'icon-spin': reloading }"></small>
+            </a>
+        </span>
+    </h3>
+</div>
+
+<div class="row">
+    <div class="col-md-6" ng-if="ad">
+        <ul id="gallery" slideit="ad.pictures"></ul>
+    </div>
+    <div class="col-md-6">
+        <div class="alert alert-danger" ng-show="ad.deleted">
+            Cette annonce à été supprimée de Leboncoin.fr
+        </div>
+
+        <div ng-show="ad">
+            <p ng-show="ad.phoneNumber">
+                <b>Téléphone :</b>
+                <img src="{{ ad.phoneNumber }}" />
+            </p>
+            <p ng-show="ad.createdAt">
+                <b>Date de création :</b>
+                {{ ad.createdAt|prettyDate }}
+            </p>
+            <p ng-show="ad.postcode">
+                <b>Code postal :</b>
+                {{ ad.postcode }}
+            </p>
+            <p ng-show="ad.price">
+                <b>Prix :</b>
+                {{ ad.price | price }}
+            </p>
+            <p ng-show="ad.city">
+                <b>Ville :</b>
+                {{ ad.city }}
+            </p>
+            <p ng-show="ad.department">
+                <b>Département :</b>
+                {{ ad.department }}
+            </p>
+            <p ng-show="ad.surface">
+                <b>Surface :</b>
+                {{ ad.surface }} m²
+            </p>
+            <p ng-show="ad.pieces">
+                <b>nombre de pièce :</b>
+                {{ ad.pieces }}
+            </p>
+            <p ng-show="ad.eer">
+                <b>Classe énergie :</b>
+                {{ ad.eer }}
+            </p>
+            <p ng-show="ad.eir">
+                <b>GES :</b>
+                {{ ad.eir }}
+            </p>
+            <p ng-show="ad.description">
+                <b>Description :</b>
+                <br /><div ng-bind-html="ad.description|nl2br"></div>
+            </p>
+        </div>
+    </div>
+</div>

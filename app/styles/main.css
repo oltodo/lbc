@@ -21,18 +21,14 @@ a [class^="icon-"], a [class*=" icon-"] { text-decoration: none; }
 .breadcrumb { background: none; padding: 0; }
 .breadcrumb > li+li:before { padding: 0 2px 0 8px; }
 
+h3 .buttons { font-size: 0.8em; }
+h3 .buttons a { margin-left: 10px; text-decoration: none; display: inline-block }
 
-#search-index h3 .buttons { font-size: 0.8em; }
-#search-index h3 .buttons a { margin-left: 10px; text-decoration: none; display: inline-block }
-
-#search-index .ad { margin-bottom: 20px; }
+#search-index .ad { margin-bottom: 20px; transition: opacity .5s; }
+#search-index .ad.ignored { opacity: 0.3; }
 #search-index .ad .ad-title { line-height: 1.5em; height: 3em; overflow: hidden; margin-bottom: 10px; }
 #search-index .ad .ad-picture { padding: 10px; background: #EEE }
 #search-index .ad .ad-picture img { width: 100%; height: 0; padding-bottom: 70%; background-size: contain; background-repeat: no-repeat; background-position: 50% 50% }
-#search-index .ad .ad-actions { padding: 5px; margin-top: 5px; border-top: solid 1px #EEE; }
-
-#search-edit h3 .buttons { font-size: 0.8em; }
-#search-edit h3 .buttons a { margin-left: 10px; text-decoration: none; display: inline-block }
 
 #search-edit .cities { margin-top: 10px; }
 #search-edit .cities .city { padding: 5px 0; border-bottom: 1px solid #DDD; }

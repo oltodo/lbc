@@ -31,6 +31,10 @@ app.config(function ($routeProvider) {
             templateUrl: 'views/search/index.html',
             controller: 'SearchIndexCtrl'
         })
+        .when('/search/:idSearch/ad/:id', {
+            templateUrl: 'views/ad.html',
+            controller: 'AdCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });
@@ -92,6 +96,15 @@ app.filter('prettyDate', function() {
     };
 });
 
+app.filter('nl2br', function() {
+    return function(string, is_xhtml) { 
+        var is_xhtml = is_xhtml || true;
+        var breakTag = (is_xhtml) ? '<br />' : '<br>';    
+        var text = (string + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+        return text;
+    };
+});
+
 app.run(function($rootScope) {
     $rootScope.$on('$routeChangeSuccess', function(ev, data) {   
         if (data.$$route && data.$$route.controller) {
@@ -136,6 +149,15 @@ angular.module('resources.searches', ['ngResource'])
     .factory('Search', function($resource) {
         return $resource('/ws/searches/:id', {
             id: '@_id'
+        });
+    })
+    .factory('Ad', function($resource) {
+        return $resource('/ws/ads/:id', {
+            id: '@_id'
+        }, {
+            update: {
+                method: 'PUT'
+            }
         });
     })
     .factory('SearchAds', function($resource) {
