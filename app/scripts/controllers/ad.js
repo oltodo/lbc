@@ -24,7 +24,7 @@ angular.module('lbcApp')
             
             breadcrumbs.prepend({
                 name: search.title,
-                url: '/search/'+search._id
+                path: '/search/'+search._id
             })    
 
         });
