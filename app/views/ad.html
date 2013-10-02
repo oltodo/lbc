@@ -11,12 +11,12 @@
         {{ ad.title }}
 
         <span class="buttons">
-            <a href="{{ ad.url }}" target="_blank" title="Editer la recherche">
-                <small class="icon-external-link text-default"></small>
+            <a href="{{ ad.url }}" target="_blank" title="Ouvrir l'annonce dans leboncoin.fr (nouvel onglet)">
+                <span class="icon-external-link-sign text-default"></span>
             </a>
 
             <a href="javascript:;" ng-click="reload()" title="Rafraichir">
-                <small class="icon-refresh text-default" ng-class="{ 'icon-spin': reloading }"></small>
+                <span class="icon-retweet text-default" ng-class="{ 'icon-spin': reloading }"></span>
             </a>
         </span>
     </h3>
