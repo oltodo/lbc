@@ -121,8 +121,18 @@ angular.module('services.breadcrumbs', [])
         var breadcrumbs = [];
         var breadcrumbsService = {};
 
+        // Deprecated
         breadcrumbsService.add = function(datas) {
+            return breadcrumbsService.append(datas);
+        };
+
+        breadcrumbsService.append = function(datas) {
             breadcrumbs.push(datas);
+            return this;
+        };
+
+        breadcrumbsService.prepend = function(datas) {
+            breadcrumbs.unshift(datas);
             return this;
         };
 

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lbcApp')
-    .controller('AdCtrl', function ($scope, breadcrumbs, $routeParams, Ad, $q) {
+    .controller('AdCtrl', function ($scope, breadcrumbs, $routeParams, Ad, Search, $q) {
         breadcrumbs.clean();
 
         $scope.reloading = false;
@@ -19,10 +19,20 @@ angular.module('lbcApp')
             return defer.promise;
         }
 
+        Search.get({ id: $routeParams.idSearch }, function(search) {
+            $scope.search = search;
+            
+            breadcrumbs.prepend({
+                name: search.title,
+                url: '/search/'+search._id
+            })    
+
+        });
+
         getAd().then(function(ad) {
             $scope.ad = ad;
 
-            breadcrumbs.add({
+            breadcrumbs.append({
                 name: ad.title
             });
         });
