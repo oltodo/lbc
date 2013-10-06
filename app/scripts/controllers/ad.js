@@ -52,14 +52,20 @@ angular.module('lbcApp')
 
     .directive('slideit', function () {
 
-        var slider = null;
 
         return function (scope, elm, attrs) {
+            var slider = null;
             var $gallery = $('#'+$(elm[0]).attr('id'));
 
             scope.$watch(attrs.slideit, function (images) {
                 if(typeof images !== 'object' || images.length === 0) {
                     return;
+                }
+
+                if(slider === null) {
+                    slider = $gallery.bxSlider({
+                        mode: 'horizontal'
+                    });                    
                 }
 
                 var html = '';
@@ -68,16 +74,12 @@ angular.module('lbcApp')
                     html += '<li><img src="' + images[i] + '" alt="" /></li>';
                 }
 
-                $gallery.html(html);
-
-                if(slider !== null) {
+                var img = new Image();
+                img.src = images[0];
+                img.onload = function() {
+                    $gallery.html(html)
                     slider.reloadSlider()
-                } else {
-                    slider = $gallery.bxSlider({
-                        mode: 'horizontal'
-                    });                    
                 }
             });
         };
     });
-
