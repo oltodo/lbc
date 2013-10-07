@@ -16,7 +16,7 @@
     "font-awesome": "~3.2.1",
     "typeahead.js-bootstrap.css": "*",
     "angular-ngInfiniteScroll": "https://github.com/BinaryMuse/ngInfiniteScroll.git#~1.0.0",
-    "bxslider-4": "*"
+    "owlcarousel": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",
