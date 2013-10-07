@@ -67,13 +67,15 @@ angular.module('lbcApp')
 
                 for (var i in images) {
                     html += '<div>';
-                    html += '   <img src="' + images[i] + '" alt="" />';
+                    html += '   <img class="lazyOwl" data-src="' + images[i] + '" alt="" />';
                     html += '</div>';
                 }
 
                 $gallery.html(html)
                 $gallery.owlCarousel({
-                    singleItem: true
+                    singleItem: true,
+                    navigation: true,
+                    lazyLoad: true
                 });
             });
         };
