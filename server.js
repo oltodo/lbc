@@ -262,7 +262,6 @@ app.post('/ws/searches/:idSearch', function(req, res) {
             }
             
             search.title = datas.title;
-            search.url = datas.url;
             search.photoOnly = datas.photoOnly;
             search.updatedAt = datas.updatedAt;
             search.updateFrequency = datas.updateFrequency;
@@ -270,6 +269,12 @@ app.post('/ws/searches/:idSearch', function(req, res) {
 
             for(var i in datas.cities) {
                 search.cities.push(datas.cities[i]._id);
+            }
+
+            search.urls = [];
+
+            for(var i in datas.urls) {
+                search.urls.push(datas.urls[i]);
             }
 
             return search.save(function(err) {

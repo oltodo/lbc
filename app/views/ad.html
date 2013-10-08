@@ -26,51 +26,51 @@
             Cette annonce à été supprimée de Leboncoin.fr
         </div>
 
-        <div ng-show="ad">
-            <p ng-show="ad.phoneNumber">
-                <b>Téléphone :</b>
-                <img ng-src="{{ ad.phoneNumber }}" />
-            </p>
-            <p ng-show="ad.createdAt">
-                <b>Date de création :</b>
-                {{ ad.createdAt|prettyDate }}
-            </p>
-            <p ng-show="ad.postcode">
-                <b>Code postal :</b>
-                {{ ad.postcode }}
-            </p>
-            <p ng-show="ad.price">
-                <b>Prix :</b>
-                {{ ad.price | price }}
-            </p>
-            <p ng-show="ad.city">
-                <b>Ville :</b>
-                {{ ad.city }}
-            </p>
-            <p ng-show="ad.department">
-                <b>Département :</b>
-                {{ ad.department }}
-            </p>
-            <p ng-show="ad.surface">
-                <b>Surface :</b>
-                {{ ad.surface }} m²
-            </p>
-            <p ng-show="ad.pieces">
-                <b>nombre de pièce :</b>
-                {{ ad.pieces }}
-            </p>
-            <p ng-show="ad.eer">
-                <b>Classe énergie :</b>
-                {{ ad.eer }}
-            </p>
-            <p ng-show="ad.eir">
-                <b>GES :</b>
-                {{ ad.eir }}
-            </p>
-            <p ng-show="ad.description">
-                <b>Description :</b>
-                <br /><div ng-bind-html="ad.description|nl2br"></div>
-            </p>
-        </div>
+        <table class="table" ng-show="ad">
+            <tr ng-show="ad.phoneNumber">
+                <td nowrap><b>Téléphone :</b></td>
+                <td width="100%"><img ng-src="{{ ad.phoneNumber }}" /></td>
+            </tr>
+            <tr ng-show="ad.createdAt">
+                <td nowrap><b>Date de création :</b></td>
+                <td width="100%">{{ ad.createdAt|prettyDate }}</td>
+            </tr>
+            <tr ng-show="ad.postcode">
+                <td nowrap><b>Code postal :</b></td>
+                <td width="100%">{{ ad.postcode }}</td>
+            </tr>
+            <tr ng-show="ad.price">
+                <td nowrap><b>Prix :</b></td>
+                <td width="100%">{{ ad.price | price }}</td>
+            </tr>
+            <tr ng-show="ad.city">
+                <td nowrap><b>Ville :</b></td>
+                <td width="100%">{{ ad.city }}</td>
+            </tr>
+            <tr ng-show="ad.department">
+                <td nowrap><b>Département :</b></td>
+                <td width="100%">{{ ad.department }}</td>
+            </tr>
+            <tr ng-show="ad.surface">
+                <td nowrap><b>Surface :</b></td>
+                <td width="100%">{{ ad.surface }} m²</td>
+            </tr>
+            <tr ng-show="ad.pieces">
+                <td nowrap><b>Nombre de pièce :</b></td>
+                <td width="100%">{{ ad.pieces }}</td>
+            </tr>
+            <tr ng-show="ad.eer">
+                <td nowrap><b>Classe énergie :</b></td>
+                <td width="100%">{{ ad.eer }}</td>
+            </tr>
+            <tr ng-show="ad.eir">
+                <td nowrap><b>GES :</b></td>
+                <td width="100%">{{ ad.eir }}</td>
+            </tr>
+            <tr ng-show="ad.description">
+                <td nowrap><b>Description :</b></td>
+                <td width="100%" ng-bind-html="ad.description|nl2br"></td>
+            </tr>
+        </table>
     </div>
 </div>

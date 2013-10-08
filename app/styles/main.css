@@ -32,6 +32,7 @@ h3 .buttons a { margin-left: 10px; text-decoration: none; display: inline-block 
 
 #search-edit .cities { margin-top: 10px; }
 #search-edit .cities .city { padding: 5px 0; border-bottom: 1px solid #DDD; }
+#search-edit .urls .url { margin-bottom: 10px; }
 
 #ad #gallery .owl-item { text-align: center; background: url(data:image/gif;base64,R0lGODlhEAAQAIABAO7u7v///yH5BAEKAAEALAAAAAAQABAAAAIfhG+hq4jM3IFLJhoswNly/XkcBpIiVaInlLJr9FZWAQA7) }
 #ad #gallery .owl-item img { max-width: 100%; max-height: 100% }

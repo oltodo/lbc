@@ -25,10 +25,19 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group urls">
                 <label class="col-md-3 control-label">URL :</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" ng-model="search.url" required="required">
+                    <div class="url input-group" ng-repeat="url in urls">
+                        <input type="text" class="form-control" ng-model="url.link" required="required">   
+                        <span class="input-group-btn">
+                            <a class="btn" href="javascript:;">
+                                <i class="icon-remove text-danger" ng-click="removeUrl($index)"></i>
+                            </a>
+                        </span>
+                    </div>
+
+                    <a href="javascript:;" ng-click="addUrl('')">Ajouter une URL</a>
                 </div>
             </div>
 

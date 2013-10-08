@@ -4,9 +4,13 @@ angular.module('lbcApp')
     .controller('SearchEditCtrl', function ($scope, Search, $routeParams, $http, breadcrumbs) {
         breadcrumbs.clean();
 
+        $scope.urls = [];
+
         if(!$routeParams.id) {
+
             $scope.search = new Search();
             $scope.search.cities = [];
+            $scope.addUrl('');
 
             breadcrumbs.add({
                 name: 'Nouvelle recherche',
@@ -16,6 +20,14 @@ angular.module('lbcApp')
 
             Search.get({ id: $routeParams.id }, function(search) {
                 $scope.search = search;
+
+                if($scope.search.length === 0) {
+                    $scope.addUrl('');
+                } else {
+                    for(var i in search.urls) {
+                        $scope.addUrl(search.urls[i]);
+                    }
+                }
 
                 breadcrumbs.add({
                     name: search.title,
@@ -44,7 +56,7 @@ angular.module('lbcApp')
             if((i = this.cityExists(city)) !== false) {
                 this.search.cities.splice(i, 1);
             }
-        }
+        };
 
         // Return false or index
         $scope.cityExists = function(city) {
@@ -57,15 +69,30 @@ angular.module('lbcApp')
             }   
 
             return false;
-        }
+        };
+
+        $scope.addUrl = function(url) {
+            $scope.urls.push({ link: url })
+        };
+
+        $scope.removeUrl = function(index) {
+            if($scope.urls.length < 2 || index >= $scope.urls.length) {
+               return; 
+            }
+
+            $scope.urls.splice(index, 1);
+        };
 
         $scope.submit = function() {
-            this.search.$save(function(a,b) {
-                console.log('ok');   
-            }, function(a,b) {
-                console.log(a);
-            });
-        }
+
+            this.search.urls = [];
+
+            for(var i in this.urls) {
+                this.search.urls.push(this.urls[i].link)
+            }
+
+            this.search.$save();
+        };
     })
     .directive('lbcTypeahead', function() {
 
@@ -77,7 +104,7 @@ angular.module('lbcApp')
                 remote: {
                     url: '/ws/cities?q=%QUERY',
                     filter: function(cities) {
-                        for(i in cities) {
+                        for(var i in cities) {
                             if(scope.cityExists(cities[i])) {
                                 cities.splice(i, 1);
                             }

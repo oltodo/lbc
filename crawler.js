@@ -72,7 +72,6 @@ mongoose.connect('mongodb://localhost/lbc', function (err) {
         return;
     }
 
-
     lauch();
 });
 
