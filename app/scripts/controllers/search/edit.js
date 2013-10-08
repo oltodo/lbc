@@ -21,7 +21,7 @@ angular.module('lbcApp')
             Search.get({ id: $routeParams.id }, function(search) {
                 $scope.search = search;
 
-                if($scope.search.length === 0) {
+                if($scope.search.urls.length === 0) {
                     $scope.addUrl('');
                 } else {
                     for(var i in search.urls) {
