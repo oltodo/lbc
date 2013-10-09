@@ -7,20 +7,21 @@ angular.module('lbcApp')
     ) {
         breadcrumbs.clean();
 
+        $scope.filter = 'all';
         $scope.loading = false;
         $scope.page = 1;
         $scope.limit = 30,
         $scope.ads = [];
 
-        var getSearch = (function() {
+        var getSearch = (function () {
             var d = $q.defer();
             var search = null;
 
-            return function() {
+            return function () {
                 if(null !== search) {
                     d.resolve(search);
                 } else {
-                    Search.get({ id: $routeParams.id }, function(s) {
+                    Search.get({ id: $routeParams.id }, function (s) {
                         search = s;
                         d.resolve(s);
                     });  
@@ -31,7 +32,7 @@ angular.module('lbcApp')
         })();
 
         getSearch()
-            .then(function(search) {
+            .then(function (search) {
                 $scope.search = search;
 
                 breadcrumbs.add({
@@ -40,16 +41,19 @@ angular.module('lbcApp')
                 });
             });
  
-        $scope.more = function() {
+
+        $scope.more = function () {
             $scope.loading = true;
 
             getSearch()
-                .then(function(search) {
+                .then(function (search) {
                     Ad.query({
                         idSearch: search._id,
                         page: $scope.page,
-                        limit: $scope.limit
-                    }, function(ads) {
+                        limit: $scope.limit,
+                        ignored: $scope.filter == 'ignored',
+                        followed: $scope.filter == 'followed',
+                    }, function (ads) {
                         for(var i in ads) {
                             $scope.ads.push(ads[i]);
                         }
@@ -60,12 +64,28 @@ angular.module('lbcApp')
                 });
         };
 
-        $scope.toggleIgnore = function(ad) {
+        $scope.$watch('filter', function(value, old) {
+            if(value == old) {
+                return;
+            }
+
+            $scope.ads = [];
+            $scope.filter = value;
+            $scope.page = 1
+            $scope.more();
+        });
+
+        $scope.toggleIgnore = function (ad) {
             ad.ignored = !ad.ignored;
             ad.$update();
         };
 
-        $scope.growthIcon = function(ad) {
+        $scope.toggleFollow = function (ad) {
+            ad.followed = !ad.followed;
+            ad.$update();
+        };
+
+        $scope.growthIcon = function (ad) {
             if(ad.history.length <= 1) {
                 return '';
             }

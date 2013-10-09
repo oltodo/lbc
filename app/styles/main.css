@@ -13,8 +13,6 @@ body {
 /* Fix Font-awesome */
 a [class^="icon-"], a [class*=" icon-"] { text-decoration: none; }
 
-
-
 #container {  padding-top: 80px; }
 
 /* Breadcrumbs */
@@ -23,6 +21,8 @@ a [class^="icon-"], a [class*=" icon-"] { text-decoration: none; }
 
 h3 .buttons { font-size: 0.8em; }
 h3 .buttons a { margin-left: 10px; text-decoration: none; display: inline-block }
+
+#title h3 { margin: 0; }
 
 #search-index .ad { margin-bottom: 20px; transition: opacity .5s; }
 #search-index .ad.ignored { opacity: 0.3; }

@@ -115,9 +115,14 @@ app.get('/ws/ads', function(req, res) {
 
     var page = req.query.page || 1;
     var limit = req.query.limit || 30;
+    var filters = {};
+    var ignored = req.query.ignored === 'true';
+    var followed = req.query.followed === 'true';
 
-    var filters = {
-        ignored: false
+    filters.ignored = req.query.ignored;
+
+    if(followed) {
+        filters.followed = true;
     }
 
     if(req.query.idSearch) {
@@ -129,7 +134,7 @@ app.get('/ws/ads', function(req, res) {
             .then(function(ads) {
                 res.send(ads)
             });
-    }else {
+    } else {
 
         getSearch(page, limit, filters)
             .then(function(ads) {
@@ -160,7 +165,8 @@ app.put('/ws/ads/:idAd', function(req, res) {
 
     var $set = {
         ignored: req.body.ignored,
-        partial: req.body.partial
+        partial: req.body.partial,
+        followed: req.body.followed,
     };
 
     return Ad
