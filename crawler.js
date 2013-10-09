@@ -40,10 +40,11 @@ logger.saveStackTrace = true;
 program
     .version('1.0.0')
     .option('--reload-ad <ad-id>', 'Crawl ad from leboncoin.fr and update it')
+    // .option('--execute-search <search-id>', '')
     .parse(process.argv)
 ;
 
-var onFailed = function() {
+var onFailed = function () {
     logger.error(error.stack);
 };
 
@@ -65,7 +66,7 @@ mongoose.connect('mongodb://localhost/lbc', function (err) {
 
         crawler.getAd(program.reloadAd)
             .then(crawler.updateAd)
-            .then(function() {
+            .then(function () {
                 process.exit(1);
             });
 
@@ -114,7 +115,7 @@ var checkSearches = function (searches) {
     });
 
     chain
-        .then(function() {
+        .then(function () {
             defer.resolve();
         })
         .fail(onFailed);

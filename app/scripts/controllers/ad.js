@@ -53,10 +53,7 @@ angular.module('lbcApp')
     .directive('slideit', function () {
         return function (scope, elm, attrs) {
             var $gallery = $(elm[0]);
-
             $gallery.addClass('owl-carousel');
-
-            window.$gallery = $gallery;
 
             scope.$watch(attrs.slideit, function (images) {
                 if(typeof images !== 'object' || images.length === 0) {
@@ -78,5 +75,88 @@ angular.module('lbcApp')
                     lazyLoad: true
                 });
             });
+        };
+    })
+
+
+    .directive('tagit', function () {
+        return function (scope, elm, attrs) {
+
+            scope.$watch(attrs.tagit, function (tag) {
+                if(undefined === tag) {
+                    return;
+                }
+                
+                var styles = {};
+
+                // styles.height = '22px';
+                styles.float = 'left';
+                styles.color = '#222';
+                styles.paddingLeft = '5px';
+                
+                switch(tag) {
+                    case 'A':
+                        styles.background = '#009136';
+                        styles.width = '50px';
+                        break;
+
+                    case 'B':
+                        styles.background = '#51a928';
+                        break;
+
+                    case 'C':
+                        styles.background = '#c9d301';
+                        break;
+
+                    case 'D':
+                        styles.background = '#feed01';
+                        break;
+
+                    case 'E':
+                        styles.background = '#fbbb01';
+                        break;
+
+                    case 'F':
+                        styles.background = '#eb690b';
+                        break;
+
+                    case 'G':
+                        styles.background = '#e3001b';
+                        styles.color = 'white';
+                        break;
+
+                    case 'H':
+                        styles.background = '#4d4d4d';
+                        styles.color = 'white';
+                        break;
+
+                    case 'I':
+                        styles.background = '#161616';
+                        styles.color = 'white';
+                        styles.width = '50px';
+                        break;
+
+                    default:
+                        elm.html('<i>Unrecognized tag `'+tag+'`</i>');
+                        return;
+                }
+
+                styles.width = (50+(tag.charCodeAt(0)-65)*20)+'px';
+
+                var $span1 = $('<span></span>');
+                $span1.css(styles).text(tag);
+
+                var $span2 = $('<span></span>');
+                $span2.css({
+                    float: 'left',
+                    height: 0,
+                    width: 0,
+                    border: 'solid transparent',
+                    borderWidth: '10px 0 10px 10px',
+                    borderLeftColor: styles.background
+                })
+
+                $(elm).append($span1, $span2);
+            }, true);
         };
     });
