@@ -31,7 +31,10 @@
                     <div class="url input-group" ng-repeat="url in urls">
                         <input type="text" class="form-control" ng-model="url.link" required="required">   
                         <span class="input-group-btn">
-                            <a class="btn" href="javascript:;">
+                            <a class="btn btn-default" href="{{ url.link }}" target="_blank" ng-show="url.link">
+                                <i class="icon-external-link"></i>
+                            </a>
+                            <a class="btn btn-default" href="javascript:;">
                                 <i class="icon-remove text-danger" ng-click="removeUrl($index)"></i>
                             </a>
                         </span>
