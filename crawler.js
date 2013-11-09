@@ -40,7 +40,7 @@ logger.saveStackTrace = true;
 program
     .version('1.0.0')
     .option('--reload-ad <ad-id>', 'Crawl ad from leboncoin.fr and update it')
-    // .option('--execute-search <search-id>', '')
+    .option('--execute-search <search-id>', '')
     .parse(process.argv)
 ;
 
@@ -70,6 +70,22 @@ mongoose.connect('mongodb://localhost/lbc', function (err) {
                 process.exit(1);
             });
 
+        return;
+    }
+
+    if(program.executeSearch) {
+        var id = program.executeSearch;
+
+        crawler.getSearchById(id)
+            .then(function(search) {
+                return crawler.executeSearch(search);
+            }, function(err) {
+                logger.error('Search #'+id+' not found')
+                process.exit();
+            })
+            .then(process.exit)
+            .fail(onFailed);
+            
         return;
     }
 
