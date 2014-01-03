@@ -41,6 +41,7 @@ program
     .version('1.0.0')
     .option('--reload-ad <ad-id>', 'Crawl ad from leboncoin.fr and update it')
     .option('--execute-search <search-id>', '')
+    .option('--test-proxy <proxy-name>', '')
     .parse(process.argv)
 ;
 
@@ -86,6 +87,21 @@ mongoose.connect('mongodb://localhost/lbc', function (err) {
             .then(process.exit)
             .fail(onFailed);
             
+        return;
+    }
+
+
+    if(program.testProxy) {
+
+        var url = 'http://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone/?f=a&th=1&pe=10&sqs=7&ret=1&ret=2';
+
+        crawler
+            .getContent(url, true, program.testProxy)
+            .then(crawler.extractDatas)
+            .spread(function (nextPage, ads) {
+                console.log(ads.length);
+            });
+
         return;
     }
 

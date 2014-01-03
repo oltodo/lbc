@@ -16,7 +16,8 @@
     "commander": "~2.0.0",
     "class": "~0.1.4",
     "MD5": "~1.1.0",
-    "simple-file-writer": "~1.0.5"
+    "simple-file-writer": "~1.0.5",
+    "base64": "~2.1.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
