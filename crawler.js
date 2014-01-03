@@ -7,6 +7,7 @@ var
     app         = express(),
 
     crawler     = require('./lib/crawler'),
+    utils       = require('./lib/utils'),
     Search      = require('./lib/models/search');
 
 
@@ -145,9 +146,9 @@ var checkSearches = function (searches) {
 
         // Check if seach can be updated
         var diff = new Date()-search.updatedAt; // milliseconds
-        var diff = Math.ceil(diff/1000);
+        var diff = Math.ceil(diff/1000); // seconds
 
-        if(diff > search.updateFrequency) {
+        if(diff > (search.updateFrequency+utils.rand(0, 600))) {
             chain = chain.then(function () {
                 return crawler.executeSearch(search);
             });
