@@ -92,7 +92,6 @@ mongoose.connect('mongodb://localhost/lbc', function (err) {
 
 
     if(program.testProxy) {
-
         var url = 'http://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone/?f=a&th=1&pe=10&sqs=7&ret=1&ret=2';
 
         crawler
@@ -108,9 +107,18 @@ mongoose.connect('mongodb://localhost/lbc', function (err) {
     lauch();
 });
 
+var sleepingHoursRange = [23,8];
 var updateRunning = true;
 
 var lauch = function () {
+
+    var now = new Date();
+
+    if(now.getHours() >= sleepingHoursRange[0] || now.getHours() < sleepingHoursRange[1]) {
+        logger.info('I\'m sleeping');
+        setTimeout(lauch, 60000);
+        return;
+    }
 
     if(updateRunning) {
         logger.info('Waiting for a new search update');
