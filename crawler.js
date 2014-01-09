@@ -141,8 +141,15 @@ var executeSearch = function(cmd)
 
 // Program command
 program
-    .version('1.0.0')
-    .option('--toto', 'Toto')
+    .version('2.0.0')
+;
+
+program
+    .command('start')
+    .description('Start crawling')
+    .action(function(cmd) {
+        executeStart(cmd);
+    });
 ;
 
 program
@@ -169,14 +176,6 @@ program
     .action(function(cmd) {
         executeTestProxy(cmd);
     })
-;
-
-program
-    .command('start')
-    .description('Start crawling')
-    .action(function(cmd) {
-        executeStart(cmd);
-    });
 ;
 
 program
