@@ -36,88 +36,165 @@ if(app.get('env') === 'production') {
 
 logger.saveStackTrace = true;
 
+crawler.setLogger(logger);
 
-// Program command
-program
-    .version('1.0.0')
-    .option('--reload-ad <ad-id>', 'Crawl ad from leboncoin.fr and update it')
-    .option('--execute-search <search-id>', '')
-    .option('--test-proxy <proxy-name>', '')
-    .parse(process.argv)
-;
 
 var onFailed = function () {
     logger.error(error.stack);
 };
 
-logger.info('Crawler start');
 
-// Connect to the mongo database
-logger.info('Connexion to database');
+var connect = function() {
+    var defer = Q.defer();
 
-mongoose.connect('mongodb://localhost/lbc', function (err) {
-    if(err) throw new Error(err);
+    logger.info('Connexion to database');
 
-    logger.info('Connexion successful');
+    mongoose.connect('mongodb://localhost/lbc', function (err) {
+        if(err) {
+            logger.info('Connexion fail: '+err);
+            throw new Error(err);
+        }
 
-    crawler.setLogger(logger);
+        logger.info('Connexion successful');
+        defer.resolve();
+    });
 
-    if(program.reloadAd) {
-
-        logger.info('Reloading ad #'+program.reloadAd);
-
-        crawler.getAd(program.reloadAd)
-            .then(crawler.updateAd)
-            .then(function () {
-                process.exit(1);
-            });
-
-        return;
-    }
-
-    if(program.executeSearch) {
-        var id = program.executeSearch;
-
-        crawler.getSearchById(id)
-            .then(function(search) {
-                return crawler.executeSearch(search);
-            }, function(err) {
-                logger.error('Search #'+id+' not found')
-                process.exit();
-            })
-            .then(process.exit)
-            .fail(onFailed);
-            
-        return;
-    }
+    return defer.promise;
+};
 
 
-    if(program.testProxy) {
-        var url = 'http://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone/?f=a&th=1&pe=10&sqs=7&ret=1&ret=2';
+var executeStart = function()
+{
+    logger.info('Crawler start');
 
-        crawler
-            .getContent(url, true, program.testProxy)
-            .then(crawler.extractDatas)
-            .spread(function (nextPage, ads) {
-                console.log(ads.length);
-            });
+    connect()
+        .then(function() {
+            launch();
+        });
+};
 
-        return;
-    }
+var executeTestProxy = function(cmd)
+{
+    var
+        http  = require('http'),
+        url   = require('url'),
+        urlDatas = url.parse(cmd.url);
 
-    lauch();
-});
+    var req = http.get({
+        host: cmd.host,
+        port: cmd.port,
+        path: cmd.url,
+        headers: {
+            'Host': urlDatas.host,
+            'User-Agent': 'Mozilla/1.22 (compatible; MSIE 5.01; PalmOS 3.0) EudoraWeb 2'
+        }
+    } , function(res) {
+        logger.info('STATUS: ' + res.statusCode);
+        logger.info('HEADERS: ' + JSON.stringify(res.headers));
+
+        res.on('data', function (chunk) {
+            logger.info('BODY: ' + chunk);
+        });
+
+        res.on('end', function () {
+            console.log('Finished');
+        });
+    });
+
+    req.setTimeout(cmd.timeout*1000, function() {
+        logger.error('Timeout');
+        req.abort();
+    });
+
+    req.on('error', function(e) {
+        logger.error("Got error: " + e.message);
+    });
+};
+
+
+var executeReloadAd = function(cmd)
+{
+    logger.info('Reloading ad #'+program.reloadAd);
+
+    crawler.getAd(program.reloadAd)
+        .then(crawler.updateAd)
+        .then(function () {
+            process.exit(1);
+        });
+}
+
+var executeSearch = function(cmd)
+{
+    var id = program.executeSearch;
+
+    crawler.getSearchById(id)
+        .then(function(search) {
+            return crawler.executeSearch(search);
+        }, function(err) {
+            logger.error('Search #'+id+' not found')
+            process.exit();
+        })
+        .then(process.exit)
+        .fail(onFailed);
+}
+
+
+// Program command
+program
+    .version('1.0.0')
+    .option('--toto', 'Toto')
+;
+
+program
+    .command('reload-ad <ad-id>')
+    .description('Crawl ad from leboncoin.fr and update it')
+    .action(function(cmd) {
+        executeReloadAd(cmd);
+    });
+
+program
+    .command('execute-search <search-id>')
+    .description('Execute a specific search')
+    .action(function(cmd) {
+        executeSearch(cmd);
+    });
+
+program
+    .command('test-proxy')
+    .description('Test a proxy')
+    .option('-h, --host <host>', 'Proxy\'s host')
+    .option('-p, --port <port>', 'Proxy\'s port (default: 80)', 80)
+    .option('-u, --url <url>', 'Url to test (default: http://www.google.com/)', 'http://www.google.com/')
+    .option('--timeout <timeout>', 'Timeout in second (default: 10s)', 10)
+    .action(function(cmd) {
+        executeTestProxy(cmd);
+    })
+;
+
+program
+    .command('start')
+    .description('Start crawling')
+    .action(function(cmd) {
+        executeStart(cmd);
+    });
+;
+
+program
+    .parse(process.argv);
+
+
+
 
 var sleepingHoursRange = [23,8];
 var updateRunning = true;
 
-var lauch = function () {
+var launch = function () {
 
     var now = new Date();
 
     if(now.getHours() >= sleepingHoursRange[0] || now.getHours() < sleepingHoursRange[1]) {
         logger.info('I\'m sleeping');
-        setTimeout(lauch, 60000);
+        setTimeout(launch, 60000);
         return;
     }
 
@@ -133,7 +210,7 @@ var lauch = function () {
                 logger.info('End, relaunching in one minute');
             }
 
-            setTimeout(lauch, 60000);
+            setTimeout(launch, 60000);
         })
         .fail(onFailed);
 };
